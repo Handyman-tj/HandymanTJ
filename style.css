@@ -221,3 +221,107 @@ footer {
     0% { transform: translateY(50px); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
 }
+
+/* --- Media Queries --- */
+
+/* For small screens (phones) */
+@media screen and (max-width: 768px) {
+    /* Header */
+    header {
+        flex-direction: column; /* Stack logo and right side */
+        text-align: center; /* Center items */
+    }
+
+    .logo img {
+        width: 120px; /* Smaller logo */
+    }
+
+    .header-right {
+        margin-top: 10px; /* Add spacing */
+    }
+
+    /* Hero Section */
+    .hero {
+        height: auto; /* Allow height to adjust */
+        padding: 50px 20px; /* Add padding */
+    }
+
+    .hero-overlay {
+        width: 90%; /* Take up more width */
+        height: auto; /* Adjust height */
+    }
+
+    .hero-text h1 {
+        font-size: 2em; /* Smaller heading */
+    }
+
+    .hero-text p {
+        font-size: 1em; /* Smaller paragraph */
+    }
+
+    /* About Section */
+    .about-content {
+        flex-direction: column; /* Stack text and logo */
+        text-align: center; /* Center items */
+    }
+
+    .about-text {
+        padding-right: 0; /* Remove padding */
+        margin-bottom: 20px; /* Add spacing */
+    }
+
+    .about-logo {
+        width: 250px; /* Smaller logo */
+    }
+
+    /* Services Section */
+    .services {
+        padding: 30px; /* Less padding */
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Smaller columns */
+        gap: 15px; /* Less gap */
+    }
+
+    .service img {
+        width: 120px; /* Smaller images */
+        height: 120px;
+    }
+
+    .service h3 {
+        font-size: 1.2em; /* Smaller heading */
+    }
+
+    .service p {
+        font-size: 0.9em; /* Smaller paragraph */
+        padding: 0 10px; /* Less padding */
+    }
+
+    /* Gallery Section */
+    .gallery {
+        padding: 30px; /* Less padding */
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Smaller columns */
+        gap: 5px; /* Less gap */
+    }
+
+    .gallery-grid img {
+        height: 150px; /* Smaller images */
+        border-radius: 3px; /* Smaller radius */
+    }
+
+    /* Footer */
+    footer {
+        flex-direction: column; /* Stack items */
+        text-align: center; /* Center text */
+    }
+
+    .socials {
+        margin-top: 10px; /* Add spacing */
+    }
+}
+
+/* --- End of Media Queries --- */
