@@ -1,154 +1,185 @@
 body {
-  margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: #f9f9f9;
-  color: #333;
-  overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
 }
 
 a {
-  color: #007bff;
-  text-decoration: none;
+    text-decoration: none;
+    color: #007bff;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #fff;
-  padding: 20px;
-  z-index: 10;
-  position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    background: #fff;
 }
 
 .logo img {
-  width: 140px;
+    width: 140px;
 }
 
 .header-right {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.location {
+    font-weight: bold;
 }
 
 .contact-social {
-  display: flex;
-  gap: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.link-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .icon {
-  width: 24px;
+    width: 24px;
 }
 
 .hero {
-  height: 100vh;
-  background: url('download.png') no-repeat center center/cover;
-  position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background: url('download.png') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-overlay {
-  background-color: rgba(0, 0, 0, 0.6);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px 20px;
+    width: 100%;
+    text-align: center;
 }
 
 .hero-logo-center {
-  width: 220px;
-  margin-bottom: 20px;
+    width: 220px;
+    margin-bottom: 20px;
 }
 
 .hero-text h1 {
-  color: #fff;
-  font-size: 3rem;
-  margin: 0;
-  animation: flicker 1.5s infinite;
+    font-size: 2.5em;
+    color: #fff;
+    margin-bottom: 10px;
 }
 
 .hero-text p {
-  color: #ddd;
-  font-size: 1.5rem;
+    font-size: 1.2em;
+    color: #fff;
 }
 
-@keyframes flicker {
-  0% { opacity: 1; }
-  50% { opacity: 0.5; transform: scale(1.03); }
-  100% { opacity: 1; }
-}
-
-.about, .services, .gallery {
-  padding: 60px 20px;
+.about {
+    padding: 50px 20px;
 }
 
 .about-content {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
 }
 
 .about-text {
-  flex: 1;
+    flex: 1;
+    min-width: 300px;
 }
 
 .about-logo {
-  width: 250px;
+    width: 250px;
 }
 
-.services h2, .gallery h2 {
-  text-align: center;
-  margin-bottom: 40px;
-  color: #000;
+.services {
+    padding: 50px 20px;
+    background: #000;
+    color: white;
+    text-align: center;
 }
 
 .services-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.service {
-  background: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  text-align: center;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.service:hover {
-  transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 0 25px rgba(0,0,0,0.2);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
 }
 
 .service img {
-  width: 100px;
-  margin-bottom: 10px;
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.gallery {
+    padding: 50px 20px;
+    background: wheat;
+    text-align: center;
 }
 
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 30px;
 }
 
 .gallery-grid img {
-  width: 100%;
-  border-radius: 10px;
-  transition: transform 0.3s;
-}
-
-.gallery-grid img:hover {
-  transform: scale(1.1);
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
 footer {
-  background: #111;
-  color: white;
-  padding: 30px 20px;
-  text-align: center;
+    background: #222;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+footer .socials a {
+    color: #fff;
+    margin: 0 10px;
+}
+
+/* Responsive Fixes */
+@media (max-width: 600px) {
+    .hero-text h1 {
+        font-size: 1.8em;
+    }
+
+    .hero-text p {
+        font-size: 1em;
+    }
+
+    .hero-logo-center {
+        width: 160px;
+    }
+
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-logo {
+        width: 200px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 15px;
+    }
 }
