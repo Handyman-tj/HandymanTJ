@@ -1,21 +1,21 @@
 // Smooth Scrolling for Anchor Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
     });
 });
 
-// Example: Change button color on hover
+// Button Hover Effect (if you have buttons with class="button")
 const buttons = document.querySelectorAll('.button');
 buttons.forEach(button => {
-    button.addEventListener('mouseover', function() {
-        this.style.backgroundColor = '#0056b3'; // Darker blue on hover
+    button.addEventListener('mouseover', () => {
+        button.style.backgroundColor = '#0056b3'; // Darker blue
     });
-    button.addEventListener('mouseout', function() {
-        this.style.backgroundColor = '#007bff'; // Original blue
+    button.addEventListener('mouseout', () => {
+        button.style.backgroundColor = '#007bff'; // Original blue
     });
 });
