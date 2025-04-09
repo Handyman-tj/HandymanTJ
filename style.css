@@ -17,6 +17,21 @@ header {
     flex-wrap: wrap;
     padding: 20px;
     background: #fff;
+    animation: headerBounce 1s ease-out;
+}
+
+@keyframes headerBounce {
+    0% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    60% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .logo img {
@@ -57,6 +72,16 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    animation: backgroundColorChange 5s ease-in-out forwards;
+}
+
+@keyframes backgroundColorChange {
+    0% {
+        background-color: #000;
+    }
+    100% {
+        background: url('download.png') center/cover no-repeat;
+    }
 }
 
 .hero-overlay {
@@ -115,6 +140,14 @@ header {
 
 .about {
     padding: 50px 20px;
+    opacity: 0;
+    animation: fadeInAbout 1s ease-out 1s forwards;
+}
+
+@keyframes fadeInAbout {
+    to {
+        opacity: 1;
+    }
 }
 
 .about-content {
@@ -142,10 +175,16 @@ header {
 }
 
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
+    opacity: 0;
+    transform: translateX(-50px);
+    animation: slideInServices 1s ease-out 2s forwards;
+}
+
+@keyframes slideInServices {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .service img {
@@ -173,6 +212,22 @@ header {
     height: 180px;
     object-fit: cover;
     border-radius: 5px;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+}
+
+.gallery-grid img:nth-child(even) {
+    animation: popImage 0.8s ease-out 3s forwards;
+}
+
+@keyframes popImage {
+    to {
+        transform: scale(1);
+    }
 }
 
 footer {
@@ -180,6 +235,16 @@ footer {
     color: #fff;
     padding: 30px 20px;
     text-align: center;
+    transform: translateY(50px);
+    opacity: 0;
+    animation: slideUpFooter 1s ease-out 3.5s forwards;
+}
+
+@keyframes slideUpFooter {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 footer .socials a {
