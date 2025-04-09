@@ -42,12 +42,15 @@ header {
 .link-group {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px; /* was 5px, bump it up */
 }
 
+
 .icon {
-    width: 24px;
+    width: 40px; /* Or go 48px or 60px if you want even bolder */
+    height: auto; /* Keep proportions nice */
 }
+
 
 .hero {
     width: 100%;
