@@ -1,188 +1,105 @@
- body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
-
-a {
-    text-decoration: none;
-    color: #007bff;
-}
-
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 20px;
-    background: #fff;
-}
-
-.logo img {
-    width: 140px;
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.location {
-    font-weight: bold;
-}
-
-.contact-social {
-    display: flex;
-    gap: 10px;
-}
-
-.link-group {
-    display: flex;
-    align-items: center;
-    gap: 20px; /* was 5px, bump it up */
-}
-
-
-.icon {
-    width: 40px; /* Or go 48px or 60px if you want even bolder */
-    height: auto; /* Keep proportions nice */
-}
-
-
-.hero {
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    min-height: 100vh;
-    background: url('download.png') center/cover no-repeat;
+    height: 100vh;
+    background: black;
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 9999;
+    animation: fadeOutOverlay 2s ease-out forwards;
+    animation-delay: 2.5s;
 }
 
-.hero-overlay {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 40px 20px;
-    width: 60%;
-    text-align: center;
+.intro-logo {
+    width: 200px;
+    opacity: 0;
+    transform: scale(3) rotate(30deg);
+    filter: blur(15px);
+    animation: introLogoReveal 2s ease-out forwards;
+}
+
+@keyframes introLogoReveal {
+    0% {
+        opacity: 0;
+        transform: scale(3) rotate(30deg);
+        filter: blur(15px);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2) rotate(0deg);
+        filter: blur(2px);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1) rotate(0deg);
+        filter: blur(0);
+    }
+}
+
+@keyframes fadeOutOverlay {
+    0% { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; display: none; }
+}
+
+.animated-hero {
+    animation: heroZoomIn 4s ease-in-out forwards;
+    animation-delay: 2.5s;
+    opacity: 0;
+}
+
+@keyframes heroZoomIn {
+    0% {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .hero-logo-center {
-    width: 220px;
-    margin-bottom: 20px;
+    opacity: 0;
+    transform: scale(2) translateY(50px);
+    filter: blur(10px);
+    animation: logoSlam 1.8s ease-out forwards;
+    animation-delay: 3s;
 }
 
-.hero-text h1 {
-    font-size: 2.5em;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-.hero-text p {
-    font-size: 1.2em;
-    color: #fff;
-}
-
-.about {
-    padding: 50px 20px;
-}
-
-.about-content {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-}
-
-.about-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-.about-logo {
-    width: 250px;
-}
-
-.services {
-    padding: 50px 20px;
-    background: #000;
-    color: white;
-    text-align: center;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 30px;
-    margin-top: 30px;
-}
-
-.service img {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.gallery {
-    padding: 50px 20px;
-    background: wheat;
-    text-align: center;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin-top: 30px;
-}
-
-.gallery-grid img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-footer {
-    background: #222;
-    color: #fff;
-    padding: 30px 20px;
-    text-align: center;
-}
-
-footer .socials a {
-    color: #fff;
-    margin: 0 10px;
-}
-
-/* Responsive Fixes */
-@media (max-width: 600px) {
-    .hero-text h1 {
-        font-size: 1.8em;
+@keyframes logoSlam {
+    0% {
+        opacity: 0;
+        transform: scale(2) translateY(-100px);
+        filter: blur(10px);
     }
-
-    .hero-text p {
-        font-size: 1em;
+    60% {
+        opacity: 1;
+        transform: scale(1) translateY(10px);
+        filter: blur(2px);
     }
-
-    .hero-logo-center {
-        width: 160px;
+    100% {
+        transform: scale(1) translateY(0);
+        filter: blur(0);
     }
+}
 
-    .about-content {
-        flex-direction: column;
-        text-align: center;
+.hero-text {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: textRise 1.5s ease-out forwards;
+    animation-delay: 3.5s;
+}
+
+@keyframes textRise {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
     }
-
-    .about-logo {
-        width: 200px;
-    }
-
-    footer {
-        flex-direction: column;
-        gap: 15px;
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
