@@ -60,13 +60,13 @@ header {
 /* Hero Section */
 .hero {
     background: url('download.png') center/cover no-repeat;
-    height: 600px;
+    height: auto; /* Changed to auto */
+    min-height: 600px; /* Keep this */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
-    position: relative;
     padding: 20px;
 }
 
@@ -74,8 +74,8 @@ header {
     background: rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 10px;
-    width: 80%;
-    max-width: 800px;
+    width: 95%; /* Changed to 95% */
+    max-width: none; /* Removed max-width */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -221,7 +221,7 @@ footer {
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
+@media (max-width: 600px) { /* Changed breakpoint to 600px */
     .hero {
         height: auto;
         min-height: 600px;
