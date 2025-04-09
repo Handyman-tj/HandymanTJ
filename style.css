@@ -42,13 +42,13 @@ header {
 .link-group {
     display: flex;
     align-items: center;
-    gap: 10px; /* was 5px, bump it up */
+    gap: 20px; /* was 5px, bump it up */
 }
 
 
 .icon {
-    width: 100px; /* Or go 48px or 60px if you want even bolder */
-    height: 100px; /* Keep proportions nice */
+    width: 120px; /* Or go 48px or 60px if you want even bolder */
+    height: 120px; /* Keep proportions nice */
 }
 
 
