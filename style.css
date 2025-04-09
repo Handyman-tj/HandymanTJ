@@ -66,14 +66,14 @@ header {
     align-items: center;
     text-align: center;
     color: white;
-    position: relative;
+    position: relative; /* Important! */
 }
 
 .hero-overlay {
     background: rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 10px;
-    position: absolute;
+    position: absolute; /* Important! */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -195,7 +195,6 @@ header {
     height: 200px;
     object-fit: cover;
     border-radius: 5px;
-    min-width: 100px; /*added line*/
 }
 
 /* Footer */
@@ -223,281 +222,42 @@ footer {
     100% { transform: translateY(0); opacity: 1; }
 }
 
-/* --- Media Queries --- */
-
-/* For extra small screens (phones - less than 576px) */
-@media screen and (max-width: 576px) {
-    /* Header */
-    header {
-        flex-direction: column;
-        text-align: center;
-        padding: 10px;
-    }
-
-    .logo img {
-        width: 100px;
-    }
-
-    .header-right {
-        margin-top: 5px;
-    }
-
-    .location {
-        font-size: 0.9em;
-        margin-right: 10px;
-    }
-
-    /* Hero Section */
-    .hero {
-        height: auto;
-        padding: 30px 15px;
-    }
-
-    .hero-overlay {
-        width: 95%;
-        height: auto;
-    }
-
-    .hero-logo-center {
-        width: 200px;
-        margin-bottom: 10px;
-    }
-
-    .hero-text h1 {
-        font-size: 1.8em;
-    }
-
-    .hero-text p {
-        font-size: 0.9em;
-    }
-
-    /* About Section */
-    .about {
-        padding: 30px 15px;
-    }
-
-    .about-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .about-text {
-        padding-right: 0;
-        margin-bottom: 15px;
-    }
-
-    .about-logo {
-        width: 200px;
-    }
-
-    /* Services Section */
-    .services {
-        padding: 30px 15px;
-    }
-
-    .services-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 10px;
-    }
-
-    .service img {
-        width: 100px;
-        height: 100px;
-        margin-bottom: 10px;
-    }
-
-    .service h3 {
-        font-size: 1em;
-    }
-
-    .service p {
-        font-size: 0.8em;
-        padding: 0 5px;
-    }
-
-    /* Gallery Section */
-    .gallery {
-        padding: 30px 15px;
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-        gap: 3px;
-    }
-
-    .gallery-grid img {
-        height: 120px;
-        border-radius: 2px;
-    }
-
-    /* Footer */
-    footer {
-        flex-direction: column;
-        text-align: center;
-        padding: 10px;
-    }
-
-    footer p {
-        font-size: 0.8em;
-    }
-
-    .socials {
-        margin-top: 5px;
-    }
-}
-
-/* For small screens (phones - 768px and below) */
+/* Media Queries for Responsiveness */
 @media screen and (max-width: 768px) {
-    /* Header */
-    header {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px;
-    }
-
-    .logo img {
-        width: 120px;
-    }
-
-    .header-right {
-        margin-top: 10px;
-    }
-
-    .location {
-        font-size: 1em;
-        margin-right: 15px;
-    }
-
-    /* Hero Section */
     .hero {
-        height: auto;
-        padding: 50px 20px;
+        height: auto; /* Adjust height for phones */
     }
 
     .hero-overlay {
-        width: 90%;
-        height: auto;
+        width: 90%; /* Make overlay wider on phones */
+        height: auto; /* Adjust height for phones */
     }
 
     .hero-logo-center {
-        width: 250px;
-        margin-bottom: 20px;
+        width: 200px; /* Make logo smaller on phones */
     }
 
     .hero-text h1 {
-        font-size: 2em;
+        font-size: 2em; /* Make heading smaller on phones */
     }
 
     .hero-text p {
-        font-size: 1em;
-    }
-
-    /* About Section */
-    .about {
-        padding: 50px 20px;
+        font-size: 1em; /* Make paragraph smaller on phones */
     }
 
     .about-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .about-text {
-        padding-right: 0;
-        margin-bottom: 20px;
+        flex-direction: column; /* Stack about content on phones */
     }
 
     .about-logo {
-        width: 250px;
-    }
-
-    /* Services Section */
-    .services {
-        padding: 30px;
+        width: 200px; /* Make logo smaller on phones */
     }
 
     .services-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 15px;
-    }
-
-    .service img {
-        width: 120px;
-        height: 120px;
-        margin-bottom: 15px;
-    }
-
-    .service h3 {
-        font-size: 1.2em;
-    }
-
-    .service p {
-        font-size: 0.9em;
-        padding: 0 10px;
-    }
-
-    /* Gallery Section */
-    .gallery {
-        padding: 30px;
+        grid-template-columns: 1fr; /* One column on phones */
     }
 
     .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        gap: 5px;
-    }
-
-    .gallery-grid img {
-        height: 150px;
-        border-radius: 3px;
-    }
-
-    /* Footer */
-    footer {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px;
-    }
-
-    footer p {
-        font-size: 0.9em;
-    }
-
-    .socials {
-        margin-top: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust gallery for phones */
     }
 }
-
-/* For tablets (992px and below) */
-@media screen and (max-width: 992px) {
-    /* Header */
-    header {
-        padding: 15px;
-    }
-
-    /* About Section */
-    .about {
-        padding: 40px;
-    }
-
-    /* Services Section */
-    .services {
-        padding: 40px;
-    }
-
-    /* Gallery Section */
-    .gallery {
-        padding: 40px;
-    }
-
-    /* Footer */
-    footer {
-        padding: 15px;
-    }
-}
-
-/* For larger screens (desktops - 1200px and above) */
-@media screen and (min-width: 1200px) {
-    /* You can add styles here if you want to make things look different on very large screens */
-}
-
-/* --- End of Media Queries --- */
