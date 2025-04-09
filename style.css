@@ -47,8 +47,8 @@ header {
 
 
 .icon {
-    width: 170px; /* Or go 48px or 60px if you want even bolder */
-    height: 170px; /* Keep proportions nice */
+    width: 60px; /* Or go 48px or 60px if you want even bolder */
+    height: 60px; /* Keep proportions nice */
 }
 
 
@@ -64,7 +64,7 @@ header {
 .hero-overlay {
     background: rgba(0, 0, 0, 0.5);
     padding: 40px 20px;
-    width: 100%;
+    width: 60%;
     text-align: center;
 }
 
