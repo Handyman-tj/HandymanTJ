@@ -15,4 +15,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const buttons = document.querySelectorAll('.button');
 buttons.forEach(button => {
     button.addEventListener('mouseover', function() {
-        this.style.backgroundColor = '#0056b3';
+        this.style.backgroundColor = '#0056b3'; // Darker blue on hover
+    });
+    button.addEventListener('mouseout', function() {
+        this.style.backgroundColor = '#007bff'; // Original blue
+    });
+});
