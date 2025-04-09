@@ -47,8 +47,8 @@ header {
 
 
 .icon {
-    width: 40px; /* Or go 48px or 60px if you want even bolder */
-    height: auto; /* Keep proportions nice */
+    width: 60px; /* Or go 48px or 60px if you want even bolder */
+    height: 60px; /* Keep proportions nice */
 }
 
 
