@@ -1,4 +1,3 @@
-/* General Styles */
 body {
     font-family: sans-serif;
     margin: 0;
@@ -60,30 +59,27 @@ header {
 /* Hero Section */
 .hero {
     background: url('download.png') center/cover no-repeat;
-    height: 600px;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
-    position: relative; /* Important! */
+    position: relative;
+    padding: 0 20px;
 }
 
 .hero-overlay {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     padding: 20px;
     border-radius: 10px;
-    position: absolute; /* Important! */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
+    width: 90%;
     max-width: 800px;
-    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
 }
 
 .hero-logo-center {
@@ -91,10 +87,6 @@ header {
     margin-bottom: 20px;
     margin-top: 20px;
     animation: fadeIn 2s ease-in;
-}
-
-.hero-text {
-    text-align: center;
 }
 
 .hero-text h1 {
@@ -105,7 +97,6 @@ header {
 
 .hero-text p {
     font-size: 1.2em;
-    margin-bottom: 20px;
     animation: slideIn 2.5s ease-in;
 }
 
@@ -204,7 +195,8 @@ footer {
     padding: 20px;
     text-align: center;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
 }
 
 .socials a {
@@ -222,42 +214,27 @@ footer {
     100% { transform: translateY(0); opacity: 1; }
 }
 
-/* Media Queries for Responsiveness */
-@media screen and (max-width: 768px) {
-    .hero {
-        height: auto; /* Adjust height for phones */
-    }
-
-    .hero-overlay {
-        width: 90%; /* Make overlay wider on phones */
-        height: auto; /* Adjust height for phones */
-    }
-
-    .hero-logo-center {
-        width: 200px; /* Make logo smaller on phones */
-    }
-
-    .hero-text h1 {
-        font-size: 2em; /* Make heading smaller on phones */
-    }
-
-    .hero-text p {
-        font-size: 1em; /* Make paragraph smaller on phones */
-    }
-
+/* Responsive Fix */
+@media (max-width: 768px) {
     .about-content {
-        flex-direction: column; /* Stack about content on phones */
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .about-text {
+        padding-right: 0;
     }
 
     .about-logo {
-        width: 200px; /* Make logo smaller on phones */
+        width: 200px;
+        margin-top: 20px;
     }
 
-    .services-grid {
-        grid-template-columns: 1fr; /* One column on phones */
+    .hero-text h1 {
+        font-size: 2em;
     }
 
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust gallery for phones */
+    .hero-text p {
+        font-size: 1em;
     }
 }
