@@ -1,29 +1,3 @@
-#loading-animation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000; /* Shadow color for the H */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-#initial-h {
-    font-size: 10em; /* Adjust size as needed */
-    color: #fff; /* Color of the H */
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    transform: scale(1);
-}
-
-.fade-out {
-    opacity: 0;
-    transform: scale(1.5);
-}
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -43,9 +17,7 @@ header {
     flex-wrap: wrap;
     padding: 20px;
     background: #fff;
-    animation: headerBounce 1s ease-out 0.8s forwards; /* Slightly delay header appearance */
-    opacity: 0;
-    transform: translateY(-50px);
+    animation: headerBounce 1s ease-out;
 }
 
 @keyframes headerBounce {
@@ -55,7 +27,6 @@ header {
     }
     60% {
         transform: translateY(10px);
-        opacity: 1;
     }
     100% {
         transform: translateY(0);
@@ -101,14 +72,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: backgroundColorChange 5s ease-in-out 1.1s forwards, fadeIn 0.5s ease-in-out 1.6s forwards; /* Delay hero appearance */
-    opacity: 0;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
+    animation: backgroundColorChange 5s ease-in-out forwards;
 }
 
 @keyframes backgroundColorChange {
@@ -132,13 +96,13 @@ header {
     margin-bottom: 20px;
     opacity: 0;
     transform: scale(0.8);
-    animation: logoAnimation 1s ease-out 1.6s forwards; /* Sync with hero fade in */
+    animation: logoAnimation 1s ease-out 0.5s forwards;
 }
 
 .hero-text h1, .hero-text p {
     opacity: 0;
     transform: translateY(20px);
-    animation: textAnimation 1s ease-out 2.3s forwards; /* Appear after logo */
+    animation: textAnimation 1s ease-out 1.2s forwards;
 }
 
 @keyframes logoAnimation {
@@ -177,7 +141,7 @@ header {
 .about {
     padding: 50px 20px;
     opacity: 0;
-    animation: fadeInAbout 1s ease-out 2.1s forwards; /* Appear after hero text */
+    animation: fadeInAbout 1s ease-out 1s forwards;
 }
 
 @keyframes fadeInAbout {
@@ -208,9 +172,12 @@ header {
     background: #000;
     color: white;
     text-align: center;
+}
+
+.services-grid {
     opacity: 0;
     transform: translateX(-50px);
-    animation: slideInServices 1s ease-out 3.1s forwards; /* Appear after about section */
+    animation: slideInServices 1s ease-out 2s forwards;
 }
 
 @keyframes slideInServices {
@@ -220,37 +187,17 @@ header {
     }
 }
 
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
-    margin-top: 30px;
-}
-
-.service {
-    padding: 20px;
-}
-
 .service img {
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 10px;
 }
 
 .gallery {
     padding: 50px 20px;
     background: wheat;
     text-align: center;
-    opacity: 0;
-    animation: fadeInGallery 1s ease-out 3.6s forwards; /* Appear after services */
-}
-
-@keyframes fadeInGallery {
-    to {
-        opacity: 1;
-    }
 }
 
 .gallery-grid {
@@ -273,6 +220,16 @@ header {
     transform: scale(1.05);
 }
 
+.gallery-grid img:nth-child(even) {
+    animation: popImage 0.8s ease-out 3s forwards;
+}
+
+@keyframes popImage {
+    to {
+        transform: scale(1);
+    }
+}
+
 footer {
     background: #222;
     color: #fff;
@@ -280,7 +237,7 @@ footer {
     text-align: center;
     transform: translateY(50px);
     opacity: 0;
-    animation: slideUpFooter 1s ease-out 4.1s forwards; /* Final element to appear */
+    animation: slideUpFooter 1s ease-out 3.5s forwards;
 }
 
 @keyframes slideUpFooter {
@@ -314,4 +271,11 @@ footer .socials a {
     }
 
     .about-logo {
-        width:
+        width: 200px;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
