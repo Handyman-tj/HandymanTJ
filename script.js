@@ -1,63 +1,18 @@
-// Insane Animation Sequence
+// Animation Sequence
 document.addEventListener('DOMContentLoaded', function() {
   const textAnimation = document.getElementById('text-animation');
-  const pixelOverlay = document.getElementById('pixel-overlay');
   const siteContent = document.getElementById('site-content');
   
-  // Create pixel reveal effect
-  function createPixelEffect() {
-    const pixelSize = 20;
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-    const cols = Math.ceil(width / pixelSize);
-    const rows = Math.ceil(height / pixelSize);
-    
-    // Create pixels
-    for (let i = 0; i < cols * rows; i++) {
-      const pixel = document.createElement('div');
-      pixel.className = 'pixel';
-      pixel.style.width = `${pixelSize}px`;
-      pixel.style.height = `${pixelSize}px`;
-      pixel.style.left = `${(i % cols) * pixelSize}px`;
-      pixel.style.top = `${Math.floor(i / cols) * pixelSize}px`;
-      
-      // Random delay for each pixel
-      const delay = Math.random() * 2;
-      pixel.style.transitionDelay = `${delay}s`;
-      
-      pixelOverlay.appendChild(pixel);
-    }
-    
-    // Animate pixels
-    setTimeout(() => {
-      const pixels = document.querySelectorAll('.pixel');
-      pixels.forEach(pixel => {
-        const randomX = (Math.random() - 0.5) * 200;
-        const randomY = (Math.random() - 0.5) * 200;
-        const randomRotate = Math.random() * 360;
-        
-        pixel.style.transform = `translate(${randomX}px, ${randomY}px) rotate(${randomRotate}deg)`;
-        pixel.style.opacity = '0';
-      });
-      
-      // Show site content after pixel animation
-      setTimeout(() => {
-        siteContent.style.visibility = 'visible';
-        pixelOverlay.style.opacity = '0';
-        
-        // Remove overlay after animation
-        setTimeout(() => {
-          textAnimation.remove();
-          pixelOverlay.remove();
-        }, 1000);
-      }, 2000);
-    }, 500);
-  }
-  
-  // Start the sequence after text animation
+  // After text animation completes
   setTimeout(() => {
+    // Fade out text animation
     textAnimation.style.opacity = '0';
-    createPixelEffect();
+    
+    // Show site content
+    setTimeout(() => {
+      siteContent.style.opacity = '1';
+      textAnimation.remove();
+    }, 500);
   }, 2500);
   
   // Original JS code
