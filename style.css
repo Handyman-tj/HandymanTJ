@@ -16,26 +16,23 @@
 .animated-text {
   font-size: 8vw;
   font-weight: 900;
-  color: rgba(255, 215, 0, 0.8);
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
-  animation: 
-    textGlow 2s ease-in-out infinite alternate,
-    textScale 2.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
   font-family: 'Arial Black', sans-serif;
   letter-spacing: 2px;
   text-transform: uppercase;
   position: relative;
   padding: 0 20px;
   text-align: center;
+  animation: textScale 2.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
 }
 
-@keyframes textGlow {
-  from {
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
-  }
-  to {
-    text-shadow: 0 0 30px rgba(255, 215, 0, 0.9), 0 0 60px rgba(255, 215, 0, 0.4);
-  }
+.handyman {
+  color: #00ff00;
+  text-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+}
+
+.tj {
+  color: #ff0000;
+  text-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
 }
 
 @keyframes textScale {
@@ -43,42 +40,24 @@
     transform: scale(3) rotate(-5deg);
     opacity: 0;
   }
-  30% {
+  20% {
     transform: scale(1) rotate(0deg);
     opacity: 1;
   }
-  70% {
+  80% {
     transform: scale(1) rotate(0deg);
     opacity: 1;
+    text-shadow: 
+      0 0 10px rgba(0, 255, 0, 0.8),
+      0 0 10px rgba(255, 0, 0, 0.8);
   }
   100% {
     transform: scale(0.5) rotate(5deg);
     opacity: 0;
+    text-shadow: 
+      0 0 30px rgba(0, 255, 0, 0.8),
+      0 0 30px rgba(255, 0, 0, 0.8);
   }
-}
-
-/* Pixel Overlay Effect */
-#pixel-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  z-index: 9998;
-  pointer-events: none;
-  opacity: 1;
-  transition: opacity 1s ease-out;
-}
-
-/* Pixel Reveal Effect */
-.pixel {
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: #000;
-  transition: transform 0.8s cubic-bezier(0.5, 0, 0.75, 0), opacity 0.8s ease;
-  z-index: 9997;
 }
 
 /* Your original CSS remains completely unchanged below this line */
@@ -101,7 +80,8 @@ header {
     flex-wrap: wrap;
     padding: 20px;
     background: #fff;
-    animation: headerBounce 1s ease-out;
+    animation: headerBounce 1s ease-out 5s forwards;
+    opacity: 0;
 }
 
 @keyframes headerBounce {
@@ -156,7 +136,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: backgroundColorChange 5s ease-in-out forwards;
+    animation: backgroundColorChange 5s ease-in-out 5s forwards;
+    background-color: #000;
 }
 
 @keyframes backgroundColorChange {
@@ -180,13 +161,13 @@ header {
     margin-bottom: 20px;
     opacity: 0;
     transform: scale(0.8);
-    animation: logoAnimation 1s ease-out 0.5s forwards;
+    animation: logoAnimation 1s ease-out 5.5s forwards;
 }
 
 .hero-text h1, .hero-text p {
     opacity: 0;
     transform: translateY(20px);
-    animation: textAnimation 1s ease-out 1.2s forwards;
+    animation: textAnimation 1s ease-out 6.2s forwards;
 }
 
 @keyframes logoAnimation {
@@ -225,7 +206,7 @@ header {
 .about {
     padding: 50px 20px;
     opacity: 0;
-    animation: fadeInAbout 1s ease-out 1s forwards;
+    animation: fadeInAbout 1s ease-out 6s forwards;
 }
 
 @keyframes fadeInAbout {
@@ -261,7 +242,7 @@ header {
 .services-grid {
     opacity: 0;
     transform: translateX(-50px);
-    animation: slideInServices 1s ease-out 2s forwards;
+    animation: slideInServices 1s ease-out 7s forwards;
 }
 
 @keyframes slideInServices {
@@ -305,7 +286,7 @@ header {
 }
 
 .gallery-grid img:nth-child(even) {
-    animation: popImage 0.8s ease-out 3s forwards;
+    animation: popImage 0.8s ease-out 8s forwards;
 }
 
 @keyframes popImage {
@@ -321,7 +302,7 @@ footer {
     text-align: center;
     transform: translateY(50px);
     opacity: 0;
-    animation: slideUpFooter 1s ease-out 3.5s forwards;
+    animation: slideUpFooter 1s ease-out 8.5s forwards;
 }
 
 @keyframes slideUpFooter {
