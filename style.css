@@ -1,3 +1,29 @@
+#loading-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000; /* Shadow color for the H */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#initial-h {
+    font-size: 10em; /* Adjust size as needed */
+    color: #fff; /* Color of the H */
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: scale(1);
+}
+
+.fade-out {
+    opacity: 0;
+    transform: scale(1.5);
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -288,15 +314,4 @@ footer .socials a {
     }
 
     .about-logo {
-        width: 200px;
-    }
-
-    footer {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .services-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    }
-}
+        width:
