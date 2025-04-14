@@ -72,210 +72,102 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: backgroundColorChange 5s ease-in-out forwards;
-}
-
-@keyframes backgroundColorChange {
-    0% {
-        background-color: #000;
-    }
-    100% {
-        background: url('download.png') center/cover no-repeat;
-    }
 }
 
 .hero-overlay {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 40px 20px;
-    width: 60%;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    border-radius: 10px;
     text-align: center;
+    color: white;
 }
 
 .hero-logo-center {
-    width: 220px;
+    width: 100px;
     margin-bottom: 20px;
-    opacity: 0;
-    transform: scale(0.8);
-    animation: logoAnimation 1s ease-out 0.5s forwards;
-}
-
-.hero-text h1, .hero-text p {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: textAnimation 1s ease-out 1.2s forwards;
-}
-
-@keyframes logoAnimation {
-    from {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-@keyframes textAnimation {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.hero-text h1 {
-    font-size: 2.5em;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-.hero-text p {
-    font-size: 1.2em;
-    color: #fff;
-}
-
-.about {
-    padding: 50px 20px;
-    opacity: 0;
-    animation: fadeInAbout 1s ease-out 1s forwards;
-}
-
-@keyframes fadeInAbout {
-    to {
-        opacity: 1;
-    }
 }
 
 .about-content {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    gap: 30px;
+    padding: 40px;
 }
 
 .about-text {
     flex: 1;
-    min-width: 300px;
 }
 
 .about-logo {
-    width: 250px;
-}
-
-.services {
-    padding: 50px 20px;
-    background: #000;
-    color: white;
-    text-align: center;
+    width: 100px;
+    margin-left: 40px;
 }
 
 .services-grid {
-    opacity: 0;
-    transform: translateX(-50px);
-    animation: slideInServices 1s ease-out 2s forwards;
+    display: flex;
+    gap: 20px;
+    padding: 20px;
 }
 
-@keyframes slideInServices {
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.service img {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.gallery {
-    padding: 50px 20px;
-    background: wheat;
+.service {
+    flex: 1;
     text-align: center;
 }
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin-top: 30px;
-}
-
-.gallery-grid img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 5px;
-    transform: scale(0.9);
-    transition: transform 0.3s ease;
-}
-
-.gallery-grid img:hover {
-    transform: scale(1.05);
-}
-
-.gallery-grid img:nth-child(even) {
-    animation: popImage 0.8s ease-out 3s forwards;
-}
-
-@keyframes popImage {
-    to {
-        transform: scale(1);
-    }
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 20px;
 }
 
 footer {
-    background: #222;
-    color: #fff;
-    padding: 30px 20px;
+    background-color: #f1f1f1;
+    padding: 20px;
     text-align: center;
-    transform: translateY(50px);
-    opacity: 0;
-    animation: slideUpFooter 1s ease-out 3.5s forwards;
 }
 
-@keyframes slideUpFooter {
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-footer .socials a {
-    color: #fff;
+.socials a {
     margin: 0 10px;
 }
 
-@media (max-width: 600px) {
-    .hero-text h1 {
-        font-size: 1.8em;
-    }
+/* ------------------- H Intro Animation ------------------- */
 
-    .hero-text p {
-        font-size: 1em;
-    }
+.intro-h-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeOut 2s ease 2s forwards;
+}
 
-    .hero-logo-center {
-        width: 160px;
-    }
+.intro-h-letter {
+    font-size: 40vw;
+    color: #fff;
+    opacity: 0.1;
+    animation: scaleDown 2s ease forwards;
+}
 
-    .about-content {
-        flex-direction: column;
-        text-align: center;
+@keyframes scaleDown {
+    0% {
+        transform: scale(1.5);
+        opacity: 1;
     }
-
-    .about-logo {
-        width: 200px;
+    100% {
+        transform: scale(0.5);
+        opacity: 0;
     }
+}
 
-    footer {
-        flex-direction: column;
-        gap: 15px;
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        visibility: hidden;
     }
 }
