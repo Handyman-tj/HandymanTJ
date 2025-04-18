@@ -154,13 +154,13 @@ h1, h2, h3 {
 /* ===== VISIBILITY FIXES ===== */
 /* Make hero section more visible */
 .hero-overlay {
-  background: rgba(0, 0, 0, 0.99) !important; /* Increased opacity from 0.5 to 0.7 */
+  background: rgba(1, 1, 1, 0.99) !important; /* Increased opacity from 0.5 to 0.7 */
 }
 
 /* Make hero text brighter */
 .hero-text h1 {
   color: #fff !important;
-  text-shadow: 0 0 10px rgba(0,0,0,2) !important;
+  text-shadow: 0 0 10px rgba(1,1,1,2) !important;
 }
 
 .hero-text p {
