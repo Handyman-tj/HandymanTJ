@@ -331,7 +331,7 @@ header {
 }
 
 .hero-overlay {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 1);
     padding: 40px 20px;
     width: 60%;
     text-align: center;
