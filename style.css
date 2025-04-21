@@ -331,7 +331,7 @@ header {
 }
 
 .hero-overlay {
-    background: rgba(0, 0, 0, 1);
+    background: rgba(0, 0, 0, 0.9);
     padding: 40px 20px;
     width: 60%;
     text-align: center;
@@ -340,13 +340,13 @@ header {
 .hero-logo-center {
     width: 220px;
     margin-bottom: 20px;
-    opacity: 1;
+    opacity: 0.9;
     transform: scale(0.8);
     animation: logoAnimation 1s ease-out 5.5s forwards;
 }
 
 .hero-text h1, .hero-text p {
-    opacity: 1;
+    opacity: 0.9;
     transform: translateY(20px);
     animation: textAnimation 1s ease-out 6.2s forwards;
 }
@@ -357,7 +357,7 @@ header {
         transform: scale(0.8);
     }
     to {
-        opacity: 1;
+        opacity: 0.9;
         transform: scale(1);
     }
 }
@@ -368,7 +368,7 @@ header {
         transform: translateY(20px);
     }
     to {
-        opacity: 1;
+        opacity: 0.9;
         transform: translateY(0);
     }
 }
@@ -386,13 +386,13 @@ header {
 
 .about {
     padding: 50px 20px;
-    opacity: 1;
+    opacity: 0.9;
     animation: fadeInAbout 1s ease-out 6s forwards;
 }
 
 @keyframes fadeInAbout {
     to {
-        opacity: 1;
+        opacity: 0.9;
     }
 }
 
