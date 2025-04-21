@@ -138,7 +138,7 @@
 
 /* Glowing text for headings */
 h1, h2, h3 {
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  text-shadow: 1 1 10px rgba(255, 255, 255, 0.7);
   animation: glow 2s ease-in-out infinite alternate;
 }
 
@@ -525,3 +525,4 @@ footer .socials a {
         gap: 15px;
     }
 }
+z
