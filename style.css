@@ -159,7 +159,7 @@ h1, h2, h3 {
 
 /* Make hero text brighter */
 .hero-text h1 {
-  color: #fff !important;
+  color: #ffffff !important;
   text-shadow: 0 0 10px rgba(0,0,0,0.7) !important;
 }
 
@@ -170,12 +170,12 @@ h1, h2, h3 {
 
 /* Make "We've Got You Covered" text more visible */
 .about-text h2 {
-  color: #000 !important;
+  color: #ffffff !important;
   text-shadow: none !important;
 }
 
 .about-text h3 {
-  color: #333 !important;
+  color: #ffffff !important;
   text-shadow: none !important;
 }
 
