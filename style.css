@@ -348,13 +348,13 @@ header {
 
 .hero-text h1 {
     font-size: 2.5em;
-    color: #fff;
+    color: #000;
     margin-bottom: 10px;
 }
 
 .hero-text p {
     font-size: 1.2em;
-    color: #fff;
+    color: #000;
 }
 
 .about {
