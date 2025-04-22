@@ -1,7 +1,7 @@
 /* ===== UPDATED VISIBILITY FIXES ===== */
 /* Make hero section more visible */
 .hero-overlay {
-  background: rgba(0, 0, 0, 0.7) !important; /* Increased opacity from 0.5 to 0.7 */
+  background: rgba(0, 0, 0, 0.99) !important; /* Increased opacity from 0.5 to 0.7 */
   padding: 40px 20px;
   width: 60%;
   text-align: center;
@@ -10,27 +10,27 @@
 /* Make hero text brighter */
 .hero-text h1 {
   color: #fff !important;
-  text-shadow: 0 0 10px rgba(0,0,0,0.8) !important;
+  text-shadow: 0 0 10px rgba(0,0,0,0.9) !important;
   font-size: 2.5em;
   margin-bottom: 10px;
 }
 
 .hero-text p {
   color: #fff !important;
-  text-shadow: 0 0 10px rgba(0,0,0,0.8) !important;
+  text-shadow: 0 0 10px rgba(0,0,0,0.9) !important;
   font-size: 1.2em;
 }
 
 /* Make "We've Got You Covered" text more visible */
 .about-text h2 {
-  color: #000 !important;
+  color: #fff !important;
   font-size: 2.5em;
   margin-bottom: 20px;
   text-shadow: none !important;
 }
 
 .about-text h3 {
-  color: #333 !important;
+  color: #fff !important;
   font-size: 1.2em;
   line-height: 1.6;
   text-shadow: none !important;
