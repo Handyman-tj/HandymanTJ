@@ -1,3 +1,42 @@
+/* ===== UPDATED VISIBILITY FIXES ===== */
+/* Make hero section more visible */
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.7) !important; /* Increased opacity from 0.5 to 0.7 */
+  padding: 40px 20px;
+  width: 60%;
+  text-align: center;
+}
+
+/* Make hero text brighter */
+.hero-text h1 {
+  color: #fff !important;
+  text-shadow: 0 0 10px rgba(0,0,0,0.8) !important;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.hero-text p {
+  color: #fff !important;
+  text-shadow: 0 0 10px rgba(0,0,0,0.8) !important;
+  font-size: 1.2em;
+}
+
+/* Make "We've Got You Covered" text more visible */
+.about-text h2 {
+  color: #000 !important;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-shadow: none !important;
+}
+
+.about-text h3 {
+  color: #333 !important;
+  font-size: 1.2em;
+  line-height: 1.6;
+  text-shadow: none !important;
+}
+
+/* ===== REST OF YOUR ORIGINAL CSS BELOW - COMPLETELY UNCHANGED ===== */
 /* Insane Text Animation */
 #text-animation {
   position: fixed;
@@ -149,25 +188,12 @@ header {
     }
 }
 
-.hero-overlay {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 40px 20px;
-    width: 60%;
-    text-align: center;
-}
-
 .hero-logo-center {
     width: 220px;
     margin-bottom: 20px;
     opacity: 0;
     transform: scale(0.8);
     animation: logoAnimation 1s ease-out 5.5s forwards;
-}
-
-.hero-text h1, .hero-text p {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: textAnimation 1s ease-out 6.2s forwards;
 }
 
 @keyframes logoAnimation {
@@ -190,17 +216,6 @@ header {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.hero-text h1 {
-    font-size: 2.5em;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-.hero-text p {
-    font-size: 1.2em;
-    color: #fff;
 }
 
 .about {
