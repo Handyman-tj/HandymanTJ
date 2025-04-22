@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
       scrub: true
     },
     y: 100,
-    opacity: 0.9
+    opacity: 0.8
   });
   
   // Original JS code
