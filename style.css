@@ -1,42 +1,157 @@
-/* ===== UPDATED VISIBILITY FIXES ===== */
-/* Make hero section more visible */
-.hero-overlay {
-  background: rgba(0, 0, 0, 0.99) !important; /* Increased opacity from 0.5 to 0.7 */
-  padding: 40px 20px;
-  width: 60%;
-  text-align: center;
+/* ===== INSANE NEW EFFECTS ===== */
+/* Particle background */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: #000;
 }
 
-/* Make hero text brighter */
+/* Glitch effect on hover for services */
+.service:hover {
+  animation: glitch 0.5s linear infinite;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+    filter: hue-rotate(90deg);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+    filter: hue-rotate(180deg);
+  }
+  60% {
+    transform: translate(2px, 2px);
+    filter: hue-rotate(270deg);
+  }
+  80% {
+    transform: translate(2px, -2px);
+    filter: hue-rotate(360deg);
+  }
+  100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+}
+
+/* Neon border for services */
+.service {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.service::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  z-index: -1;
+  background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff);
+  background-size: 400%;
+  opacity: 0;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+.service:hover::before {
+  opacity: 1;
+  animation: animate-border 8s linear infinite;
+}
+
+@keyframes animate-border {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 300% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* Matrix rain effect for hero text */
 .hero-text h1 {
-  color: #fff !important;
-  text-shadow: 0 0 10px rgba(0,0,0,0.9) !important;
-  font-size: 2.5em;
-  margin-bottom: 10px;
+  position: relative;
+  overflow: hidden;
 }
 
-.hero-text p {
-  color: #fff !important;
-  text-shadow: 0 0 10px rgba(0,0,0,0.9) !important;
-  font-size: 1.2em;
+.hero-text h1::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(transparent, rgba(0, 255, 0, 0.2), transparent);
+  animation: matrixRain 3s linear infinite;
 }
 
-/* Make "We've Got You Covered" text more visible */
-.about-text h2 {
-  color: #fff !important;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  text-shadow: none !important;
+@keyframes matrixRain {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
 }
 
-.about-text h3 {
-  color: #fff !important;
-  font-size: 1.2em;
-  line-height: 1.6;
-  text-shadow: none !important;
+/* Hover effect for gallery images */
+.gallery-grid img {
+  transition: all 0.5s ease;
+  position: relative;
 }
 
-/* ===== REST OF YOUR ORIGINAL CSS BELOW - COMPLETELY UNCHANGED ===== */
+.gallery-grid img:hover {
+  transform: scale(1.1) rotate(5deg);
+  z-index: 10;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.7);
+}
+
+/* Floating effect for about logo */
+.about-logo {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Glowing text for headings */
+h1, h2, h3 {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.7);
+  }
+}
+
+/* ===== YOUR ORIGINAL CSS BELOW - COMPLETELY UNCHANGED ===== */
 /* Insane Text Animation */
 #text-animation {
   position: fixed;
@@ -188,12 +303,25 @@ header {
     }
 }
 
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px 20px;
+    width: 60%;
+    text-align: center;
+}
+
 .hero-logo-center {
     width: 220px;
     margin-bottom: 20px;
     opacity: 0;
     transform: scale(0.8);
     animation: logoAnimation 1s ease-out 5.5s forwards;
+}
+
+.hero-text h1, .hero-text p {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: textAnimation 1s ease-out 6.2s forwards;
 }
 
 @keyframes logoAnimation {
@@ -216,6 +344,17 @@ header {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.hero-text h1 {
+    font-size: 2.5em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.hero-text p {
+    font-size: 1.2em;
+    color: #fff;
 }
 
 .about {
