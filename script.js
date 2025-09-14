@@ -43,3 +43,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
   sections.forEach(section => observer.observe(section));
 });
+
+// Video scroller functions
+function scrollVideos(direction) {
+  const scroller = document.querySelector('.video-scroller');
+  const scrollAmount = scroller.offsetWidth; // Scroll by the width of the container for one item at a time
+  scroller.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+}
+
+function playThisVideo(video) {
+  // Pause all videos
+  document.querySelectorAll('.video-item').forEach(v => v.pause());
+  // Play the clicked one
+  video.play();
+}
