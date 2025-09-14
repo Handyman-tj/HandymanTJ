@@ -187,6 +187,19 @@
     </div>
   </section>
 
+  <section class="videos" id="videos">
+    <h2>Our Videos</h2>
+    <div class="video-scroller-container">
+      <button class="scroll-btn left" onclick="scrollVideos(-1)"><i class="fas fa-chevron-left"></i></button>
+      <div class="video-scroller">
+        <video class="video-item" src="video1.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
+        <video class="video-item" src="video2.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
+        <video class="video-item" src="video3.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
+      </div>
+      <button class="scroll-btn right" onclick="scrollVideos(1)"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </section>
+
   <section class="testimonials" id="testimonials">
     <h2>What Our Clients Say</h2>
     <div class="testimonials-grid">
