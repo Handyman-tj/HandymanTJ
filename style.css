@@ -18,7 +18,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background: rgba(234,183,2,255);
+  background: rgba(227,227,227,255);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
@@ -27,6 +27,7 @@ header {
 
 .logo img {
   width: 120px;
+  border-radius: 50%;
 }
 
 nav ul {
@@ -160,6 +161,7 @@ nav a:hover {
 
 .about-logo {
   width: 200px;
+  border-radius: 50%;
 }
 
 /* Services */
@@ -243,6 +245,73 @@ nav a:hover {
 
 .gallery-grid img:hover {
   transform: scale(1.05);
+}
+
+/* Videos Section */
+.videos {
+  padding: 60px 20px;
+  background: rgba(5,131,127,255);
+  text-align: center;
+}
+
+.videos h2 {
+  font-size: 2em;
+  margin-bottom: 40px;
+  color: #fff;
+}
+
+.video-scroller-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.video-scroller {
+  display: flex;
+  overflow-x: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px;
+}
+
+.video-item {
+  min-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  scroll-snap-align: center;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 10;
+}
+
+.scroll-btn:hover {
+  background: rgba(255, 255, 255, 1);
+}
+
+.scroll-btn.left {
+  left: 10px;
+}
+
+.scroll-btn.right {
+  right: 10px;
 }
 
 /* Testimonials */
@@ -334,14 +403,24 @@ nav a:hover {
 
 /* Footer */
 footer {
-  background: rgba(234,183,2,255);
-  color: #333;
+  background: rgba(0,0,163,255);
+  color: #fff;
   padding: 40px 20px;
   text-align: center;
 }
 
 footer p {
   margin-bottom: 10px;
+  color: #fff;
+}
+
+footer a {
+  color: yellow;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #ffcc00;
 }
 
 footer .socials {
@@ -349,14 +428,14 @@ footer .socials {
 }
 
 footer .socials a {
-  color: #333;
+  color: yellow;
   font-size: 1.5em;
   margin: 0 15px;
   transition: color 0.3s;
 }
 
 footer .socials a:hover {
-  color: #007bff;
+  color: #ffcc00;
 }
 
 /* Fade-in Animation */
@@ -383,7 +462,7 @@ section.visible {
     flex-direction: column;
     width: 100%;
     text-align: center;
-    background: rgba(234,183,2,255);
+    background: rgba(227,227,227,255);
     padding: 10px 0;
   }
 
@@ -415,6 +494,16 @@ section.visible {
   .about-logo {
     width: 150px;
   }
+
+  .video-scroller-container {
+    padding: 10px;
+  }
+
+  .scroll-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 1em;
+  }
 }
 
 @media (max-width: 480px) {
@@ -437,5 +526,9 @@ section.visible {
 
   .icon {
     width: 20px;
+  }
+
+  .video-scroller-container {
+    max-width: 90%;
   }
 }
