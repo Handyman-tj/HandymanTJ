@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
+        observer.unobserve(entry);
       }
     });
   }, { threshold: 0.1 });
