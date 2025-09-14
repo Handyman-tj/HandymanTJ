@@ -18,7 +18,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
-  background: #fff;
+  background: rgba(234,183,2,255);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
@@ -52,13 +52,31 @@ nav a:hover {
   cursor: pointer;
 }
 
-.header-right .phone {
-  font-weight: bold;
-  color: #007bff;
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
-.header-right .phone:hover {
-  color: #0056b3;
+.location {
+  font-weight: bold;
+  color: #333;
+}
+
+.contact-social {
+  display: flex;
+  gap: 10px;
+}
+
+.link-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.icon {
+  width: 24px;
+  height: auto;
 }
 
 /* Hero */
@@ -147,7 +165,7 @@ nav a:hover {
 /* Services */
 .services {
   padding: 60px 20px;
-  background: #fff;
+  background: rgba(234,183,2,255);
   text-align: center;
 }
 
@@ -178,10 +196,10 @@ nav a:hover {
 }
 
 .service img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  object-fit: cover;
+  width: 120px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: contain;
   margin-bottom: 15px;
 }
 
@@ -230,8 +248,9 @@ nav a:hover {
 /* Testimonials */
 .testimonials {
   padding: 60px 20px;
-  background: #fff;
+  background: rgb(100,124,164);
   text-align: center;
+  color: #fff;
 }
 
 .testimonials h2 {
@@ -248,7 +267,7 @@ nav a:hover {
 }
 
 .testimonial {
-  background: #f8f9fa;
+  background: rgba(255,255,255,0.1);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -256,13 +275,13 @@ nav a:hover {
 
 .testimonial p {
   font-style: italic;
-  color: #666;
+  color: #fff;
 }
 
 .testimonial .author {
   margin-top: 10px;
   font-weight: bold;
-  color: #333;
+  color: #eee;
 }
 
 /* Contact */
@@ -315,8 +334,8 @@ nav a:hover {
 
 /* Footer */
 footer {
-  background: #333;
-  color: #fff;
+  background: rgba(234,183,2,255);
+  color: #333;
   padding: 40px 20px;
   text-align: center;
 }
@@ -330,7 +349,7 @@ footer .socials {
 }
 
 footer .socials a {
-  color: #fff;
+  color: #333;
   font-size: 1.5em;
   margin: 0 15px;
   transition: color 0.3s;
@@ -364,6 +383,8 @@ section.visible {
     flex-direction: column;
     width: 100%;
     text-align: center;
+    background: rgba(234,183,2,255);
+    padding: 10px 0;
   }
 
   nav ul.show {
@@ -411,7 +432,10 @@ section.visible {
   }
 
   .service img {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+  }
+
+  .icon {
+    width: 20px;
   }
 }
