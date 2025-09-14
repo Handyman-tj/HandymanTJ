@@ -21,8 +21,8 @@
         <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#gallery">Our Work</a></li>
         <li><a href="#videos">Our Videos</a></li>
+        <li><a href="#gallery">Our Work</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -172,6 +172,19 @@
     </div>
   </section>
 
+  <section class="videos" id="videos">
+    <h2>Our Videos</h2>
+    <div class="video-scroller-container">
+      <button class="scroll-btn left" onclick="scrollVideos(-1)"><i class="fas fa-chevron-left"></i></button>
+      <div class="video-scroller">
+        <video class="video-item" src="video1.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
+        <video class="video-item" src="video2.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
+        <video class="video-item" src="video3.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
+      </div>
+      <button class="scroll-btn right" onclick="scrollVideos(1)"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </section>
+
   <section class="gallery" id="gallery">
     <h2>Our Work</h2>
     <div class="gallery-grid">
@@ -185,19 +198,6 @@
       <img src="8.jpg" alt="Project 8">
       <img src="9.jpg" alt="Project 9">
       <img src="10.jpg" alt="Project 10">
-    </div>
-  </section>
-
-  <section class="videos" id="videos">
-    <h2>Our Videos</h2>
-    <div class="video-scroller-container">
-      <button class="scroll-btn left" onclick="scrollVideos(-1)"><i class="fas fa-chevron-left"></i></button>
-      <div class="video-scroller">
-        <video class="video-item" src="Kama_HEAD_2.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
-        <video class="video-item" src="Kama_HEAD_1.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
-        <video class="video-item" src="Kama_HEAD_3.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
-      </div>
-      <button class="scroll-btn right" onclick="scrollVideos(1)"><i class="fas fa-chevron-right"></i></button>
     </div>
   </section>
 
@@ -242,4 +242,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
