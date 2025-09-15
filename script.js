@@ -22,13 +22,26 @@ document.addEventListener('DOMContentLoaded', function() {
     navUl.classList.toggle('show');
   });
 
-  // Contact form submission (client-side placeholder)
-  const form = document.getElementById('contact-form');
+  // Contact form submission with Formspree
+  const form = document.querySelector('#contact form');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    form.submit(); // Submit the form to Formspree
-    alert('Thank you for your message! We will get back to you soon.');
-    form.reset();
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: {
+        'Accept': 'application/json'
+      }
+    }).then(response => {
+      if (response.ok) {
+        alert('Thank you for your message! We will get back to you soon.');
+        form.reset();
+      } else {
+        alert('There was an issue sending your message. Please try again.');
+      }
+    }).catch(error => {
+      alert('There was an error. Please try again later.');
+    });
   });
 
   // Fade-in animations for sections
@@ -48,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Video scroller functions
 function scrollVideos(direction) {
   const scroller = document.querySelector('.video-scroller');
-  const scrollAmount = scroller.offsetWidth; // Scroll by the width of the container for one item at a time
+  const scrollAmount = scroller.offsetWidth;
   scroller.scrollBy({
     left: direction * scrollAmount,
     behavior: 'smooth'
@@ -56,8 +69,6 @@ function scrollVideos(direction) {
 }
 
 function playThisVideo(video) {
-  // Pause all videos
   document.querySelectorAll('.video-item').forEach(v => v.pause());
-  // Play the clicked one
   video.play();
 }
