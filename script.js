@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const form = document.getElementById('contact-form');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    form.submit(); // Submit the form to Formspree
     alert('Thank you for your message! We will get back to you soon.');
     form.reset();
   });
