@@ -78,6 +78,12 @@ nav a:hover {
 .icon {
   width: 24px;
   height: auto;
+  color: #ddc700;
+}
+
+.icon.fa-yelp {
+  font-size: 1.5em;
+  color: #ddc700;
 }
 
 /* Hero */
@@ -538,6 +544,10 @@ section.visible {
 
   .icon {
     width: 20px;
+  }
+
+  .icon.fa-yelp {
+    font-size: 1.2em;
   }
 
   .video-scroller-container {
