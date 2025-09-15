@@ -83,7 +83,7 @@ nav a:hover {
 
 .icon.fa-yelp {
   font-size: 1.5em;
-  color: #ddc700;
+  color: #000000;
 }
 
 /* Hero */
@@ -566,3 +566,4 @@ section.visible {
     height: 100px;
   }
 }
+
