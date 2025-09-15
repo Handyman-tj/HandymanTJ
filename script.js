@@ -72,3 +72,23 @@ function playThisVideo(video) {
   document.querySelectorAll('.video-item').forEach(v => v.pause());
   video.play();
 }
+
+// Lightbox function for gallery images
+function showImage(src) {
+  const lightbox = document.createElement('div');
+  lightbox.className = 'lightbox';
+  const img = document.createElement('img');
+  img.src = src;
+  const close = document.createElement('span');
+  close.className = 'close';
+  close.innerHTML = '&times;';
+  close.onclick = () => lightbox.remove();
+  lightbox.appendChild(img);
+  lightbox.appendChild(close);
+  document.body.appendChild(lightbox);
+
+  // Close lightbox when clicking outside the image
+  lightbox.onclick = (e) => {
+    if (e.target === lightbox) lightbox.remove();
+  };
+}
