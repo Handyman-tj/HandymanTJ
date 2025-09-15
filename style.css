@@ -382,7 +382,15 @@ nav a:hover {
   gap: 15px;
 }
 
-.contact input, .contact textarea {
+.contact label {
+  display: block;
+  text-align: left;
+  font-weight: bold;
+}
+
+.contact input[type="email"],
+.contact textarea {
+  width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -529,7 +537,6 @@ section.visible {
     font-size: 1.5em;
   }
 
-  .hero strum
   .hero-text p {
     font-size: 0.9em;
   }
@@ -565,5 +572,14 @@ section.visible {
 
   .gallery-grid img {
     height: 100px;
+  }
+
+  .contact input[type="email"],
+  .contact textarea {
+    font-size: 0.9em;
+  }
+
+  .contact button {
+    font-size: 0.9em;
   }
 }
