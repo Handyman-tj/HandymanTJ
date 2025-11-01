@@ -108,37 +108,11 @@
 
     .location { font-weight: 700; font-size: 0.9rem; }
 
-    .contact-social {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+    .social-link { color: var(--text-primary); font-size: 1.2rem; transition: var(--transition); text-decoration: none; margin: 0 0.5rem; }
 
-    .social-link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      color: var(--text-primary);
-      font-size: 1.2rem;
-      transition: var(--transition);
-      text-decoration: none;
-      border-radius: 50%;
-      background: var(--bg-secondary);
-    }
+    .social-link:hover { color: var(--accent); transform: scale(1.2); }
 
-    .social-link:hover {
-      color: #fff;
-      background: var(--accent);
-      transform: scale(1.1);
-    }
-
-    .social-icon {
-      width: 20px;
-      height: 20px;
-      object-fit: contain;
-    }
+    .social-icon { width: 24px; height: auto; }
 
     /* Hero */
     .hero {
@@ -174,14 +148,14 @@
       font-size: clamp(2rem, 5vw, 4rem);
       font-weight: 700;
       margin-bottom: 0.5rem;
-      opacity: 1; /* Fixed: Start visible */
+      opacity: 0;
       animation: nailIn 1s ease forwards;
     }
 
     .hero-text p {
       font-size: clamp(1rem, 2vw, 1.2rem);
       margin-bottom: 1.5rem;
-      opacity: 1; /* Fixed: Start visible */
+      opacity: 0;
     }
 
     .cta-button {
@@ -193,7 +167,7 @@
       font-weight: 600;
       text-decoration: none;
       transition: var(--transition);
-      opacity: 1; /* Fixed: Start visible */
+      opacity: 0;
       position: relative;
       overflow: hidden;
     }
@@ -332,8 +306,8 @@
     }
 
     .service.visible {
-      opacity: 1 !important; /* Fixed: Force visibility */
-      transform: translateY(0) scale(1) !important;
+      opacity: 1;
+      transform: translateY(0) scale(1);
       animation: assemble 0.8s ease forwards;
     }
 
@@ -354,19 +328,12 @@
       height: 100px;
       object-fit: cover;
       margin-bottom: 1rem;
-      border-radius: 20px;
-      padding: 4px;
-      background: linear-gradient(45deg, var(--accent), #FFD700);
+      border-radius: 50%;
       filter: grayscale(50%);
       transition: var(--transition);
-      box-shadow: 0 4px 15px rgba(0,123,255,0.2);
     }
 
-    .service:hover img {
-      filter: grayscale(0%);
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 6px 20px rgba(0,123,255,0.3);
-    }
+    .service:hover img { filter: grayscale(0%); transform: scale(1.1); }
 
     .service-icon {
       font-size: 2rem;
@@ -484,8 +451,8 @@
     }
 
     .gallery-grid img.visible {
-      opacity: 1 !important; /* Fixed: Force visibility */
-      transform: scale(1) !important;
+      opacity: 1;
+      transform: scale(1);
       animation: zoomOut 0.6s ease forwards;
     }
 
@@ -495,7 +462,8 @@
     }
 
     .gallery-grid img:hover {
-      transform: scale(1.02);
+      transform: scale(1.05);
+      box-shadow: var(--shadow-hover);
     }
 
     /* Lightbox */
@@ -714,16 +682,16 @@
 
     #quote-result { margin-top: 1rem; font-weight: bold; color: var(--accent); }
 
-    /* Scroll Animations - Fixed for initial load */
+    /* Scroll Animations */
     section {
       opacity: 0;
       transform: translateY(30px);
       transition: var(--transition);
     }
 
-    section.visible, section:first-of-type { /* Fixed: Force first section (hero) visible */
-      opacity: 1 !important;
-      transform: translateY(0) !important;
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* Media Queries - Ultra-Responsive */
@@ -794,7 +762,7 @@
           <i class="fab fa-yelp"></i>
         </a>
         <a href="https://www.instagram.com/handymantj.com_nyc/?igsh=OWFia3lrcnBhcWNv&utm_source=qr" target="_blank" aria-label="Instagram Profile" class="social-link">
-          <i class="fab fa-instagram"></i>
+          <img src="Insta.png" alt="Instagram Icon" class="social-icon">
         </a>
         <a href="https://wa.me/1234567890" target="_blank" aria-label="WhatsApp Chat" class="social-link"> <!-- Replace with your number -->
           <i class="fab fa-whatsapp"></i>
@@ -1114,7 +1082,7 @@
           headers: { 'Accept': 'application/json' }
         }).then(res => {
           if (res.ok) {
-            alert('Message sent! We'll hammer back soon. 🔨');
+            alert('Message sent! We\'ll hammer back soon. 🔨');
             form.reset();
           } else alert('Oops—try again, or call us!');
         }).catch(() => alert('Connection issue—check your tools!'));
@@ -1134,15 +1102,6 @@
       }, { threshold: 0.1 });
 
       document.querySelectorAll('section, .service, .gallery-grid img').forEach(el => observer.observe(el));
-
-      // Fixed: Force initial sections to "intersect" on load
-      setTimeout(() => {
-        document.querySelectorAll('section, .service, .gallery-grid img').forEach(el => {
-          if (el.getBoundingClientRect().top < window.innerHeight) {
-            el.classList.add('visible');
-          }
-        });
-      }, 100);  // Tiny delay for DOM to settle
 
       // Service filters
       document.querySelectorAll('.tab').forEach(tab => {
