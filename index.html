@@ -174,14 +174,14 @@
       font-size: clamp(2rem, 5vw, 4rem);
       font-weight: 700;
       margin-bottom: 0.5rem;
-      opacity: 0;
+      opacity: 1; /* Fixed: Start visible */
       animation: nailIn 1s ease forwards;
     }
 
     .hero-text p {
       font-size: clamp(1rem, 2vw, 1.2rem);
       margin-bottom: 1.5rem;
-      opacity: 0;
+      opacity: 1; /* Fixed: Start visible */
     }
 
     .cta-button {
@@ -193,7 +193,7 @@
       font-weight: 600;
       text-decoration: none;
       transition: var(--transition);
-      opacity: 0;
+      opacity: 1; /* Fixed: Start visible */
       position: relative;
       overflow: hidden;
     }
@@ -332,8 +332,8 @@
     }
 
     .service.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
+      opacity: 1 !important; /* Fixed: Force visibility */
+      transform: translateY(0) scale(1) !important;
       animation: assemble 0.8s ease forwards;
     }
 
@@ -484,8 +484,8 @@
     }
 
     .gallery-grid img.visible {
-      opacity: 1;
-      transform: scale(1);
+      opacity: 1 !important; /* Fixed: Force visibility */
+      transform: scale(1) !important;
       animation: zoomOut 0.6s ease forwards;
     }
 
@@ -714,16 +714,16 @@
 
     #quote-result { margin-top: 1rem; font-weight: bold; color: var(--accent); }
 
-    /* Scroll Animations */
+    /* Scroll Animations - Fixed for initial load */
     section {
       opacity: 0;
       transform: translateY(30px);
       transition: var(--transition);
     }
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    section.visible, section:first-of-type { /* Fixed: Force first section (hero) visible */
+      opacity: 1 !important;
+      transform: translateY(0) !important;
     }
 
     /* Media Queries - Ultra-Responsive */
@@ -1134,6 +1134,15 @@
       }, { threshold: 0.1 });
 
       document.querySelectorAll('section, .service, .gallery-grid img').forEach(el => observer.observe(el));
+
+      // Fixed: Force initial sections to "intersect" on load
+      setTimeout(() => {
+        document.querySelectorAll('section, .service, .gallery-grid img').forEach(el => {
+          if (el.getBoundingClientRect().top < window.innerHeight) {
+            el.classList.add('visible');
+          }
+        });
+      }, 100);  // Tiny delay for DOM to settle
 
       // Service filters
       document.querySelectorAll('.tab').forEach(tab => {
