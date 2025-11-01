@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,21 +8,757 @@
   <title>Handyman TJ - New York</title>
   <link rel="icon" href="HandymanTJ.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #FFFFFF;
+      --bg-secondary: #F8F9FA;
+      --text-primary: #333333;
+      --text-secondary: #666666;
+      --accent: #007BFF;
+      --shadow-light: 0 4px 20px rgba(0,0,0,0.08);
+      --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
+      --border-radius: 12px;
+      --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      --font-family: 'Inter', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-family);
+      color: var(--text-primary);
+      line-height: 1.6;
+      background: var(--bg-primary);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Construction Dust Particles - Handyman Flair */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,215,0,0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+      opacity: 0;
+      animation: dustSettle 2s ease-out forwards;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    @keyframes dustSettle {
+      0% { opacity: 0.5; transform: translateY(-20px); }
+      100% { opacity: 0; transform: translateY(0); }
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: clamp(1rem, 2vw, 2rem) clamp(1rem, 5vw, 4rem);
+      background: var(--bg-primary);
+      box-shadow: var(--shadow-light);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo img { width: clamp(80px, 10vw, 120px); border-radius: 50%; transition: var(--transition); }
+
+    .logo img:hover { transform: rotate(360deg) scale(1.05); animation: spin 1s ease; }
+
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    nav ul { display: flex; list-style: none; gap: 2rem; }
+
+    nav a {
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: clamp(0.9rem, 1vw, 1.1rem);
+      text-decoration: none;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+
+    nav a:hover::after { width: 100%; }
+
+    .hamburger { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-primary); }
+
+    .header-right { display: flex; align-items: center; gap: 1rem; }
+
+    .location { font-weight: 700; font-size: 0.9rem; }
+
+    .social-link { color: var(--text-primary); font-size: 1.2rem; transition: var(--transition); text-decoration: none; margin: 0 0.5rem; }
+
+    .social-link:hover { color: var(--accent); transform: scale(1.2); }
+
+    .social-icon { width: 24px; height: auto; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .hero-overlay {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(0,0,0,0.4);
+      color: #fff;
+      max-width: 800px;
+      border-radius: var(--border-radius);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: nailIn 1s ease forwards;
+    }
+
+    .hero-text p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: var(--accent);
+      color: #fff;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      opacity: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: var(--transition);
+    }
+
+    .cta-button:hover::before { left: 100%; }
+
+    .cta-button:hover {
+      background: #0056b3;
+      transform: translateY(-2px) scale(1.05);
+    }
+
+    /* Handyman Animations */
+    @keyframes nailIn {
+      0% { opacity: 0; transform: translateY(30px) scale(0.8); }
+      50% { transform: translateY(-5px) scale(1.1); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes wrenchSpin {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(90deg); }
+      75% { transform: rotate(-90deg); }
+    }
+
+    @keyframes hammerStrike {
+      0% { transform: rotate(0deg) translateY(0); }
+      50% { transform: rotate(15deg) translateY(-10px); }
+      100% { transform: rotate(0deg) translateY(0); }
+    }
+
+    .animate-stagger { animation: nailIn 0.8s ease forwards; }
+    .delay-1 { animation-delay: 0.3s; }
+    .delay-2 { animation-delay: 0.6s; }
+    .delay-3 { animation-delay: 0.9s; }
+
+    /* About */
+    .about {
+      padding: clamp(3rem, 8vw, 6rem) 2rem;
+      background: var(--bg-secondary);
+      text-align: center;
+    }
+
+    .about-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text h2 { font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: 1rem; }
+
+    .about-logo {
+      width: 200px;
+      border-radius: 50%;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+
+    /* Services */
+    .services { padding: clamp(3rem, 8vw, 6rem) 2rem; text-align: center; }
+
+    .services h2 { font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: 2rem; }
+
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 0.5rem 1.5rem;
+      border: 2px solid var(--accent);
+      background: none;
+      color: var(--accent);
+      border-radius: var(--border-radius);
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 600;
+    }
+
+    .tab.active, .tab:hover {
+      background: var(--accent);
+      color: #fff;
+      animation: hammerStrike 0.5s ease;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .service {
+      background: var(--bg-primary);
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), #FFD700);
+      transform: scaleX(0);
+      transition: var(--transition);
+    }
+
+    .service.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      animation: assemble 0.8s ease forwards;
+    }
+
+    @keyframes assemble {
+      0% { clip-path: inset(0 100% 0 0); }
+      100% { clip-path: inset(0 0 0 0); }
+    }
+
+    .service:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .service:hover::before { transform: scaleX(1); }
+
+    .service img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      filter: grayscale(50%);
+      transition: var(--transition);
+    }
+
+    .service:hover img { filter: grayscale(0%); transform: scale(1.1); }
+
+    .service-icon {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .service:hover .service-icon { animation: wrenchSpin 1s ease; }
+
+    .service h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+
+    .detail-toggle {
+      background: none;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 1rem;
+    }
+
+    .detail-toggle:hover { background: var(--accent); color: #fff; }
+
+    .details {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: var(--bg-secondary);
+      border-radius: 6px;
+      animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown { from { max-height: 0; opacity: 0; } to { max-height: 200px; opacity: 1; } }
+
+    /* Videos */
+    .videos {
+      padding: clamp(3rem, 8vw, 6rem) 2rem;
+      background: var(--bg-secondary);
+      text-align: center;
+    }
+
+    .videos h2 { font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: 1rem; }
+
+    .video-scroller-container {
+      position: relative;
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 1rem;
+      border: 2px solid var(--accent);
+      border-radius: var(--border-radius);
+      background: var(--bg-primary);
+      overflow: hidden;
+    }
+
+    .video-scroller {
+      display: flex;
+      gap: 1rem;
+      transition: transform 0.5s ease;
+    }
+
+    .video-item {
+      min-width: 100%;
+      aspect-ratio: 9/16;
+      border-radius: 8px;
+      cursor: pointer;
+      object-fit: cover;
+      transition: var(--transition);
+      border: 2px solid transparent;
+    }
+
+    .video-item:hover {
+      border-color: var(--accent);
+      transform: scale(1.02);
+      animation: hammerStrike 0.5s ease;
+    }
+
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .scroll-btn:hover { background: #0056b3; transform: translateY(-50%) scale(1.1); }
+
+    .scroll-btn.left { left: 0.5rem; }
+    .scroll-btn.right { right: 0.5rem; }
+
+    /* Gallery */
+    .gallery { padding: clamp(3rem, 8vw, 6rem) 2rem; text-align: center; }
+
+    .gallery h2 { font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: 2rem; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+      transition: var(--transition);
+      cursor: pointer;
+      opacity: 0;
+      transform: scale(0.8) rotate(-5deg);
+    }
+
+    .gallery-grid img.visible {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+      animation: hammerIn 0.6s ease forwards;
+    }
+
+    @keyframes hammerIn {
+      0% { transform: scale(0.5) rotate(-180deg); opacity: 0; }
+      70% { transform: scale(1.1) rotate(5deg); }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: var(--shadow-hover);
+      animation: hammerStrike 0.3s ease;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90vh;
+      border-radius: var(--border-radius);
+      transform: scale(0.8);
+      animation: zoomIn 0.4s ease forwards;
+    }
+
+    .lightbox .close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .lightbox .close:hover { color: var(--accent); transform: rotate(90deg); }
+
+    /* Testimonials */
+    .testimonials {
+      padding: clamp(3rem, 8vw, 6rem) 2rem;
+      background: var(--bg-secondary);
+      text-align: center;
+      position: relative;
+    }
+
+    .testimonials h2 { font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: 2rem; }
+
+    .testimonials-carousel {
+      display: flex;
+      overflow: hidden;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-light);
+    }
+
+    .testimonial {
+      min-width: 100%;
+      padding: 2rem;
+      background: var(--bg-primary);
+      display: none;
+      transition: transform 0.5s ease;
+      position: relative;
+    }
+
+    .testimonial.active {
+      display: block;
+      animation: slideIn 0.5s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(100%) skew(-10deg); opacity: 0; }
+      to { transform: translateX(0) skew(0deg); opacity: 1; }
+    }
+
+    .testimonial p { font-style: italic; font-size: 1.1rem; margin-bottom: 1rem; }
+
+    .author { font-weight: 600; color: var(--accent); }
+
+    .carousel-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      transition: var(--transition);
+    }
+
+    .carousel-btn:hover { background: #0056b3; transform: translateY(-50%) rotate(180deg); }
+
+    .prev { left: 20%; }
+    .next { right: 20%; }
+
+    /* Contact */
+    .contact {
+      padding: clamp(3rem, 8vw, 6rem) 2rem;
+      text-align: center;
+      background: var(--bg-primary);
+    }
+
+    .contact h2 { font-size: clamp(1.5rem, 3vw, 2.5rem); margin-bottom: 1rem; }
+
+    .contact form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact label { text-align: left; font-weight: 600; }
+
+    .contact input, .contact textarea {
+      padding: 1rem;
+      border: 2px solid #E9ECEF;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+
+    .contact input:focus, .contact textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+    }
+
+    .contact textarea { height: 150px; resize: vertical; }
+
+    .contact button {
+      padding: 1rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: var(--border-radius);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .contact button:hover {
+      background: #0056b3;
+      transform: translateY(-2px);
+      animation: hammerStrike 0.3s ease;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--text-primary);
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    footer a {
+      color: #FFD700;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    footer a:hover { color: #FFA500; transform: scale(1.1); }
+
+    .socials { margin: 1rem 0; }
+
+    .socials a {
+      color: #fff;
+      font-size: 1.5rem;
+      margin: 0 1rem;
+      transition: var(--transition);
+    }
+
+    .socials a:hover { color: var(--accent); animation: spin 0.5s ease; }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal-content {
+      background: var(--bg-primary);
+      margin: 15% auto;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: var(--shadow-hover);
+      animation: slideDown 0.3s ease;
+    }
+
+    .close {
+      color: var(--text-secondary);
+      float: right;
+      font-size: 2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .close:hover { color: var(--accent); transform: rotate(90deg); }
+
+    #tool-select { padding: 0.5rem; margin: 1rem 0; border-radius: 6px; border: 1px solid #ddd; }
+
+    #quote-result { margin-top: 1rem; font-weight: bold; color: var(--accent); }
+
+    /* Scroll Animations */
+    section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: var(--transition);
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Media Queries - Ultra-Responsive */
+    @media (max-width: 1199px) { .about-content { grid-template-columns: 1fr; } }
+
+    @media (max-width: 768px) {
+      header { flex-wrap: wrap; padding: 1rem; }
+      nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+        padding: 1rem;
+        background: var(--bg-secondary);
+        position: absolute;
+        top: 100%;
+        left: 0;
+      }
+      nav ul.show { display: flex; }
+      .hamburger { display: block; }
+      .header-right { margin-top: 1rem; order: -1; width: 100%; justify-content: center; }
+      .filter-tabs { flex-direction: column; align-items: center; }
+      .services-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+      .carousel-btn { display: none; }
+      .modal-content { width: 95%; margin: 10% auto; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { min-height: 70vh; }
+      .hero-text h1 { font-size: 2rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+      .gallery-grid img { height: 150px; }
+      .video-scroller-container { max-width: 300px; }
+    }
+
+    @media (max-width: 320px) { .services-grid, .gallery-grid { gap: 0.5rem; } }
+
+    @media (max-height: 500px) and (orientation: landscape) {
+      .hero { min-height: 60vh; }
+      .about-content { grid-template-columns: 1fr; gap: 1rem; }
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="logo">
-      <img src="HandymanTJ.png" alt="Handyman TJ Logo">
+      <img src="HandymanTJ.png" alt="Handyman TJ Logo" loading="lazy">
     </div>
     <nav>
-      <div class="hamburger"><i class="fas fa-bars"></i></div>
+      <div class="hamburger" aria-label="Toggle Menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </div>
       <ul>
         <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#videos">Our Videos</a></li>
-        <li><a href="#gallery">Our Work</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#gallery">Gallery</a></li>
         <li><a href="#testimonials">Testimonials</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -31,28 +766,31 @@
     <div class="header-right">
       <span class="location">NEW YORK</span>
       <div class="contact-social">
-        <div class="link-group">
-          <a href="https://m.yelp.com/biz/tj-handyman-brooklyn" target="_blank">Yelp</a>
-          <i class="fab fa-yelp icon"></i>
-        </div>
-        <div class="link-group">
-          <a href="https://www.instagram.com/handymantj.com_nyc/?igsh=OWFia3lrcnBhcWNv&utm_source=qr#" target="_blank">Instagram</a>
-          <img src="Insta.png" alt="Instagram" class="icon">
-        </div>
+        <a href="https://m.yelp.com/biz/tj-handyman-brooklyn" target="_blank" aria-label="Yelp Profile" class="social-link">
+          <i class="fab fa-yelp"></i>
+        </a>
+        <a href="https://www.instagram.com/handymantj.com_nyc/?igsh=OWFia3lrcnBhcWNv&utm_source=qr" target="_blank" aria-label="Instagram Profile" class="social-link">
+          <img src="Insta.png" alt="Instagram Icon" class="social-icon">
+        </a>
+        <a href="https://wa.me/1234567890" target="_blank" aria-label="WhatsApp Chat" class="social-link"> <!-- Replace with your number -->
+          <i class="fab fa-whatsapp"></i>
+        </a>
       </div>
     </div>
   </header>
 
   <section class="hero" id="hero">
-    <video autoplay loop muted playsinline>
+    <video autoplay loop muted playsinline aria-label="Handyman TJ promotional video">
       <source src="Kama_HEAD_2.mp4" type="video/mp4">
+      <source src="Kama_HEAD_2.webm" type="video/webm">
       Your browser does not support the video tag.
     </video>
     <div class="hero-overlay">
       <div class="hero-text">
-        <h1>Making Your Home Perfect</h1>
-        <p>Your Trusted Handyman in NYC</p>
-        <a href="#contact" class="cta-button">Get a Free Quote</a>
+        <h1 class="animate-stagger"><i class="fas fa-hammer"></i> Making Your Home</h1>
+        <h1 class="animate-stagger delay-1"><i class="fas fa-wrench"></i> Perfect</h1>
+        <p class="animate-stagger delay-2">Your Trusted Handyman in NYC</p>
+        <a href="#contact" class="cta-button animate-stagger delay-3" onclick="openToolbox()">Get a Free Quote <i class="fas fa-tools"></i></a>
       </div>
     </div>
   </section>
@@ -63,152 +801,210 @@
         <h2>We've Got You Covered</h2>
         <p>TJ Handyman Services is committed to providing reliable, high-quality solutions that improve the comfort, functionality, and aesthetic appeal of your home. From small repairs and large renovation projects to regular maintenance, we prioritize trust, craftsmanship, and customer satisfaction. Our experienced team ensures every job is done right, on time, and with the utmost attention to detail, so you can rest easy knowing your home is in capable hands.</p>
       </div>
-      <img src="HandymanTJ.png" alt="Handyman TJ Logo" class="about-logo">
+      <img src="HandymanTJ.png" alt="Handyman TJ Logo" class="about-logo" loading="lazy">
     </div>
   </section>
 
-
-<section class="services" id="services">
+  <section class="services" id="services">
     <h2>Our Services</h2>
+    <div class="filter-tabs">
+      <button class="tab active" data-filter="all"><i class="fas fa-list"></i> All</button>
+      <button class="tab" data-filter="assembly"><i class="fas fa-cubes"></i> Assembly</button>
+      <button class="tab" data-filter="repair"><i class="fas fa-tools"></i> Repair</button>
+      <button class="tab" data-filter="installation"><i class="fas fa-hammer"></i> Installation</button>
+    </div>
     <div class="services-grid">
-      <div class="service">
-        <img src="Furniture.png" alt="Furniture Assembly">
+      <div class="service" data-category="assembly">
+        <img src="Furniture.png" alt="Furniture Assembly" loading="lazy">
+        <i class="fas fa-cube service-icon"></i>
         <h3>Furniture Assembly</h3>
         <p>Expert assembly of furniture, including desks, beds, and shelving units, ensuring precision and durability.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Full breakdown: Tools used, time estimate, materials.</div>
       </div>
-      <div class="service">
-        <img src="Carpentary.png" alt="Carpentry">
+      <div class="service" data-category="carpentry">
+        <img src="Carpentry.png" alt="Carpentry" loading="lazy">
+        <i class="fas fa-saw service-icon"></i>
         <h3>Carpentry</h3>
         <p>Custom shelves, door fixes, and more.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Wood types, finishes available.</div>
       </div>
-      <div class="service">
-        <img src="Paint.png" alt="Painting">
+      <div class="service" data-category="painting">
+        <img src="Paint.png" alt="Painting" loading="lazy">
+        <i class="fas fa-paint-roller service-icon"></i>
         <h3>Painting</h3>
         <p>Interior and exterior painting services.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Color matching, eco-friendly paints.</div>
       </div>
-      <div class="service">
-        <img src="Assembly.png" alt="Handyman assembly">
+      <div class="service" data-category="assembly">
+        <img src="Assembly.png" alt="Handyman assembly" loading="lazy">
+        <i class="fas fa-cubes service-icon"></i>
         <h3>Handyman assembly</h3>
         <p>Assembling furniture, shelves, and more.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Quick setup for IKEA-style items.</div>
       </div>
-      <div class="service">
-        <img src="Caulking.png" alt="Handyman caulking">
+      <div class="service" data-category="repair">
+        <img src="Caulking.png" alt="Handyman caulking" loading="lazy">
+        <i class="fas fa-fill-drip service-icon"></i>
         <h3>Handyman caulking</h3>
         <p>Sealing gaps around windows, doors, and fixtures.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Waterproof sealants for bathrooms/kitchens.</div>
       </div>
-      <div class="service">
-        <img src="DoorInstallation.png" alt="Door installation">
+      <div class="service" data-category="installation">
+        <img src="DoorInstallation.png" alt="Door installation" loading="lazy">
+        <i class="fas fa-door-open service-icon"></i>
         <h3>Door installation</h3>
         <p>Installing interior and exterior doors.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Hardware included, alignment precision.</div>
       </div>
-      <div class="service">
-        <img src="DoorRepair.png" alt="Door repair">
+      <div class="service" data-category="repair">
+        <img src="DoorRepair.png" alt="Door repair" loading="lazy">
+        <i class="fas fa-door-closed service-icon"></i>
         <h3>Door repair</h3>
         <p>Fixing squeaky hinges, broken knobs, and more.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Lubrication and part replacement.</div>
       </div>
-      <div class="service">
-        <img src="DrywallInstallation.png" alt="Drywall installation or replacement">
+      <div class="service" data-category="installation">
+        <img src="DrywallInstallation.png" alt="Drywall installation or replacement" loading="lazy">
+        <i class="fas fa-square service-icon"></i>
         <h3>Drywall installation or replacement</h3>
         <p>Installing or replacing wallboard.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Smooth finishes, tape and mud.</div>
       </div>
-      <div class="service">
-        <img src="DrywallRepair.png" alt="Drywall repair">
+      <div class="service" data-category="repair">
+        <img src="DrywallRepair.png" alt="Drywall repair" loading="lazy">
+        <i class="fas fa-tape service-icon"></i>
         <h3>Drywall repair</h3>
         <p>Patching holes and fixing cracks in walls.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Invisible patches guaranteed.</div>
       </div>
-      <div class="service">
-        <img src="FloorInstallation.png" alt="Floor installation">
+      <div class="service" data-category="installation">
+        <img src="FloorInstallation.png" alt="Floor installation" loading="lazy">
+        <i class="fas fa-grip-lines service-icon"></i>
         <h3>Floor installation</h3>
         <p>Installing various types of flooring.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Laminate, hardwood, vinyl options.</div>
       </div>
-      <div class="service">
-        <img src="FloorRepair.png" alt="Floor repair">
+      <div class="service" data-category="repair">
+        <img src="FloorRepair.png" alt="Floor repair" loading="lazy">
+        <i class="fas fa-grip-lines service-icon"></i>
         <h3>Floor repair</h3>
         <p>Fixing damaged or loose flooring.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Sanding and refinishing.</div>
       </div>
-      <div class="service">
-        <img src="GeneralInstallation.png" alt="General installation">
+      <div class="service" data-category="installation">
+        <img src="GeneralInstallation.png" alt="General installation" loading="lazy">
+        <i class="fas fa-plug service-icon"></i>
         <h3>General installation</h3>
         <p>Installing fixtures, shelves, and other items.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Custom mounting solutions.</div>
       </div>
-      <div class="service">
-        <img src="LightFixture.png" alt="Light fixture installation">
+      <div class="service" data-category="installation">
+        <img src="LightFixture.png" alt="Light fixture installation" loading="lazy">
+        <i class="fas fa-lightbulb service-icon"></i>
         <h3>Light fixture installation</h3>
         <p>Installing new or replacement light fixtures.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">LED upgrades available.</div>
       </div>
-      <div class="service">
-        <img src="OutletInstallation.png" alt="Outlet installation">
+      <div class="service" data-category="installation">
+        <img src="OutletInstallation.png" alt="Outlet installation" loading="lazy">
+        <i class="fas fa-plug service-icon"></i>
         <h3>Outlet installation</h3>
         <p>Installing new electrical outlets.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">GFCI for safety.</div>
       </div>
-      <div class="service">
-        <img src="OutletRepair.png" alt="Outlet repair">
+      <div class="service" data-category="repair">
+        <img src="OutletRepair.png" alt="Outlet repair" loading="lazy">
+        <i class="fas fa-plug service-icon"></i>
         <h3>Outlet repair</h3>
         <p>Fixing faulty electrical outlets.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Wiring diagnostics.</div>
       </div>
-      <div class="service">
-        <img src="GeneralRepair.png" alt="Handyman repair">
+      <div class="service" data-category="repair">
+        <img src="GeneralRepair.png" alt="Handyman repair" loading="lazy">
+        <i class="fas fa-tools service-icon"></i>
         <h3>Handyman repair</h3>
         <p>General home repairs and maintenance.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Catch-all for quick fixes.</div>
       </div>
-      <div class="service">
-        <img src="TileInstallation.png" alt="Tile installation or replacement">
+      <div class="service" data-category="installation">
+        <img src="TileInstallation.png" alt="Tile installation or replacement" loading="lazy">
+        <i class="fas fa-gem service-icon"></i>
         <h3>Tile installation or replacement</h3>
         <p>Installing or replacing tiles in various areas.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Grout and sealing included.</div>
       </div>
-      <div class="service">
-        <img src="WallPatching.png" alt="Wall patching">
+      <div class="service" data-category="repair">
+        <img src="WallPatching.png" alt="Wall patching" loading="lazy">
+        <i class="fas fa-tape service-icon"></i>
         <h3>Wall patching</h3>
         <p>Repairing small holes and imperfections in walls.</p>
+        <button class="detail-toggle" onclick="toggleDetails(this)">Details <i class="fas fa-chevron-down"></i></button>
+        <div class="details" style="display:none;">Texture matching.</div>
       </div>
     </div>
   </section>
 
-
-<section class="videos" id="videos">
+  <section class="videos" id="videos">
     <h2>Our Videos</h2>
-    <h3>(Click on videos)</h3>
+    <p>(Click on videos)</p>
     <div class="video-scroller-container">
-      <button class="scroll-btn left" onclick="scrollVideos(-1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="scroll-btn left" onclick="scrollVideos(-1)" aria-label="Previous Video"><i class="fas fa-chevron-left"></i></button>
       <div class="video-scroller">
-        <video class="video-item" src="Kama_HEAD_2.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
-        <video class="video-item" src="Kama_HEAD_1.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
-        <video class="video-item" src="Kama_HEAD_3.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
+        <video class="video-item" src="Kama_HEAD_2.mp4" loop muted playsinline onclick="playThisVideo(this)" loading="lazy"></video>
+        <video class="video-item" src="Kama_HEAD_1.mp4" loop muted playsinline onclick="playThisVideo(this)" loading="lazy"></video>
+        <video class="video-item" src="Kama_HEAD_3.mp4" loop muted playsinline onclick="playThisVideo(this)" loading="lazy"></video>
       </div>
-      <button class="scroll-btn right" onclick="scrollVideos(1)"><i class="fas fa-chevron-right"></i></button>
+      <button class="scroll-btn right" onclick="scrollVideos(1)" aria-label="Next Video"><i class="fas fa-chevron-right"></i></button>
     </div>
   </section>
 
   <section class="gallery" id="gallery">
     <h2>Our Work</h2>
     <div class="gallery-grid">
-      <img src="1.jpg" alt="Project 1" onclick="showImage(this.src)">
-      <img src="2.jpg" alt="Project 2" onclick="showImage(this.src)">
-      <img src="3.jpg" alt="Project 3" onclick="showImage(this.src)">
-      <img src="4.jpg" alt="Project 4" onclick="showImage(this.src)">
-      <img src="5.jpg" alt="Project 5" onclick="showImage(this.src)">
-      <img src="6.jpg" alt="Project 6" onclick="showImage(this.src)">
-      <img src="7.jpg" alt="Project 7" onclick="showImage(this.src)">
-      <img src="8.jpg" alt="Project 8" onclick="showImage(this.src)">
-      <img src="9.jpg" alt="Project 9" onclick="showImage(this.src)">
-      <img src="10.jpg" alt="Project 10" onclick="showImage(this.src)">
-      <img src="11.jpg" alt="Project 11" onclick="showImage(this.src)">
-      <img src="12.jpg" alt="Project 12" onclick="showImage(this.src)">
-      <img src="13.jpg" alt="Project 13" onclick="showImage(this.src)">
-      <img src="14.jpg" alt="Project 14" onclick="showImage(this.src)">
-      <img src="15.jpg" alt="Project 15" onclick="showImage(this.src)">
-      <img src="16.jpg" alt="Project 16" onclick="showImage(this.src)">
-      <img src="17.jpg" alt="Project 17" onclick="showImage(this.src)">
-      <img src="18.jpg" alt="Project 18" onclick="showImage(this.src)">
-      <img src="19.jpg" alt="Project 19" onclick="showImage(this.src)">
-      <img src="20.jpg" alt="Project 20" onclick="showImage(this.src)">
+      <img src="1.jpg" alt="Project 1" onclick="showImage(this.src)" loading="lazy">
+      <img src="2.jpg" alt="Project 2" onclick="showImage(this.src)" loading="lazy">
+      <img src="3.jpg" alt="Project 3" onclick="showImage(this.src)" loading="lazy">
+      <img src="4.jpg" alt="Project 4" onclick="showImage(this.src)" loading="lazy">
+      <img src="5.jpg" alt="Project 5" onclick="showImage(this.src)" loading="lazy">
+      <img src="6.jpg" alt="Project 6" onclick="showImage(this.src)" loading="lazy">
+      <img src="7.jpg" alt="Project 7" onclick="showImage(this.src)" loading="lazy">
+      <img src="8.jpg" alt="Project 8" onclick="showImage(this.src)" loading="lazy">
+      <img src="9.jpg" alt="Project 9" onclick="showImage(this.src)" loading="lazy">
+      <img src="10.jpg" alt="Project 10" onclick="showImage(this.src)" loading="lazy">
+      <img src="11.jpg" alt="Project 11" onclick="showImage(this.src)" loading="lazy">
+      <img src="12.jpg" alt="Project 12" onclick="showImage(this.src)" loading="lazy">
+      <img src="13.jpg" alt="Project 13" onclick="showImage(this.src)" loading="lazy">
+      <img src="14.jpg" alt="Project 14" onclick="showImage(this.src)" loading="lazy">
+      <img src="15.jpg" alt="Project 15" onclick="showImage(this.src)" loading="lazy">
+      <img src="16.jpg" alt="Project 16" onclick="showImage(this.src)" loading="lazy">
+      <img src="17.jpg" alt="Project 17" onclick="showImage(this.src)" loading="lazy">
+      <img src="18.jpg" alt="Project 18" onclick="showImage(this.src)" loading="lazy">
+      <img src="19.jpg" alt="Project 19" onclick="showImage(this.src)" loading="lazy">
+      <img src="20.jpg" alt="Project 20" onclick="showImage(this.src)" loading="lazy">
     </div>
   </section>
 
   <section class="testimonials" id="testimonials">
     <h2>What Our Clients Say</h2>
-    <div class="testimonials-grid">
-      <div class="testimonial">
+    <div class="testimonials-carousel">
+      <div class="testimonial active">
         <p>"Handyman TJ did an amazing job with my kitchen shelves. Professional and reliable!"</p>
         <p class="author">- Sarah M., Brooklyn</p>
       </div>
@@ -221,35 +1017,210 @@
         <p class="author">- Emily R., Queens</p>
       </div>
     </div>
+    <button class="carousel-btn prev" onclick="nextTestimonial(-1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="carousel-btn next" onclick="nextTestimonial(1)"><i class="fas fa-chevron-right"></i></button>
   </section>
 
   <section class="contact" id="contact">
     <h2>Contact Us</h2>
     <h3>(We will definitely receive your email.)</h3>
     <form action="https://formspree.io/f/xqadobzg" method="POST">
-      <label>
-        Your email:
-        <input type="email" name="email" required>
-      </label>
-      <label>
-        Your message:
-        <textarea name="message" required></textarea>
-      </label>
-      <button type="submit">Send</button>
+      <label for="email">Your email:</label>
+      <input type="email" id="email" name="email" required aria-label="Your email address">
+      <label for="message">Your message:</label>
+      <textarea id="message" name="message" required aria-label="Your message"></textarea>
+      <button type="submit">Send <i class="fas fa-paper-plane"></i></button>
     </form>
   </section>
 
   <footer>
     <p>Contact Us: <a href="mailto:handymantj.nyc@gmail.com">handymantj.nyc@gmail.com</a> |</p>
     <div class="socials">
-      <a href="https://www.instagram.com/handymantj.com_nyc/?igsh=OWFia3lrcnBhcWNv&utm_source=qr#" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://m.yelp.com/biz/tj-handyman-brooklyn" target="_blank"><i class="fab fa-yelp"></i></a>
+      <a href="https://www.instagram.com/handymantj.com_nyc/?igsh=OWFia3lrcnBhcWNv&utm_source=qr" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/1234567890" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a> <!-- Replace number -->
+      <a href="https://m.yelp.com/biz/tj-handyman-brooklyn" target="_blank" aria-label="Yelp"><i class="fab fa-yelp"></i></a>
     </div>
     <p>&copy; <span id="year"></span> Handyman TJ. All Rights Reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Toolbox Modal -->
+  <div id="toolbox-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeToolbox()">&times;</span>
+      <h2>Quick Tool Selector</h2>
+      <p>Pick a service for a fast quote!</p>
+      <select id="tool-select">
+        <option value="">Choose...</option>
+      </select>
+      <button onclick="getQuickQuote()">Get Estimate <i class="fas fa-calculator"></i></button>
+      <p id="quote-result"></p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Dynamic year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', e => {
+          e.preventDefault();
+          const target = document.querySelector(anchor.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+      // Hamburger menu
+      const hamburger = document.querySelector('.hamburger');
+      const navUl = document.querySelector('nav ul');
+      hamburger.addEventListener('click', () => {
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !expanded);
+        navUl.classList.toggle('show');
+      });
+
+      // Form submission
+      const form = document.querySelector('form');
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(res => {
+          if (res.ok) {
+            alert('Message sent! We\'ll hammer back soon. 🔨');
+            form.reset();
+          } else alert('Oops—try again, or call us!');
+        }).catch(() => alert('Connection issue—check your tools!'));
+      });
+
+      // Scroll-triggered animations (Handyman "build" effect)
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            if (entry.target.classList.contains('service')) {
+              setTimeout(() => entry.target.style.animationDelay = `${Math.random() * 0.2}s`, 100); // Staggered assembly
+            }
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('section, .service, .gallery-grid img').forEach(el => observer.observe(el));
+
+      // Service filters
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelector('.tab.active').classList.remove('active');
+          tab.classList.add('active');
+          const filter = tab.dataset.filter;
+          document.querySelectorAll('.service').forEach(service => {
+            if (filter === 'all' || service.dataset.category === filter) {
+              service.style.display = 'block';
+              service.scrollIntoView({ behavior: 'smooth' }); // Scroll to filtered
+            } else {
+              service.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Testimonials carousel (Handyman "stamp" rotation)
+      let testimonialIndex = 0;
+      const testimonials = document.querySelectorAll('.testimonial');
+      function showTestimonial(index) {
+        testimonials.forEach(t => t.classList.remove('active'));
+        testimonials[index].classList.add('active');
+        testimonials[index].style.transform = 'rotate(-2deg)'; // Stamp effect
+        setTimeout(() => testimonials[index].style.transform = 'rotate(0deg)', 500);
+      }
+      function nextTestimonial(dir) {
+        testimonialIndex = (testimonialIndex + dir + testimonials.length) % testimonials.length;
+        showTestimonial(testimonialIndex);
+      }
+      setInterval(() => nextTestimonial(1), 4000); // Auto-rotate
+      window.nextTestimonial = nextTestimonial;
+
+      // Video scroller
+      window.scrollVideos = direction => {
+        const scroller = document.querySelector('.video-scroller');
+        const currentTranslate = parseInt(scroller.style.transform?.match(/-?\d+/)?.[0] || 0);
+        scroller.style.transform = `translateX(${currentTranslate + (direction * -100)}%)`;
+      };
+
+      window.playThisVideo = video => {
+        document.querySelectorAll('.video-item').forEach(v => v.pause());
+        video.play();
+        video.style.borderColor = 'var(--accent)'; // Highlight playing
+        setTimeout(() => video.style.borderColor = 'transparent', 1000);
+      };
+
+      // Gallery lightbox
+      window.showImage = src => {
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+          <img src="${src}" alt="Enlarged project">
+          <span class="close">&times;</span>
+        `;
+        lightbox.querySelector('.close').onclick = () => lightbox.remove();
+        lightbox.onclick = e => { if (e.target === lightbox) lightbox.remove(); };
+        document.body.appendChild(lightbox);
+        document.body.style.overflow = 'hidden';
+      };
+
+      // Detail toggle (Handyman "reveal" like opening a toolbox)
+      window.toggleDetails = btn => {
+        const details = btn.nextElementSibling;
+        details.style.display = details.style.display === 'none' ? 'block' : 'none';
+        btn.innerHTML = details.style.display === 'none' ? 'Details <i class="fas fa-chevron-down"></i>' : 'Close <i class="fas fa-chevron-up"></i>';
+        details.style.animation = details.style.display === 'block' ? 'slideDown 0.3s ease' : 'none';
+      };
+
+      // Toolbox Modal - Handyman JS Feature
+      window.openToolbox = () => {
+        document.getElementById('toolbox-modal').style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.closeToolbox = () => {
+        document.getElementById('toolbox-modal').style.display = 'none';
+        document.body.style.overflow = 'auto';
+      };
+
+      window.getQuickQuote = () => {
+        const select = document.getElementById('tool-select');
+        const service = select.value;
+        if (!service) return alert('Pick a tool first! 🔧');
+        const estimates = { furniture: '$150-300', carpentry: '$200-500' /* Add all with random ranges */ };
+        document.getElementById('quote-result').textContent = `Estimate for ${service.charAt(0).toUpperCase() + service.slice(1)}: ${estimates[service] || '$100-400'}`;
+      };
+
+      // Close modal on outside click/Esc
+      window.onclick = e => {
+        const modal = document.getElementById('toolbox-modal');
+        if (e.target === modal) closeToolbox();
+      };
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          closeToolbox();
+          document.querySelector('.lightbox')?.remove();
+        }
+      });
+
+      // Populate toolbox select with all services
+      const services = ['furniture', 'carpentry', 'painting', 'assembly', 'caulking', 'doorinstallation', 'doorrepair', 'drywallinstallation', 'drywallrepair', 'floorinstallation', 'floorrepair', 'generalinstallation', 'lightfixture', 'outletinstallation', 'outletrepair', 'generalrepair', 'tileinstallation', 'wallpatching'];
+      const select = document.getElementById('tool-select');
+      services.forEach(s => {
+        const option = document.createElement('option');
+        option.value = s;
+        option.textContent = s.charAt(0).toUpperCase() + s.slice(1).replace(/([A-Z])/g, ' $1');
+        select.appendChild(option);
+      });
+    });
+  </script>
 </body>
 </html>
-
