@@ -108,11 +108,39 @@
 
     .location { font-weight: 700; font-size: 0.9rem; }
 
-    .social-link { color: var(--text-primary); font-size: 1.2rem; transition: var(--transition); text-decoration: none; margin: 0 0.5rem; }
+    .contact-social {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-    .social-link:hover { color: var(--accent); transform: scale(1.2); }
+    .social-link { 
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      color: var(--text-primary); 
+      transition: var(--transition); 
+      text-decoration: none;
+    }
 
-    .social-icon { width: 24px; height: auto; }
+    .social-link:hover { color: var(--accent); transform: scale(1.1); }
+
+    .social-link i {
+      font-size: 1.1rem;
+      width: 100%;
+      height: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .social-icon { 
+      width: 100%; 
+      height: 100%; 
+      object-fit: contain;
+    }
 
     /* Hero */
     .hero {
@@ -328,12 +356,16 @@
       height: 100px;
       object-fit: cover;
       margin-bottom: 1rem;
-      border-radius: 50%;
+      border-radius: 0;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
       filter: grayscale(50%);
       transition: var(--transition);
     }
 
-    .service:hover img { filter: grayscale(0%); transform: scale(1.1); }
+    .service:hover img { 
+      filter: grayscale(0%); 
+      transform: scale(1.1); 
+    }
 
     .service-icon {
       font-size: 2rem;
@@ -462,7 +494,7 @@
     }
 
     .gallery-grid img:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
       box-shadow: var(--shadow-hover);
     }
 
@@ -479,6 +511,16 @@
       align-items: center;
       z-index: 2000;
       animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
 
     .lightbox img {
