@@ -108,11 +108,37 @@
 
     .location { font-weight: 700; font-size: 0.9rem; }
 
-    .social-link { color: var(--text-primary); font-size: 1.2rem; transition: var(--transition); text-decoration: none; margin: 0 0.5rem; }
+    .contact-social {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
 
-    .social-link:hover { color: var(--accent); transform: scale(1.2); }
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      transition: var(--transition);
+      text-decoration: none;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+    }
 
-    .social-icon { width: 24px; height: auto; }
+    .social-link:hover {
+      color: #fff;
+      background: var(--accent);
+      transform: scale(1.1);
+    }
+
+    .social-icon {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
 
     /* Hero */
     .hero {
@@ -326,14 +352,21 @@
     .service img {
       width: 100px;
       height: 100px;
-      object-fit: contain;
+      object-fit: cover;
       margin-bottom: 1rem;
-      border-radius: 8px;
+      border-radius: 20px;
+      padding: 4px;
+      background: linear-gradient(45deg, var(--accent), #FFD700);
       filter: grayscale(50%);
       transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(0,123,255,0.2);
     }
 
-    .service:hover img { filter: grayscale(0%); transform: scale(1.1); }
+    .service:hover img {
+      filter: grayscale(0%);
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 6px 20px rgba(0,123,255,0.3);
+    }
 
     .service-icon {
       font-size: 2rem;
@@ -406,12 +439,6 @@
       border: 2px solid transparent;
     }
 
-    .video-item:hover {
-      border-color: var(--accent);
-      transform: scale(1.02);
-      animation: hammerStrike 0.5s ease;
-    }
-
     .scroll-btn {
       position: absolute;
       top: 50%;
@@ -453,25 +480,22 @@
       transition: var(--transition);
       cursor: pointer;
       opacity: 0;
-      transform: scale(0.8) rotate(-5deg);
+      transform: scale(1.2);
     }
 
     .gallery-grid img.visible {
       opacity: 1;
-      transform: scale(1) rotate(0deg);
-      animation: hammerIn 0.6s ease forwards;
+      transform: scale(1);
+      animation: zoomOut 0.6s ease forwards;
     }
 
-    @keyframes hammerIn {
-      0% { transform: scale(0.5) rotate(-180deg); opacity: 0; }
-      70% { transform: scale(1.1) rotate(5deg); }
-      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    @keyframes zoomOut {
+      0% { transform: scale(1.2); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     .gallery-grid img:hover {
-      transform: scale(1.05);
-      box-shadow: var(--shadow-hover);
-      animation: hammerStrike 0.3s ease;
+      transform: scale(1.02);
     }
 
     /* Lightbox */
@@ -770,7 +794,7 @@
           <i class="fab fa-yelp"></i>
         </a>
         <a href="https://www.instagram.com/handymantj.com_nyc/?igsh=OWFia3lrcnBhcWNv&utm_source=qr" target="_blank" aria-label="Instagram Profile" class="social-link">
-          <img src="Insta.png" alt="Instagram Icon" class="social-icon">
+          <i class="fab fa-instagram"></i>
         </a>
         <a href="https://wa.me/1234567890" target="_blank" aria-label="WhatsApp Chat" class="social-link"> <!-- Replace with your number -->
           <i class="fab fa-whatsapp"></i>
@@ -1090,7 +1114,7 @@
           headers: { 'Accept': 'application/json' }
         }).then(res => {
           if (res.ok) {
-            alert('Message sent! We\'ll hammer back soon. 🔨');
+            alert('Message sent! We'll hammer back soon. 🔨');
             form.reset();
           } else alert('Oops—try again, or call us!');
         }).catch(() => alert('Connection issue—check your tools!'));
