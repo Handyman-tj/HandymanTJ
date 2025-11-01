@@ -1,251 +1,922 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Handyman TJ offers reliable handyman services in NYC, including carpentry, painting, and furniture assembly.">
-  <meta name="keywords" content="handyman, NYC, carpentry, painting, furniture assembly, Handyman TJ">
-  <title>Handyman TJ - New York</title>
-  <link rel="icon" href="HandymanTJ.png" type="image/png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Handyman TJ offers reliable handyman services in NYC, including carpentry, painting, and furniture assembly.">
+    <meta name="keywords" content="handyman, NYC, carpentry, painting, furniture assembly, Handyman TJ">
+    <title>Handyman TJ - New York</title>
+    <link rel="icon" href="HandymanTJ.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Global & Typography Overhaul --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background: #fff;
+            overflow-x: hidden; /* Prevents horizontal scroll glitches */
+        }
+
+        a {
+            text-decoration: none;
+            color: #FF6B00; /* New Primary Color (Orange) */
+        }
+
+        section {
+            padding: 80px 20px; /* Increased padding for better spacing */
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            text-align: center;
+        }
+
+        /* --- Header Overhaul (Sticky & Clean) --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: #fff; /* White background to match the logo */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo img {
+            width: 100px;
+            border-radius: 50%; /* Make it rounder */
+            transition: transform 0.3s;
+        }
+
+        .logo img:hover {
+            transform: rotate(-3deg);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #333;
+            font-weight: 600;
+            font-size: 1.05em;
+            transition: color 0.3s, border-bottom 0.3s;
+            padding-bottom: 5px;
+        }
+
+        nav a:hover {
+            color: #FF6B00; /* New hover color */
+            border-bottom: 2px solid #FF6B00;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .header-contact .cta-button {
+            background: #FF6B00; /* New Primary CTA Color */
+            padding: 10px 20px;
+            font-size: 0.9em;
+        }
+        
+        /* General CTA Button Style */
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #FF6B00;
+            color: #fff;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.3s;
+            border: none;
+        }
+        
+        .cta-button:hover {
+            background: #E35E00;
+            transform: translateY(-2px);
+        }
+
+        /* --- Hero Section (High-Impact) --- */
+        .hero {
+            position: relative;
+            min-height: 90vh; /* Bigger hero section */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            text-align: center;
+            padding: 60px;
+            background: rgba(0, 0, 0, 0.65); /* Darker overlay for better text readability */
+            color: #fff;
+            max-width: 800px;
+            border-radius: 15px; /* Softer edges for the content box */
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-text h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            font-weight: 900;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Pop text out */
+        }
+
+        .hero-text p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        /* --- About Section (Modern Layout) --- */
+        .about {
+            background: #f4f4f4; /* Subtle off-white background */
+        }
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            align-items: flex-start; /* Align text better */
+            gap: 40px;
+            text-align: left;
+        }
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        .about-text h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #FF6B00;
+        }
+        .about-logo {
+            width: 250px;
+            border-radius: 50%; /* Keep it round */
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1); /* Subtle 3D effect */
+            flex-shrink: 0;
+        }
+
+        /* --- Services Section (Thematic & Modern Grid) --- */
+        .services {
+            background: #05837F; /* New Thematic Teal Background */
+            color: #fff;
+        }
+        .services h2 {
+            font-size: 2em;
+            margin-bottom: 40px;
+            color: #fff;
+            font-weight: 700;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .service {
+            background: #fff;
+            color: #333;
+            border-radius: 15px; /* More rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 25px;
+        }
+        .service:hover {
+            transform: translateY(-8px); /* More pronounced hover lift */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .service img {
+            width: 60px; /* Smaller, icon-like images */
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            border-radius: 0;
+        }
+        .service h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #05837F; /* Use Teal for service titles */
+        }
+        .service p {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        /* --- Videos Section (Cleaner Look) --- */
+        .videos {
+            background: #f4f4f4; /* Light background */
+            color: #333;
+        }
+        .videos h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #FF6B00;
+        }
+        .videos h3 {
+             margin-bottom: 30px;
+        }
+        .video-scroller-container {
+            position: relative;
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 0;
+            border: none;
+            border-radius: 15px;
+            background: none;
+        }
+        .video-scroller {
+            display: flex;
+            overflow-x: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            gap: 15px;
+            padding: 10px;
+        }
+        .video-item {
+            min-width: 100%;
+            max-height: 500px;
+            aspect-ratio: 9/16;
+            border-radius: 10px;
+            cursor: pointer;
+            scroll-snap-align: center;
+            object-fit: cover;
+        }
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(5, 131, 127, 0.9); /* Teal buttons */
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+        .scroll-btn:hover {
+            background: #05837F;
+        }
+        .scroll-btn.left {
+            left: 5px;
+        }
+        .scroll-btn.right {
+            right: 5px;
+        }
+
+        /* --- Gallery & Lightbox (More Dramatic Hover) --- */
+        .gallery h2 {
+            font-size: 2em;
+            margin-bottom: 40px;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px; /* Less rounded for a professional look */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smoother, more dramatic transition */
+            cursor: pointer;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            opacity: 0.9;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Highest z-index */
+        }
+        #lightbox-image {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 10px;
+            border: 5px solid #fff;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+        }
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        /* --- Testimonials (Professional & Modern) --- */
+        .testimonials {
+            background: #05837F; /* Teal section */
+            color: #fff;
+        }
+        .testimonials h2 {
+            font-size: 2em;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .testimonial {
+            background: rgba(255, 255, 255, 0.2); /* Lighter background for contrast */
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #FF6B00; /* New Accent Border */
+            transition: background 0.3s;
+        }
+        .testimonial:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .testimonial p {
+            font-style: italic;
+            color: #fff;
+        }
+        .testimonial .author {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #FF6B00; /* Orange author name */
+        }
+
+        /* --- Contact --- */
+        .contact {
+            background: #f4f4f4;
+        }
+        .contact h2 {
+            font-size: 2em;
+            margin-bottom: 40px;
+            color: #05837F;
+        }
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+        }
+        .contact label {
+            display: block;
+            font-weight: bold;
+        }
+        .contact input[type="email"],
+        .contact textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .contact textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        .contact button {
+            padding: 12px;
+            background: #FF6B00;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .contact button:hover {
+            background: #E35E00;
+            transform: translateY(-2px);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: #111; /* Deeper black for a richer footer */
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        footer p {
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        footer a {
+            color: #FF6B00; /* Orange links */
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #ffcc00;
+        }
+        footer .socials {
+            margin: 20px 0;
+        }
+        footer .socials a {
+            color: #fff;
+            font-size: 1.5em;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        footer .socials a:hover {
+            color: #FF6B00;
+        }
+
+        /* Fade-in Animation */
+        section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Media Queries (Enhanced Responsiveness) --- */
+        @media (max-width: 1024px) {
+            .hero-text h1 {
+                font-size: 3em;
+            }
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-wrap: wrap; 
+                padding: 15px 20px;
+            }
+            .logo {
+                order: 1;
+            }
+            .header-contact {
+                order: 2; /* Keep CTA button on the right */
+            }
+            .hamburger {
+                display: block;
+                order: 3;
+                margin-left: 15px;
+            }
+            nav {
+                order: 4; /* Full width navigation for menu */
+                width: 100%;
+                margin-top: 10px;
+            }
+            nav ul {
+                position: absolute;
+                top: 70px; 
+                left: 0;
+                right: 0;
+                background: #fff;
+                border-top: 1px solid #ddd;
+                flex-direction: column;
+                padding: 0; /* Padding inside list items */
+                gap: 0;
+                max-height: 0; /* Starts hidden */
+                overflow: hidden;
+                transition: max-height 0.4s ease-out; /* Smooth transition */
+            }
+            nav ul.show {
+                max-height: 400px; /* Expands when shown */
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+            nav ul.show li a {
+                display: block;
+                padding: 10px 20px;
+                text-align: left;
+                border-bottom: 1px solid #f4f4f4;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5em;
+            }
+            .about-content {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+            .about-logo {
+                margin-top: 20px;
+                width: 180px;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 2em;
+            }
+            .hero-overlay {
+                padding: 30px;
+            }
+            .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+            .gallery-grid img {
+                height: 100px;
+            }
+        }
+    </style>
+    </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="HandymanTJ.png" alt="Handyman TJ Logo">
-    </div>
-    <nav>
-      <div class="hamburger"><i class="fas fa-bars"></i></div>
-      <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#videos">Our Videos</a></li>
-        <li><a href="#gallery">Our Work</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="header-right">
-      <span class="location">NEW YORK</span>
-      <div class="contact-social">
-        <div class="link-group">
-          <a href="https://m.yelp.com/biz/tj-handyman-brooklyn" target="_blank">Yelp</a>
-          <i class="fab fa-yelp icon"></i>
+    
+    <header>
+        <div class="logo">
+            <img src="HandymanTJ.png" alt="Handyman TJ Logo">
         </div>
-        <div class="link-group">
-          <a href="https://www.instagram.com/handymantj.com_nyc/?igsh=OWFia3lrcnBhcWNv&utm_source=qr#" target="_blank">Instagram</a>
-          <img src="Insta.png" alt="Instagram" class="icon">
+        <nav>
+            <div class="hamburger"><i class="fas fa-bars"></i></div>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#videos">Our Videos</a></li>
+                <li><a href="#gallery">Our Work</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-contact">
+            <a href="#contact" class="cta-button header-cta">NEW YORK - Get Quote</a>
         </div>
-      </div>
+    </header>
+
+    <section class="hero" id="hero">
+        <video autoplay loop muted playsinline>
+            <source src="Kama_HEAD_2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay">
+            <div class="hero-text">
+                <h1>Making Your Home Perfect</h1>
+                <p>Your Trusted Handyman in NYC</p>
+                <a href="#contact" class="cta-button">Get a Free Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>We've Got You Covered</h2>
+                <p>TJ Handyman Services is committed to providing reliable, high-quality solutions that improve the comfort, functionality, and aesthetic appeal of your home. From small repairs and large renovation projects to regular maintenance, we prioritize trust, craftsmanship, and customer satisfaction. Our experienced team ensures every job is done right, on time, and with the utmost attention to detail, so you can rest easy knowing your home is in capable hands.</p>
+            </div>
+            <img src="HandymanTJ.png" alt="Handyman TJ Logo" class="about-logo">
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service">
+                <img src="Furniture.png" alt="Furniture Assembly">
+                <h3>Furniture Assembly</h3>
+                <p>Expert assembly of furniture, including desks, beds, and shelving units, ensuring precision and durability.</p>
+            </div>
+            <div class="service">
+                <img src="Carpentary.png" alt="Carpentry">
+                <h3>Carpentry</h3>
+                <p>Custom shelves, door fixes, and more.</p>
+            </div>
+            <div class="service">
+                <img src="Paint.png" alt="Painting">
+                <h3>Painting</h3>
+                <p>Interior and exterior painting services.</p>
+            </div>
+            <div class="service">
+                <img src="Assembly.png" alt="Handyman assembly">
+                <h3>Handyman Assembly</h3>
+                <p>Assembling furniture, shelves, and more.</p>
+            </div>
+            <div class="service">
+                <img src="Caulking.png" alt="Handyman caulking">
+                <h3>Handyman Caulking</h3>
+                <p>Sealing gaps around windows, doors, and fixtures.</p>
+            </div>
+            <div class="service">
+                <img src="DoorInstallation.png" alt="Door installation">
+                <h3>Door Installation</h3>
+                <p>Installing interior and exterior doors.</p>
+            </div>
+            <div class="service">
+                <img src="DoorRepair.png" alt="Door repair">
+                <h3>Door Repair</h3>
+                <p>Fixing squeaky hinges, broken knobs, and more.</p>
+            </div>
+            <div class="service">
+                <img src="DrywallInstallation.png" alt="Drywall installation or replacement">
+                <h3>Drywall Installation/Replacement</h3>
+                <p>Installing or replacing wallboard.</p>
+            </div>
+            <div class="service">
+                <img src="DrywallRepair.png" alt="Drywall repair">
+                <h3>Drywall Repair</h3>
+                <p>Patching holes and fixing cracks in walls.</p>
+            </div>
+            <div class="service">
+                <img src="FloorInstallation.png" alt="Floor installation">
+                <h3>Floor Installation</h3>
+                <p>Installing various types of flooring.</p>
+            </div>
+            <div class="service">
+                <img src="FloorRepair.png" alt="Floor repair">
+                <h3>Floor Repair</h3>
+                <p>Fixing damaged or loose flooring.</p>
+            </div>
+            <div class="service">
+                <img src="GeneralInstallation.png" alt="General installation">
+                <h3>General Installation</h3>
+                <p>Installing fixtures, shelves, and other items.</p>
+            </div>
+            <div class="service">
+                <img src="LightFixture.png" alt="Light fixture installation">
+                <h3>Light Fixture Installation</h3>
+                <p>Installing new or replacement light fixtures.</p>
+            </div>
+            <div class="service">
+                <img src="OutletInstallation.png" alt="Outlet installation">
+                <h3>Outlet Installation</h3>
+                <p>Installing new electrical outlets.</p>
+            </div>
+            <div class="service">
+                <img src="OutletRepair.png" alt="Outlet repair">
+                <h3>Outlet Repair</h3>
+                <p>Fixing faulty electrical outlets.</p>
+            </div>
+            <div class="service">
+                <img src="GeneralRepair.png" alt="Handyman repair">
+                <h3>Handyman Repair</h3>
+                <p>General home repairs and maintenance.</p>
+            </div>
+            <div class="service">
+                <img src="TileInstallation.png" alt="Tile installation or replacement">
+                <h3>Tile Installation/Replacement</h3>
+                <p>Installing or replacing tiles in various areas.</p>
+            </div>
+            <div class="service">
+                <img src="WallPatching.png" alt="Wall patching">
+                <h3>Wall Patching</h3>
+                <p>Repairing small holes and imperfections in walls.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="videos" id="videos">
+        <h2>Our Videos</h2>
+        <h3>(Click on videos to play)</h3>
+        <div class="video-scroller-container">
+            <button class="scroll-btn left" onclick="scrollVideos(-1)"><i class="fas fa-chevron-left"></i></button>
+            <div class="video-scroller">
+                <video class="video-item" src="Kama_HEAD_2.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
+                <video class="video-item" src="Kama_HEAD_1.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
+                <video class="video-item" src="Kama_HEAD_3.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
+            </div>
+            <button class="scroll-btn right" onclick="scrollVideos(1)"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <h2>Our Work</h2>
+        <div class="gallery-grid">
+            <img src="1.jpg" alt="Project 1" onclick="showImage('1.jpg')">
+            <img src="2.jpg" alt="Project 2" onclick="showImage('2.jpg')">
+            <img src="3.jpg" alt="Project 3" onclick="showImage('3.jpg')">
+            <img src="4.jpg" alt="Project 4" onclick="showImage('4.jpg')">
+            <img src="5.jpg" alt="Project 5" onclick="showImage('5.jpg')">
+            <img src="6.jpg" alt="Project 6" onclick="showImage('6.jpg')">
+            <img src="7.jpg" alt="Project 7" onclick="showImage('7.jpg')">
+            <img src="8.jpg" alt="Project 8" onclick="showImage('8.jpg')">
+            <img src="9.jpg" alt="Project 9" onclick="showImage('9.jpg')">
+            <img src="10.jpg" alt="Project 10" onclick="showImage('10.jpg')">
+            <img src="11.jpg" alt="Project 11" onclick="showImage('11.jpg')">
+            <img src="12.jpg" alt="Project 12" onclick="showImage('12.jpg')">
+            <img src="13.jpg" alt="Project 13" onclick="showImage('13.jpg')">
+            <img src="14.jpg" alt="Project 14" onclick="showImage('14.jpg')">
+            <img src="15.jpg" alt="Project 15" onclick="showImage('15.jpg')">
+            <img src="16.jpg" alt="Project 16" onclick="showImage('16.jpg')">
+            <img src="17.jpg" alt="Project 17" onclick="showImage('17.jpg')">
+            <img src="18.jpg" alt="Project 18" onclick="showImage('18.jpg')">
+            <img src="19.jpg" alt="Project 19" onclick="showImage('19.jpg')">
+            <img src="20.jpg" alt="Project 20" onclick="showImage('20.jpg')">
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial">
+                <p>"Handyman TJ did an amazing job with my kitchen shelves. Professional and reliable!"</p>
+                <p class="author">- Sarah M., Brooklyn</p>
+            </div>
+            <div class="testimonial">
+                <p>"Their painting service transformed my apartment. Highly recommend!"</p>
+                <p class="author">- John D., Manhattan</p>
+            </div>
+            <div class="testimonial">
+                <p>"Fixed my door in no time. Great service and attention to detail!"</p>
+                <p class="author">- Emily R., Queens</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Contact Us</h2>
+        <h3>(We will definitely receive your email.)</h3>
+        <form action="https://formspree.io/f/xqadobzg" method="POST">
+            <label>
+                Your email:
+                <input type="email" name="email" required>
+            </label>
+            <label>
+                Your message:
+                <textarea name="message" required></textarea>
+            </label>
+            <button type="submit">Send</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>Contact Us: <a href="mailto:handymantj.nyc@gmail.com">handymantj.nyc@gmail.com</a> |</p>
+        <div class="socials">
+            <a href="https://www.instagram.com/handymantj.com_nyc/?igsh=OWFia3lrcnBhcWNv&utm_source=qr#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://m.yelp.com/biz/tj-handyman-brooklyn" target="_blank"><i class="fab fa-yelp"></i></a>
+        </div>
+        <p>&copy; <span id="year"></span> Handyman TJ. All Rights Reserved.</p>
+    </footer>
+    
+    <div id="lightbox" class="lightbox">
+        <span class="close">&times;</span>
+        <img id="lightbox-image" src="" alt="Enlarged Project Image">
     </div>
-  </header>
 
-  <section class="hero" id="hero">
-    <video autoplay loop muted playsinline>
-      <source src="Kama_HEAD_2.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="hero-overlay">
-      <div class="hero-text">
-        <h1>Making Your Home Perfect</h1>
-        <p>Your Trusted Handyman in NYC</p>
-        <a href="#contact" class="cta-button">Get a Free Quote</a>
-      </div>
-    </div>
-  </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Dynamic copyright year
+            document.getElementById('year').textContent = new Date().getFullYear();
 
-  <section class="about" id="about">
-    <div class="about-content">
-      <div class="about-text">
-        <h2>We've Got You Covered</h2>
-        <p>TJ Handyman Services is committed to providing reliable, high-quality solutions that improve the comfort, functionality, and aesthetic appeal of your home. From small repairs and large renovation projects to regular maintenance, we prioritize trust, craftsmanship, and customer satisfaction. Our experienced team ensures every job is done right, on time, and with the utmost attention to detail, so you can rest easy knowing your home is in capable hands.</p>
-      </div>
-      <img src="HandymanTJ.png" alt="Handyman TJ Logo" class="about-logo">
-    </div>
-  </section>
+            // Smooth scrolling for anchor links
+            const navUl = document.querySelector('nav ul');
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        // Ensure mobile menu closes after click
+                        if (navUl.classList.contains('show')) {
+                            navUl.classList.remove('show');
+                        }
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
 
-  <section class="services" id="services">
-    <h2>Our Services</h2>
-    <div class="services-grid">
-      <div class="service">
-        <img src="Furniture.png" alt="Furniture Assembly">
-        <h3>Furniture Assembly</h3>
-        <p>Expert assembly of furniture, including desks, beds, and shelving units, ensuring precision and durability.</p>
-      </div>
-      <div class="service">
-        <img src="Carpentary.png" alt="Carpentry">
-        <h3>Carpentry</h3>
-        <p>Custom shelves, door fixes, and more.</p>
-      </div>
-      <div class="service">
-        <img src="Paint.png" alt="Painting">
-        <h3>Painting</h3>
-        <p>Interior and exterior painting services.</p>
-      </div>
-      <div class="service">
-        <img src="Assembly.png" alt="Handyman assembly">
-        <h3>Handyman assembly</h3>
-        <p>Assembling furniture, shelves, and more.</p>
-      </div>
-      <div class="service">
-        <img src="Caulking.png" alt="Handyman caulking">
-        <h3>Handyman caulking</h3>
-        <p>Sealing gaps around windows, doors, and fixtures.</p>
-      </div>
-      <div class="service">
-        <img src="DoorInstallation.png" alt="Door installation">
-        <h3>Door installation</h3>
-        <p>Installing interior and exterior doors.</p>
-      </div>
-      <div class="service">
-        <img src="DoorRepair.png" alt="Door repair">
-        <h3>Door repair</h3>
-        <p>Fixing squeaky hinges, broken knobs, and more.</p>
-      </div>
-      <div class="service">
-        <img src="DrywallInstallation.png" alt="Drywall installation or replacement">
-        <h3>Drywall installation or replacement</h3>
-        <p>Installing or replacing wallboard.</p>
-      </div>
-      <div class="service">
-        <img src="DrywallRepair.png" alt="Drywall repair">
-        <h3>Drywall repair</h3>
-        <p>Patching holes and fixing cracks in walls.</p>
-      </div>
-      <div class="service">
-        <img src="FloorInstallation.png" alt="Floor installation">
-        <h3>Floor installation</h3>
-        <p>Installing various types of flooring.</p>
-      </div>
-      <div class="service">
-        <img src="FloorRepair.png" alt="Floor repair">
-        <h3>Floor repair</h3>
-        <p>Fixing damaged or loose flooring.</p>
-      </div>
-      <div class="service">
-        <img src="GeneralInstallation.png" alt="General installation">
-        <h3>General installation</h3>
-        <p>Installing fixtures, shelves, and other items.</p>
-      </div>
-      <div class="service">
-        <img src="LightFixture.png" alt="Light fixture installation">
-        <h3>Light fixture installation</h3>
-        <p>Installing new or replacement light fixtures.</p>
-      </div>
-      <div class="service">
-        <img src="OutletInstallation.png" alt="Outlet installation">
-        <h3>Outlet installation</h3>
-        <p>Installing new electrical outlets.</p>
-      </div>
-      <div class="service">
-        <img src="OutletRepair.png" alt="Outlet repair">
-        <h3>Outlet repair</h3>
-        <p>Fixing faulty electrical outlets.</p>
-      </div>
-      <div class="service">
-        <img src="GeneralRepair.png" alt="Handyman repair">
-        <h3>Handyman repair</h3>
-        <p>General home repairs and maintenance.</p>
-      </div>
-      <div class="service">
-        <img src="TileInstallation.png" alt="Tile installation or replacement">
-        <h3>Tile installation or replacement</h3>
-        <p>Installing or replacing tiles in various areas.</p>
-      </div>
-      <div class="service">
-        <img src="WallPatching.png" alt="Wall patching">
-        <h3>Wall patching</h3>
-        <p>Repairing small holes and imperfections in walls.</p>
-      </div>
-    </div>
-  </section>
+            // Hamburger menu toggle (Modified for smooth transition)
+            const hamburger = document.querySelector('.hamburger');
+            hamburger.addEventListener('click', () => {
+                navUl.classList.toggle('show');
+            });
 
-  <section class="videos" id="videos">
-    <h2>Our Videos</h2>
-    <h3>(Click on videos)</h3>
-    <div class="video-scroller-container">
-      <button class="scroll-btn left" onclick="scrollVideos(-1)"><i class="fas fa-chevron-left"></i></button>
-      <div class="video-scroller">
-        <video class="video-item" src="Kama_HEAD_2.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
-        <video class="video-item" src="Kama_HEAD_1.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
-        <video class="video-item" src="Kama_HEAD_3.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
-      </div>
-      <button class="scroll-btn right" onclick="scrollVideos(1)"><i class="fas fa-chevron-right"></i></button>
-    </div>
-  </section>
+            // Contact form submission with Formspree
+            const form = document.querySelector('#contact form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        alert('Thank you for your message! We will get back to you soon.');
+                        form.reset();
+                    } else {
+                        alert('There was an issue sending your message. Please try again.');
+                    }
+                }).catch(error => {
+                    alert('There was an error. Please try again later.');
+                });
+            });
 
-  <section class="gallery" id="gallery">
-    <h2>Our Work</h2>
-    <div class="gallery-grid">
-      <img src="1.jpg" alt="Project 1" onclick="showImage(this.src)">
-      <img src="2.jpg" alt="Project 2" onclick="showImage(this.src)">
-      <img src="3.jpg" alt="Project 3" onclick="showImage(this.src)">
-      <img src="4.jpg" alt="Project 4" onclick="showImage(this.src)">
-      <img src="5.jpg" alt="Project 5" onclick="showImage(this.src)">
-      <img src="6.jpg" alt="Project 6" onclick="showImage(this.src)">
-      <img src="7.jpg" alt="Project 7" onclick="showImage(this.src)">
-      <img src="8.jpg" alt="Project 8" onclick="showImage(this.src)">
-      <img src="9.jpg" alt="Project 9" onclick="showImage(this.src)">
-      <img src="10.jpg" alt="Project 10" onclick="showImage(this.src)">
-      <img src="11.jpg" alt="Project 11" onclick="showImage(this.src)">
-      <img src="12.jpg" alt="Project 12" onclick="showImage(this.src)">
-      <img src="13.jpg" alt="Project 13" onclick="showImage(this.src)">
-      <img src="14.jpg" alt="Project 14" onclick="showImage(this.src)">
-      <img src="15.jpg" alt="Project 15" onclick="showImage(this.src)">
-      <img src="16.jpg" alt="Project 16" onclick="showImage(this.src)">
-      <img src="17.jpg" alt="Project 17" onclick="showImage(this.src)">
-      <img src="18.jpg" alt="Project 18" onclick="showImage(this.src)">
-      <img src="19.jpg" alt="Project 19" onclick="showImage(this.src)">
-      <img src="20.jpg" alt="Project 20" onclick="showImage(this.src)">
-    </div>
-  </section>
+            // Fade-in animations for sections
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry);
+                    }
+                });
+            }, { threshold: 0.1 });
 
-  <section class="testimonials" id="testimonials">
-    <h2>What Our Clients Say</h2>
-    <div class="testimonials-grid">
-      <div class="testimonial">
-        <p>"Handyman TJ did an amazing job with my kitchen shelves. Professional and reliable!"</p>
-        <p class="author">- Sarah M., Brooklyn</p>
-      </div>
-      <div class="testimonial">
-        <p>"Their painting service transformed my apartment. Highly recommend!"</p>
-        <p class="author">- John D., Manhattan</p>
-      </div>
-      <div class="testimonial">
-        <p>"Fixed my door in no time. Great service and attention to detail!"</p>
-        <p class="author">- Emily R., Queens</p>
-      </div>
-    </div>
-  </section>
+            sections.forEach(section => observer.observe(section));
 
-  <section class="contact" id="contact">
-    <h2>Contact Us</h2>
-    <h3>(We will definitely receive your email.)</h3>
-    <form action="https://formspree.io/f/xqadobzg" method="POST">
-      <label>
-        Your email:
-        <input type="email" name="email" required>
-      </label>
-      <label>
-        Your message:
-        <textarea name="message" required></textarea>
-      </label>
-      <button type="submit">Send</button>
-    </form>
-  </section>
+            // Gallery Lightbox function setup
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const closeButton = lightbox.querySelector('.close');
 
-  <footer>
-    <p>Contact Us: <a href="mailto:handymantj.nyc@gmail.com">handymantj.nyc@gmail.com</a> |</p>
-    <div class="socials">
-      <a href="https://www.instagram.com/handymantj.com_nyc/?igsh=OWFia3lrcnBhcWNv&utm_source=qr#" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://m.yelp.com/biz/tj-handyman-brooklyn" target="_blank"><i class="fab fa-yelp"></i></a>
-    </div>
-    <p>&copy; <span id="year"></span> Handyman TJ. All Rights Reserved.</p>
-  </footer>
+            closeButton.onclick = () => {
+                lightbox.style.display = 'none';
+                lightboxImage.src = ''; // Clear image
+            };
 
-  <script src="script.js"></script>
-</body>
+            lightbox.onclick = (e) => {
+                if (e.target === lightbox) {
+                    lightbox.style.display = 'none';
+                    lightboxImage.src = '';
+                }
+            };
+
+            // Attach to global scope for image clicks
+            window.showImage = function(src) {
+                lightboxImage.src = src;
+                lightbox.style.display = 'flex';
+            }
+        });
+
+        // Video scroller functions (No changes needed)
+        function scrollVideos(direction) {
+            const scroller = document.querySelector('.video-scroller');
+            const scrollAmount = scroller.offsetWidth;
+            scroller.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Play/Pause function for videos
+        function playThisVideo(video) {
+            // Pause any currently playing video
+            document.querySelectorAll('.video-item').forEach(v => {
+                if (v !== video) {
+                    v.pause();
+                }
+            });
+
+            // Toggle play/pause on the clicked video
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        }
+    </script>
+    </body>
 </html>
