@@ -235,42 +235,45 @@
     }
 
     .cta-button {
-      display: inline-block;
-      padding: 15px 40px;
-      background: linear-gradient(135deg, var(--primary-blue), #1997d1);
-      color: var(--black);
-      border-radius: 50px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 25px rgba(249, 249, 249);
-      animation: fadeInUp 1.2s ease;
-      position: relative;
-      overflow: hidden;
-    }
+  display: inline-block;
+  padding: 15px 40px;
+  background: linear-gradient(135deg, #42A5F5 0%, #1E88E5 100%);
+  color: #ffffff;
+  border-radius: 50px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(13, 71, 161, 0.4);
+  animation: fadeInUp 1.2s ease;
+  position: relative;
+  overflow: hidden;
+}
 
-    .cta-button::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.3);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-    }
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
 
-    .cta-button:hover::before {
-      width: 300px;
-      height: 300px;
-    }
+.cta-button:hover::before {
+  width: 300px;
+  height: 300px;
+}
 
-    .cta-button:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(234, 183, 2, 0.6);
-    }
+.cta-button:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(135deg, #64B5F6 0%, #2196F3 100%);
+  box-shadow: 0 12px 28px rgba(230, 74, 25, 0.5);
+}
+
 
     /* About Section */
     .about {
@@ -1470,6 +1473,7 @@
   </script>
 </body>
 </html>
+
 
 
 
