@@ -86,7 +86,7 @@
     }
 
     nav a {
-      color: var(--text-dark);
+      color: var(--white);
       text-decoration: none;
       font-weight: 600;
       font-size: 1em;
@@ -110,16 +110,15 @@
     }
 
     nav a:hover {
-      color: var(--primary-teal);
+      color: var(--primary-yellow);
     }
 
     .hamburger {
       display: none;
       font-size: 1.8em;
       cursor: pointer;
-      color: var(--text-dark);
+      color: var(--white);
       transition: transform 0.3s ease;
-      background-color:red;
     }
 
     .hamburger:hover {
@@ -136,11 +135,12 @@
 
     .location {
       font-weight: bold;
-      color: rgb(4, 76, 73);
+      color: var(--primary-teal);
       padding: 8px 15px;
-      background: rgb(255, 209, 102);
+      background: rgba(255, 255, 255, 0.95);
       border-radius: 20px;
       animation: pulse 2s infinite;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     }
 
     @keyframes pulse {
@@ -165,7 +165,7 @@
     }
 
     .link-group a {
-      color: var(--text-dark);
+      color: var(--white);
       text-decoration: none;
       font-weight: 600;
       transition: color 0.3s;
@@ -179,10 +179,12 @@
       width: 24px;
       height: 24px;
       transition: transform 0.3s ease;
+      filter: brightness(0) invert(1);
     }
 
     .link-group:hover .icon {
       transform: rotate(10deg) scale(1.2);
+      filter: brightness(1) invert(0.8) sepia(1) saturate(10) hue-rotate(10deg);
     }
 
     /* Hero Section */
@@ -236,45 +238,44 @@
     }
 
     .cta-button {
-  display: inline-block;
-  padding: 15px 40px;
-  background: linear-gradient(135deg, #42A5F5 0%, #1E88E5 100%);
-  color: #ffffff;
-  border-radius: 50px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 20px rgba(13, 71, 161, 0.4);
-  animation: fadeInUp 1.2s ease;
-  position: relative;
-  overflow: hidden;
-}
+      display: inline-block;
+      padding: 15px 40px;
+      background: linear-gradient(135deg, #42A5F5 0%, #1E88E5 100%);
+      color: #ffffff;
+      border-radius: 50px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(13, 71, 161, 0.4);
+      animation: fadeInUp 1.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-.cta-button::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.25);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s ease, height 0.6s ease;
-}
+    .cta-button::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
 
-.cta-button:hover::before {
-  width: 300px;
-  height: 300px;
-}
+    .cta-button:hover::before {
+      width: 300px;
+      height: 300px;
+    }
 
-.cta-button:hover {
-  transform: translateY(-4px);
-  background: linear-gradient(135deg, #64B5F6 0%, #2196F3 100%);
-  box-shadow: 0 12px 28px rgba(230, 74, 25, 0.5);
-}
-
+    .cta-button:hover {
+      transform: translateY(-4px);
+      background: linear-gradient(135deg, #64B5F6 0%, #2196F3 100%);
+      box-shadow: 0 12px 28px rgba(230, 74, 25, 0.5);
+    }
 
     /* About Section */
     .about {
@@ -976,6 +977,14 @@
         animation: fadeInDown 0.4s ease;
       }
 
+      nav ul.show a {
+        color: var(--text-dark);
+      }
+
+      nav ul.show a:hover {
+        color: var(--primary-teal);
+      }
+
       .hamburger {
         display: block;
       }
@@ -1146,7 +1155,7 @@
     <div class="about-content">
       <div class="about-text">
         <h2>We've Got You Covered</h2>
-        <p>At Handyman TJ, we deliver reliable, high-quality solutions that make your home more functional, comfortable, and visually appealing. Our core services include painting, drywall work, flooring, TV and furniture installation, door repair, and general home improvements — all performed with precision, efficiency, and care.We take pride in our professionalism, attention to detail, and commitment to customer satisfaction. Whether it’s a simple repair or a detailed installation, Handyman TJ ensures every job is done right, on time, and to the highest standard.</p>
+        <p>At Handyman TJ, we deliver reliable, high-quality solutions that make your home more functional, comfortable, and visually appealing. Our core services include painting, drywall work, flooring, TV and furniture installation, door repair, and general home improvements — all performed with precision, efficiency, and care.We take pride in our professionalism, attention to detail, and commitment to customer satisfaction. Whether it's a simple repair or a detailed installation, Handyman TJ ensures every job is done right, on time, and to the highest standard.</p>
       </div>
       <img src="HandymanTJ.png" alt="Handyman TJ Logo" class="about-logo">
     </div>
@@ -1474,14 +1483,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
