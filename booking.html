@@ -5,172 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Handyman TJ</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
-    body { 
-      font-family: 'Segoe UI', sans-serif; 
-      background: linear-gradient(135deg, #05837F, #EAB702); 
-      min-height: 100vh; 
-      padding: 20px 10px; 
-    }
-    .container { 
-      max-width: 1000px; 
-      margin: 0 auto; 
-      background: white; 
-      border-radius: 25px; 
-      padding: 40px 20px; 
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3); 
-    }
-    h1 { 
-      text-align: center; 
-      color: #05837F; 
-      font-size: 2.8em; 
-      margin-bottom: 10px; 
-    }
-    p.subtitle { 
-      text-align: center; 
-      font-size: 1.3em; 
-      color: #333; 
-      margin-bottom: 40px; 
-    }
-    .calendar { 
-      margin: 0 auto; 
-      max-width: 600px; 
-    }
-    .month-nav { 
-      display: flex; 
-      justify-content: space-between; 
-      align-items: center; 
-      margin-bottom: 20px; 
-    }
-    .month-nav button { 
-      background: #05837F; 
-      color: white; 
-      border: none; 
-      width: 50px; 
-      height: 50px; 
-      border-radius: 50%; 
-      font-size: 1.5em; 
-      cursor: pointer; 
-      transition: all 0.3s; 
-    }
-    .month-nav button:hover { 
-      background: #EAB702; 
-      transform: scale(1.1); 
-    }
-    .month-nav h2 { 
-      color: #05837F; 
-      font-size: 2em; 
-    }
-    .days, .dates { 
-      display: grid; 
-      grid-template-columns: repeat(7, 1fr); 
-      gap: 8px; 
-      text-align: center; 
-    }
-    .days div { 
-      font-weight: bold; 
-      padding: 12px 0; 
-      background: #f0f0f0; 
-      border-radius: 12px; 
-      font-size: 0.9em; 
-    }
-    .date { 
-      padding: 18px 8px; 
-      border-radius: 15px; 
-      cursor: pointer; 
-      transition: all 0.3s; 
-      font-weight: bold; 
-      font-size: 1.1em; 
-    }
-    .date.past { 
-      background: #eee; 
-      color: #aaa; 
-      cursor: not-allowed; 
-    }
-    .date.free { 
-      background: #d4edda; 
-      color: #155724; 
-    }
-    .date.free:hover { 
-      background: #28a745; 
-      color: white; 
-      transform: scale(1.05); 
-    }
-    .date.busy { 
-      background: #f8d7da; 
-      color: #721c24; 
-      cursor: not-allowed; 
-    }
-    .date.selected { 
-      background: #EAB702 !important; 
-      color: black !important; 
-      transform: scale(1.1); 
-    }
-    .time-slots { 
-      margin: 40px auto; 
-      display: grid; 
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); 
-      gap: 15px; 
-      max-width: 700px; 
-    }
-    .time { 
-      padding: 15px; 
-      text-align: center; 
-      border-radius: 15px; 
-      cursor: pointer; 
-      font-weight: bold; 
-      transition: all 0.3s; 
-    }
-    .time.free { 
-      background: #d4edda; 
-      color: #155724; 
-    }
-    .time.free:hover { 
-      background: #28a745; 
-      color: white; 
-    }
-    .time.busy { 
-      background: #f8d7da; 
-      color: #721c24; 
-      cursor: not-allowed; 
-    }
-    .time.selected { 
-      background: #EAB702; 
-      color: black; 
-    }
-    #form { 
-      margin-top: 50px; 
-      padding: 30px; 
-      background: #f8f9fa; 
-      border-radius: 20px; 
-      display: none; 
-      max-width: 600px; 
-      margin-left: auto; 
-      margin-right: auto; 
-    }
-    input, textarea, button.submit { 
-      width: 100%; 
-      padding: 18px; 
-      margin: 12px 0; 
-      border-radius: 15px; 
-      border: 2px solid #ddd; 
-      font-size: 1.1em; 
-    }
-    button.submit { 
-      background: #05837F; 
-      color: white; 
-      border: none; 
-      font-size: 1.5em; 
-      font-weight: bold; 
-      cursor: pointer; 
-      transition: all 0.3s; 
-    }
-    button.submit:hover { 
-      background: #EAB702; 
-      color: black; 
-      transform: translateY(-3px); 
-    }
+    body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #05837F, #EAB702); min-height: 100vh; padding: 20px 10px; }
+    .container { max-width: 1000px; margin: 0 auto; background: white; border-radius: 25px; padding: 40px 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+    h1 { text-align: center; color: #05837F; font-size: 2.8em; margin-bottom: 10px; }
+    p.subtitle { text-align: center; font-size: 1.3em; color: #333; margin-bottom: 40px; }
+    .calendar { margin: 0 auto; max-width: 600px; }
+    .month-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .month-nav button { background: #05837F; color: white; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 1.5em; cursor: pointer; }
+    .month-nav button:hover { background: #EAB702; }
+    .month-nav h2 { color: #05837F; font-size: 2em; }
+    .days, .dates { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; text-align: center; }
+    .days div { font-weight: bold; padding: 12px 0; background: #f0f0f0; border-radius: 12px; }
+    .date { padding: 18px 8px; border-radius: 15px; cursor: pointer; transition: all 0.3s; font-weight: bold; font-size: 1.1em; }
+    .date.past { background: #eee; color: #aaa; cursor: not-allowed; }
+    .date.free { background: #d4edda; color: #155724; }
+    .date.free:hover { background: #28a745; color: white; }
+    .date.busy { background: #f8d7da; color: #721c24; cursor: not-allowed; }
+    .date.selected { background: #EAB702 !important; color: black !important; }
+    .time-slots { margin: 40px auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; max-width: 700px; }
+    .time { padding: 15px; text-align: center; border-radius: 15px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
+    .time.free { background: #d4edda; color: #155724; }
+    .time.free:hover { background: #28a745; color: white; }
+    .time.busy { background: #f8d7da; color: #721c24; cursor: not-allowed; }
+    .time.selected { background: #EAB702; color: black; }
+    #form { margin-top: 50px; padding: 30px; background: #f8f9fa; border-radius: 20px; display: none; max-width: 600px; margin-left: auto; margin-right: auto; }
+    input, textarea, button.submit { width: 100%; padding: 18px; margin: 12px 0; border-radius: 15px; border: 2px solid #ddd; font-size: 1.1em; }
+    button.submit { background: #05837F; color: white; border: none; font-size: 1.5em; font-weight: bold; cursor: pointer; }
+    button.submit:hover { background: #EAB702; color: black; }
     @media (max-width: 600px) {
       h1 { font-size: 2.2em; }
       .month-nav h2 { font-size: 1.5em; }
@@ -207,19 +71,22 @@
   </div>
 
   <script>
-    const times = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM", "8PM"];
+    const supabase = Supabase.createClient('https://hcdtewqymuojoagokmyx.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhjZHRld3F5bXVvam9hZ29rbXl4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM0NTI5MTYsImV4cCI6MjA3OTAyODkxNn0.VVNcTc0TT3nrNySfyqMJmDsk4CDb8DG3ND9tUmeGK4g');
+
+    const times = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM"];
     let year = new Date().getFullYear();
     let month = new Date().getMonth();
     let selectedDate = null;
     let selectedTime = null;
 
     async function loadBookings() {
-      try {
-        const res = await fetch('https://raw.githubusercontent.com/Handyman-tj/HandymanTJ/main/bookings.json?t=' + Date.now());
-        return await res.json();
-      } catch (e) {
-        return {};
-      }
+      const { data } = await supabase.from('bookings').select('date,time');
+      const bookings = {};
+      data.forEach(b => {
+        if (!bookings[b.date]) bookings[b.date] = [];
+        bookings[b.date].push(b.time);
+      });
+      return bookings;
     }
 
     async function render() {
@@ -231,12 +98,8 @@
       const datesDiv = document.getElementById('dates');
       datesDiv.innerHTML = '';
 
-      // Empty cells for days before month starts
-      for (let i = 0; i < firstDay; i++) {
-        datesDiv.innerHTML += '<div></div>';
-      }
+      for (let i = 0; i < firstDay; i++) datesDiv.innerHTML += '<div></div>';
 
-      // Actual dates
       for (let d = 1; d <= daysInMonth; d++) {
         const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
         const div = document.createElement('div');
@@ -246,31 +109,32 @@
         const today = new Date();
         today.setHours(0,0,0,0);
         const thisDate = new Date(year, month, d);
-        
+
         if (thisDate < today) {
           div.classList.add('past');
         } else {
-          const booked = (bookings[dateStr] || []).length;
-          if (booked >= times.length) {
+          const bookedCount = (bookings[dateStr] || []).length;
+          if (bookedCount >= times.length) {
             div.classList.add('busy');
           } else {
             div.classList.add('free');
-            div.onclick = () => selectDate(dateStr, div, bookings);
+            div.onclick = () => selectDate(dateStr, div);
           }
         }
         datesDiv.appendChild(div);
       }
     }
 
-    function selectDate(date, el, bookings) {
+    async function selectDate(date, el) {
       document.querySelectorAll('.date').forEach(d => d.classList.remove('selected'));
       el.classList.add('selected');
       selectedDate = date;
 
-      const booked = bookings[date] || [];
+      const { data } = await supabase.from('bookings').select('time').eq('date', date);
+      const booked = data.map(b => b.time);
+
       const timesDiv = document.getElementById('times');
       timesDiv.innerHTML = '';
-
       times.forEach(t => {
         const btn = document.createElement('div');
         btn.className = 'time';
@@ -291,17 +155,27 @@
       });
     }
 
-    function book() {
+    async function book() {
       const name = document.getElementById('name').value.trim();
       const phone = document.getElementById('phone').value.trim();
-      if (!name || !phone) return alert("Please enter your name and phone");
+      if (!name || !phone) return alert("Name and phone required");
 
-      const subject = `NEW BOOKING: ${selectedDate} ${selectedTime}`;
-      const body = `Name: ${name}\nPhone: ${phone}\nService: ${document.getElementById('service').value || 'Not specified'}\nDate: ${selectedDate}\nTime: ${selectedTime}`;
+      const { error } = await supabase
+        .from('bookings')
+        .insert({ date: selectedDate, time: selectedTime, name, phone, service: document.getElementById('service').value || null });
 
-      window.location.href = `mailto:handymantj.nyc@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      
-      alert("Thank you! Your email is opening – just hit Send and your time is reserved!");
+      if (error) {
+        alert("Error saving booking. Try again.");
+        console.error(error);
+      } else {
+        alert("BOOKED! Opening email – send it to confirm");
+        const subject = `NEW BOOKING: ${selectedDate} ${selectedTime}`;
+        const body = `Name: ${name}\nPhone: ${phone}\nService: ${document.getElementById('service').value || 'Not specified'}\nDate: ${selectedDate}\nTime: ${selectedTime}`;
+        window.location.href = `mailto:handymantj.nyc@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        setTimeout(() => location.reload(), 2000); // refresh to show new booking
+      }
+    }
+
     }
 
     function prev() { month--; if (month < 0) { month = 11; year--; } render(); }
