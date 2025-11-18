@@ -216,7 +216,7 @@
       filter: brightness(1) invert(0.8) sepia(1) saturate(10) hue-rotate(10deg);
     }
 
-    /* Hero Section */
+    /* Hero Section - Replace existing .hero styles */
     .hero {
       position: relative;
       height: 100vh;
@@ -225,29 +225,96 @@
       justify-content: center;
       overflow: hidden;
       margin-top: 80px;
+      background: var(--tech-dark);
     }
 
-    .hero video {
+    .particle-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      opacity: 0.8;
+    }
+
+    .hero-video {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.7);
+      filter: brightness(0.3) contrast(1.2) saturate(1.5);
+      z-index: 0;
+      transform: scale(1.1);
     }
 
-    .hero-overlay {
-      position: relative;
+    .hero-overlay-gradient {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        rgba(0, 10, 20, 0.9) 0%,
+        rgba(0, 40, 80, 0.7) 25%,
+        rgba(0, 80, 160, 0.5) 50%,
+        rgba(128, 0, 255, 0.3) 75%,
+        rgba(0, 255, 255, 0.4) 100%
+      );
       z-index: 2;
+    }
+
+    .hero-overlay-tech {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image:
+        linear-gradient(0deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent);
+      background-size: 50px 50px;
+      z-index: 3;
+      animation: tech-grid-move 10s linear infinite;
+    }
+
+    @keyframes tech-grid-move {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(50px, 50px); }
+    }
+
+    .hero-content-container {
+      position: relative;
+      z-index: 10;
       text-align: center;
-      padding: 40px;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(5px);
-      border-radius: 20px;
-      max-width: 800px;
-      animation: fadeInUp 1s ease;
-      border: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 60px;
+      background: linear-gradient(
+        135deg,
+        rgba(10, 10, 10, 0.85),
+        rgba(0, 40, 80, 0.75),
+        rgba(128, 0, 255, 0.65)
+      );
+      backdrop-filter: blur(20px) saturate(1.8);
+      border-radius: 30px;
+      border: 2px solid rgba(0, 255, 255, 0.3);
+      box-shadow:
+        0 20px 80px rgba(0, 128, 255, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 0 100px rgba(0, 255, 255, 0.1);
+      max-width: 900px;
+      animation: hero-content-entrance 2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+      transform: translateY(50px);
+      opacity: 0;
+    }
+
+    @keyframes hero-content-entrance {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     .hero-text h1 {
