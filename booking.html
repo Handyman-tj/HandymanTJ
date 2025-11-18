@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Handyman TJ</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #05837F, #EAB702); color: #333; padding: 40px; }
+    .container { max-width: 1000px; margin: 0 auto; background: white; border-radius: 25px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+    h1 { text-align: center; color: #05837F; font-size: 3em; margin-bottom: 20px; }
+    .calendar { margin: 40px auto; }
+    .month-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+    .month-nav button { background: #05837F; color: white; border: none; padding: 15px 30px; border-radius: 50px; font-size: 1.2em; cursor: pointer; }
+    .days { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: bold; padding: 10px; background: #f0f0f0; border-radius: 15px; }
+    .dates { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 10px; }
+    .date { padding: 20px; text-align: center; border-radius: 15px; cursor: pointer; transition: all 0.3s; font-weight: bold; }
+    .date.past { background: #eee; color: #999; cursor: not-allowed; }
+    .date.free { background: #d4edda; color: #155724; }
+    .date.busy { background: #f8d7da; color: #721c24; cursor: not-allowed; }
+    .date.selected { background: #EAB702 !important; color: black; transform: scale(1.1); }
+    .time-slots { margin: 40px 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 15px; }
+    .time { padding: 15px; text-align: center; border-radius: 15px; cursor: pointer; background: #d4edda; color: #155724; }
+    .time.busy { background: #f8d7da; color: #721c24; cursor: not-allowed; }
+    .time.selected { background: #EAB702; color: black; }
+    #form { margin-top: 40px; display: none; }
+    input, textarea { width: 100%; padding: 15px; margin: 10px 0; border-radius: 10px; border: 2px solid #ddd; font-size: 1.1em; }
+    button.submit { background: #05837F; color: white; padding: 20px 50px; font-size: 1.5em; border-radius: 50px; width: 100%; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Book Handyman TJ</h1>
+    <p style="text-align:center;font-size:1.3em;">Choose your date and time – I come to you in NYC!</p>
+    <div class="calendar">
+      <div class="month-nav">
+        <button onclick="prev()">‹</button>
+        <h2 id="month"></h2>
+        <button onclick="next()">›</button>
+      </div>
+      <div class="days">
+        <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat>
+      </div>
+      <div class="dates" id="dates"></div>
+    </div>
+    <div class="time-slots" id="times"></div>
+    <div id="form">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="tel" id="phone" placeholder="Your Phone" required>
+      <textarea id="service" placeholder="What do you need done?"></textarea>
+      <button class="submit" onclick="book()">SUBMIT BOOKING – I WILL CALL YOU</button>
+    </div>
+  </div>
+
+  <script>
+    const times = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM", "6:00 PM", "7:00 PM", "8:00 PM"];
+    let year = new Date().getFullYear();
+    let month = new Date().getMonth();
+    let selectedDate = null;
+    let selectedTime = null;
+
+    async function loadBookings() {
+      try {
+        const res = await fetch('https://raw.githubusercontent.com/Handyman-tj/HandymanTJ/main/bookings.json');
+        return await res.json();
+      } catch {
+        return {};
+      }
+    }
+
+    async function render() {
+      const bookings = await loadBookings();
+      const first = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      document.getElementById('month').textContent = new Date(year, month).toLocaleString('default', { month: 'long', year: 'numeric' });
+      const dates = document.getElementById('dates');
+      dates.innerHTML = '';
+      for (let i = 0; i < first; i++) dates.innerHTML += '<div></div>';
+      for (let d = 1; d <= daysInMonth; d++) {
+        const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        const div = document.createElement('div');
+        div.className = 'date';
+        div.textContent = d;
+        const isPast = new Date(dateStr) < new Date().setHours(0,0,0,0);
+        if (isPast) div.classList.add('past');
+        else if (bookings[dateStr] && bookings[dateStr].length >= times.length) div.classList.add('busy');
+        else div.classList.add('free');
+        div.onclick = () => selectDate(dateStr, div, bookings);
+        dates.appendChild(div);
+      }
+    }
+
+    function selectDate(date, el, bookings) {
+      document.querySelectorAll('.date').forEach(d => d.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedDate = date;
+      const booked = bookings[date] || [];
+      const timesDiv = document.getElementById('times');
+      timesDiv.innerHTML = '';
+      times.forEach(t => {
+        const btn = document.createElement('div');
+        btn.className = 'time';
+        btn.textContent = t;
+        if (booked.includes(t)) btn.classList.add('busy');
+        else btn.onclick = () => { selectedTime = t; document.getElementById('form').style.display = 'block'; };
+        timesDiv.appendChild(btn);
+      });
+    }
+
+    function book() {
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      if (!name || !phone || !selectedTime) return alert("Fill all fields");
+      const subject = `NEW BOOKING: ${selectedDate} ${selectedTime}`;
+      const body = `Name: ${name}\nPhone: ${phone}\nService: ${document.getElementById('service').value || 'Not specified'}\nDate: ${selectedDate}\nTime: ${selectedTime}`;
+      window.location.href = `mailto:handymantj.nyc@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      alert("Thank you! Opening email – send it and your slot will be reserved!");
+    }
+
+    function prev() { month--; if (month < 0) { month = 11; year--; } render(); }
+    function next() { month++; if (month > 11) { month = 0; year++; } render(); }
+    render();
+  </script>
+</body>
+</html>
