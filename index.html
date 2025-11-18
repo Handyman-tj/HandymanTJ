@@ -1114,6 +1114,25 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+       .book-now-btn {
+      display: inline-block;
+      padding: 18px 50px;
+      background: linear-gradient(135deg, var(--primary-yellow), #cc9400);
+      color: #000;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1.3em;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(234,183,2,0.4);
+      transition: all .3s;
+      margin: 15px;
+    }
+    .book-now-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(234,183,2,0.6);
+    }
+   
   </style>
 </head>
 <body>
@@ -1129,6 +1148,7 @@
         <li><a href="#services" onclick="closeMenu()">Services</a></li>
         <li><a href="#videos" onclick="closeMenu()">Our Videos</a></li>
         <li><a href="#gallery" onclick="closeMenu()">Our Work</a></li>
+        <li><a href="booking.html" target="_blank" onclick="closeMenu()">Book Online</a></li>
         <li><a href="#testimonials" onclick="closeMenu()">Testimonials</a></li>
         <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
       </ul>
@@ -1158,7 +1178,7 @@
         <h1>Making Your Home Perfect</h1>
         <p>Your Trusted Handyman in NYC</p>
         <a href="#contact" class="cta-button">Get a Free Quote</a>
-        <a href="booking.html" target="_blank" class="book-now-btn">BOOK ONLINE – Check My Availability</a>
+               <a href="booking.html" target="_blank" class="book-now-btn">📅 BOOK ONLINE NOW</a>
       </div>
     </div>
   </section>
@@ -1330,6 +1350,7 @@
   <section class="contact" id="contact">
     <h2>Contact Us</h2>
     <h3>(We will definitely receive your email.)</h3>
+    <a href="booking.html" target="_blank" class="book-now-btn">📅 BOOK ONLINE CALENDAR</a>
     <form action="https://formspree.io/f/xqadobzg" method="POST" id="contactForm">
       <label>
         Your email:
@@ -1495,6 +1516,7 @@
   </script>
 </body>
 </html>
+
 
 
 
