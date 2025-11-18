@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang=\"en\">
 <head>
  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C1CYLQL1TV"></script>
+<script async src=\"https://www.googletagmanager.com/gtag/js?id=G-C1CYLQL1TV\"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -11,13 +12,19 @@
   gtag('config', 'G-C1CYLQL1TV');
 </script>
   
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <meta name="description" content="Professional handyman services in New York City: furniture assembly, painting, drywall repair, door installation. Fast, reliable, affordable. Call now!">
-  <link rel="icon" href="HandymanTJ.png" type="image/x-icon">
+  <meta charset=\"UTF-8\">
+  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+  <meta name=\"description\" content=\"Professional handyman services in New York City: furniture assembly, painting, drywall repair, door installation. Fast, reliable, affordable. Call now!\">
+  <link rel=\"icon\" href=\"HandymanTJ.png\" type=\"image/x-icon\">
   <title>Handyman TJ - Furniture Assembly, Painting, Repairs in NYC</title>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">
+  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
+  <link href=\"https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap\" rel=\"stylesheet\">
+  
+  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\">
+  
   <style>
     * {
       margin: 0;
@@ -33,9 +40,12 @@
       --black: #000000;
       --gray-light: #f8f9fa;
       --gray: #e3e3e3;
-      --text-dark: #333;
-      --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-      --shadow-hover: 0 15px 60px rgba(0, 0, 0, 0.2);
+      --text-dark: #1a1a1a;
+      --text-medium: #4a4a4a;
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.12);
+      --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.15);
+      --shadow-xl: 0 24px 64px rgba(0, 0, 0, 0.2);
     }
 
     html {
@@ -43,11 +53,59 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       color: var(--text-dark);
-      line-height: 1.6;
+      line-height: 1.7;
       background: var(--white);
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Loading Screen */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary-teal), #047a76);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    .loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(255, 255, 255, 0.2);
+      border-top-color: var(--primary-yellow);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Scroll Progress Bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-yellow), var(--primary-teal));
+      z-index: 9998;
+      transform-origin: left;
+      transition: transform 0.1s ease;
+      box-shadow: 0 2px 10px rgba(234, 183, 2, 0.5);
     }
 
     /* Header with glass effect */
@@ -59,41 +117,62 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 5%;
-      background: linear-gradient(135deg, var(--primary-teal), #047a76);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      padding: 20px 5%;
+      background: linear-gradient(135deg, rgba(5, 131, 127, 0.95), rgba(4, 122, 118, 0.95));
+      backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       z-index: 1000;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     header.scrolled {
-      padding: 10px 5%;
-      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15);
+      padding: 12px 5%;
+      background: linear-gradient(135deg, rgba(5, 131, 127, 0.98), rgba(4, 122, 118, 0.98));
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
     }
 
     .logo {
-      animation: fadeInLeft 0.8s ease;
+      animation: fadeInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .logo::after {
+      content: '';
+      position: absolute;
+      inset: -5px;
+      background: linear-gradient(45deg, var(--primary-yellow), var(--primary-teal));
+      border-radius: 20%;
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.4s ease;
+      filter: blur(15px);
+    }
+
+    .logo:hover::after {
+      opacity: 0.3;
     }
 
     .logo img {
-      width: 100px;
-      height: 100px;
-      border-radius: 15%;
+      width: 110px;
+      height: 110px;
+      border-radius: 18%;
       object-fit: cover;
-      transition: transform 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      border: 3px solid rgba(255, 255, 255, 0.2);
     }
 
     .logo img:hover {
-      transform: scale(1.1) rotate(5deg);
+      transform: scale(1.08) rotate(-3deg);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
     }
 
     nav ul {
       display: flex;
       list-style: none;
-      gap: 30px;
-      animation: fadeInDown 0.8s ease;
+      gap: 40px;
+      animation: fadeInDown 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     nav a {
@@ -102,26 +181,31 @@
       font-weight: 600;
       font-size: 1em;
       position: relative;
-      transition: color 0.3s;
+      transition: all 0.3s ease;
+      letter-spacing: 0.3px;
+      padding: 8px 0;
     }
 
-    nav a::after {
+    nav a::before {
       content: '';
       position: absolute;
-      bottom: -5px;
-      left: 0;
+      bottom: 0;
+      left: 50%;
       width: 0;
       height: 3px;
-      background: var(--primary-yellow);
-      transition: width 0.3s ease;
+      background: linear-gradient(90deg, var(--primary-yellow), #ffcc00);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateX(-50%);
+      border-radius: 2px;
     }
 
-    nav a:hover::after {
+    nav a:hover::before {
       width: 100%;
     }
 
     nav a:hover {
       color: var(--primary-yellow);
+      text-shadow: 0 0 20px rgba(234, 183, 2, 0.5);
     }
 
     .hamburger {
@@ -129,7 +213,8 @@
       font-size: 1.8em;
       cursor: pointer;
       color: var(--white);
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
+      z-index: 1001;
     }
 
     .hamburger:hover {
@@ -140,46 +225,70 @@
     .header-right {
       display: flex;
       align-items: center;
-      gap: 20px;
-      animation: fadeInRight 0.8s ease;
+      gap: 25px;
+      animation: fadeInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .location {
-      font-weight: bold;
+      font-weight: 700;
       color: var(--primary-teal);
-      padding: 8px 15px;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      animation: pulse 2s infinite;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.98);
+      border-radius: 30px;
+      animation: pulse 3s infinite;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      font-size: 0.9em;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .location::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(234, 183, 2, 0.3), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .location:hover::before {
+      left: 100%;
     }
 
     @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+      0%, 100% { transform: scale(1); box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); }
+      50% { transform: scale(1.05); box-shadow: 0 8px 30px rgba(234, 183, 2, 0.4); }
     }
 
     .contact-social {
       display: flex;
-      gap: 15px;
+      gap: 20px;
     }
 
     .link-group {
       display: flex;
       align-items: center;
-      gap: 5px;
-      transition: transform 0.3s ease;
+      gap: 8px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: 8px 12px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.1);
     }
 
     .link-group:hover {
       transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .link-group a {
       color: var(--white);
       text-decoration: none;
       font-weight: 600;
-      transition: color 0.3s;
+      transition: all 0.3s ease;
+      font-size: 0.95em;
     }
 
     .link-group:hover a {
@@ -187,18 +296,18 @@
     }
 
     .icon {
-      width: 24px;
-      height: 24px;
-      transition: transform 0.3s ease;
+      width: 26px;
+      height: 26px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       filter: brightness(0) invert(1);
     }
 
     .link-group:hover .icon {
-      transform: rotate(10deg) scale(1.2);
+      transform: rotate(360deg) scale(1.2);
       filter: brightness(1) invert(0.8) sepia(1) saturate(10) hue-rotate(10deg);
     }
 
-    /* Hero Section */
+    /* Hero Section - Premium */
     .hero {
       position: relative;
       height: 100vh;
@@ -216,52 +325,73 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.7);
+      filter: brightness(0.65);
+      transform: scale(1.1);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(5, 131, 127, 0.3), rgba(0, 0, 0, 0.5));
+      pointer-events: none;
     }
 
     .hero-overlay {
       position: relative;
       z-index: 2;
       text-align: center;
-      padding: 40px;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(5px);
-      border-radius: 20px;
-      max-width: 800px;
-      animation: fadeInUp 1s ease;
-      border: 2px solid rgba(255, 255, 255, 0.2);
+      padding: 60px 50px;
+      background: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(15px);
+      border-radius: 30px;
+      max-width: 900px;
+      animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
     }
 
     .hero-text h1 {
-      font-size: 3.5em;
+      font-family: 'Poppins', sans-serif;
+      font-size: 4em;
       color: var(--white);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       font-weight: 800;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-      animation: slideInLeft 1s ease;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      animation: slideInLeft 1s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: -1px;
+      line-height: 1.2;
+      background: linear-gradient(135deg, #ffffff, #e0e0e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .hero-text p {
-      font-size: 1.5em;
-      color: var(--white);
-      margin-bottom: 30px;
-      animation: slideInRight 1s ease;
+      font-size: 1.6em;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 35px;
+      animation: slideInRight 1s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 400;
+      letter-spacing: 0.5px;
     }
 
     .cta-button {
       display: inline-block;
-      padding: 15px 40px;
-      background: linear-gradient(135deg, #42A5F5 0%, #1E88E5 100%);
-      color: #ffffff;
+      padding: 18px 50px;
+      background: linear-gradient(135deg, var(--primary-yellow), #d4a000);
+      color: var(--text-dark);
       border-radius: 50px;
       font-weight: 700;
       letter-spacing: 0.5px;
       text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(13, 71, 161, 0.4);
-      animation: fadeInUp 1.2s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 12px 35px rgba(234, 183, 2, 0.5);
+      animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
+      font-size: 1.1em;
+      border: 2px solid rgba(255, 255, 255, 0.2);
     }
 
     .cta-button::before {
@@ -272,25 +402,112 @@
       width: 0;
       height: 0;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, 0.3);
       transform: translate(-50%, -50%);
       transition: width 0.6s ease, height 0.6s ease;
     }
 
     .cta-button:hover::before {
-      width: 300px;
-      height: 300px;
+      width: 400px;
+      height: 400px;
     }
 
     .cta-button:hover {
       transform: translateY(-4px);
-      background: linear-gradient(135deg, #64B5F6 0%, #2196F3 100%);
-      box-shadow: 0 12px 28px rgba(230, 74, 25, 0.5);
+      background: linear-gradient(135deg, #ffd700, var(--primary-yellow));
+      box-shadow: 0 18px 50px rgba(234, 183, 2, 0.6);
     }
 
-    /* About Section */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator i {
+      color: var(--white);
+      font-size: 2em;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-15px); }
+    }
+
+    /* Stats Section - NEW */
+    .stats {
+      padding: 80px 5%;
+      background: linear-gradient(135deg, var(--primary-teal), #047a76);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stats::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width=\"60\" height=\"60\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"30\" cy=\"30\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/></svg>');
+      opacity: 0.3;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+    }
+
+    .stat-item:nth-child(1) { animation-delay: 0.1s; }
+    .stat-item:nth-child(2) { animation-delay: 0.2s; }
+    .stat-item:nth-child(3) { animation-delay: 0.3s; }
+    .stat-item:nth-child(4) { animation-delay: 0.4s; }
+
+    .stat-item:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .stat-number {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.5em;
+      font-weight: 800;
+      color: var(--primary-yellow);
+      margin-bottom: 10px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .stat-label {
+      font-size: 1.1em;
+      color: var(--white);
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    /* About Section - Enhanced */
     .about {
-      padding: 100px 5%;
+      padding: 120px 5%;
       background: var(--white);
       position: relative;
       overflow: hidden;
@@ -301,70 +518,94 @@
       position: absolute;
       top: -50%;
       right: -10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(234, 183, 2, 0.1), transparent);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(234, 183, 2, 0.08), transparent);
       border-radius: 50%;
-      animation: float 6s ease-in-out infinite;
+      animation: float 8s ease-in-out infinite;
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-30px); }
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-40px) rotate(180deg); }
     }
 
     .about-content {
-      max-width: 1200px;
+      max-width: 1300px;
       margin: 0 auto;
       display: flex;
       align-items: center;
-      gap: 60px;
+      gap: 80px;
       position: relative;
       z-index: 1;
     }
 
     .about-text {
       flex: 1;
-      animation: fadeInLeft 1s ease;
+      animation: fadeInLeft 1s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .about-text h2 {
-      font-size: 2.8em;
-      margin-bottom: 25px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.5em;
+      margin-bottom: 30px;
       color: var(--primary-teal);
       position: relative;
       display: inline-block;
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.2;
     }
 
     .about-text h2::after {
       content: '';
       position: absolute;
-      bottom: -10px;
+      bottom: -15px;
       left: 0;
-      width: 80px;
-      height: 4px;
-      background: var(--primary-yellow);
-      border-radius: 2px;
+      width: 100px;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-yellow), transparent);
+      border-radius: 3px;
     }
 
     .about-text p {
-      font-size: 1.1em;
-      line-height: 1.8;
-      color: #555;
+      font-size: 1.15em;
+      line-height: 1.9;
+      color: var(--text-medium);
+      margin-bottom: 25px;
+      font-weight: 400;
+    }
+
+    .about-logo-container {
+      position: relative;
+      animation: fadeInRight 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .about-logo-container::before {
+      content: '';
+      position: absolute;
+      inset: -20px;
+      background: linear-gradient(135deg, var(--primary-yellow), var(--primary-teal));
+      border-radius: 50%;
+      opacity: 0.2;
+      filter: blur(40px);
+      animation: rotate 20s linear infinite;
     }
 
     .about-logo {
-      width: 300px;
-      height: 300px;
+      width: 350px;
+      height: 350px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-      animation: fadeInRight 1s ease, rotate 20s linear infinite;
-      transition: transform 0.3s ease;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.2);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 5px solid rgba(255, 255, 255, 0.5);
+      position: relative;
     }
 
     .about-logo:hover {
       transform: scale(1.05);
+      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.3);
     }
 
     @keyframes rotate {
@@ -372,44 +613,64 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Services Section */
+    /* Services Section - Premium Cards */
     .services {
-      padding: 100px 5%;
-      background: linear-gradient(135deg, rgba(234, 183, 2, 0.05), rgba(234, 183, 2, 0.15));
+      padding: 120px 5%;
+      background: linear-gradient(180deg, rgba(234, 183, 2, 0.03), rgba(234, 183, 2, 0.08));
       position: relative;
     }
 
     .services h2 {
-      font-size: 2.8em;
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.5em;
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 70px;
       color: var(--primary-teal);
-      animation: fadeInDown 1s ease;
+      animation: fadeInDown 1s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 800;
+      letter-spacing: -1px;
+      position: relative;
+    }
+
+    .services h2::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-yellow), transparent);
+      border-radius: 3px;
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      max-width: 1400px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 35px;
+      max-width: 1500px;
       margin: 0 auto;
     }
 
     .service {
-      background: var(--white);
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      transition: all 0.4s ease;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      padding: 40px 30px;
+      border-radius: 25px;
+      box-shadow: var(--shadow-md);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       position: relative;
       overflow: hidden;
-      animation: fadeInUp 0.8s ease backwards;
+      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+      border: 2px solid rgba(255, 255, 255, 0.5);
     }
 
-    .service:nth-child(1) { animation-delay: 0.1s; }
-    .service:nth-child(2) { animation-delay: 0.2s; }
-    .service:nth-child(3) { animation-delay: 0.3s; }
-    .service:nth-child(4) { animation-delay: 0.4s; }
+    .service:nth-child(1) { animation-delay: 0.05s; }
+    .service:nth-child(2) { animation-delay: 0.1s; }
+    .service:nth-child(3) { animation-delay: 0.15s; }
+    .service:nth-child(4) { animation-delay: 0.2s; }
+    .service:nth-child(5) { animation-delay: 0.25s; }
+    .service:nth-child(6) { animation-delay: 0.3s; }
 
     .service::before {
       content: '';
@@ -418,45 +679,85 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(234, 183, 2, 0.2), transparent);
-      transition: left 0.5s ease;
+      background: linear-gradient(90deg, transparent, rgba(234, 183, 2, 0.15), transparent);
+      transition: left 0.6s ease;
     }
 
     .service:hover::before {
       left: 100%;
     }
 
+    .service::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 25px;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--primary-yellow), var(--primary-teal));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .service:hover::after {
+      opacity: 1;
+    }
+
     .service:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: var(--shadow-hover);
+      transform: translateY(-15px) scale(1.02);
+      box-shadow: var(--shadow-xl);
+      background: rgba(255, 255, 255, 1);
+    }
+
+    .service-icon-wrapper {
+      width: 90px;
+      height: 90px;
+      margin-bottom: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(234, 183, 2, 0.1), rgba(5, 131, 127, 0.1));
+      border-radius: 20px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .service:hover .service-icon-wrapper {
+      transform: rotate(10deg) scale(1.1);
+      background: linear-gradient(135deg, rgba(234, 183, 2, 0.2), rgba(5, 131, 127, 0.2));
     }
 
     .service img {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 20px;
-      transition: transform 0.4s ease;
+      width: 65px;
+      height: 65px;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .service:hover img {
-      transform: scale(1.2) rotate(5deg);
+      transform: scale(1.15);
     }
 
     .service h3 {
-      font-size: 1.4em;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5em;
       margin-bottom: 15px;
       color: var(--primary-teal);
+      font-weight: 700;
+      letter-spacing: -0.5px;
     }
 
     .service p {
-      color: #666;
-      font-size: 1em;
+      color: var(--text-medium);
+      font-size: 1.05em;
+      line-height: 1.7;
+      font-weight: 400;
     }
 
-    /* Videos Section */
+    /* Videos Section - Enhanced */
     .videos {
-      padding: 100px 5%;
-      background: linear-gradient(135deg, var(--primary-teal), #047a76);
+      padding: 120px 5%;
+      background: linear-gradient(135deg, var(--primary-blue), #5a6f99);
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -469,34 +770,39 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
-      opacity: 0.5;
+      background: url('data:image/svg+xml,<svg width=\"100\" height=\"100\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"50\" cy=\"50\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/></svg>');
+      opacity: 0.4;
     }
 
     .videos h2 {
-      font-size: 2.8em;
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.5em;
       color: var(--white);
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-      animation: fadeInDown 1s ease;
+      margin-bottom: 25px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      animation: fadeInDown 1s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 800;
+      letter-spacing: -1px;
     }
 
     .videos h3 {
       color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 40px;
-      font-size: 1.2em;
+      margin-bottom: 50px;
+      font-size: 1.3em;
+      font-weight: 400;
     }
 
     .video-scroller-container {
       position: relative;
-      max-width: 500px;
+      max-width: 550px;
       margin: 0 auto;
-      padding: 20px;
-      border: 3px solid rgba(255, 255, 255, 0.3);
-      border-radius: 25px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      animation: fadeInUp 1s ease;
+      padding: 30px;
+      border: 3px solid rgba(255, 255, 255, 0.25);
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
     }
 
     .video-scroller {
@@ -504,104 +810,165 @@
       overflow-x: hidden;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
-      gap: 20px;
-      padding: 15px;
+      gap: 25px;
+      padding: 20px;
     }
 
     .video-item {
       min-width: 100%;
-      max-height: 600px;
+      max-height: 650px;
       aspect-ratio: 9/16;
-      border-radius: 15px;
+      border-radius: 20px;
       cursor: pointer;
       scroll-snap-align: center;
       object-fit: cover;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
+      box-shadow: 0 15px 60px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 3px solid rgba(255, 255, 255, 0.2);
     }
 
     .video-item:hover {
       transform: scale(1.05);
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
     }
 
     .scroll-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       border: none;
       border-radius: 50%;
-      width: 45px;
-      height: 45px;
-      font-size: 1.3em;
+      width: 50px;
+      height: 50px;
+      font-size: 1.4em;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 10;
-      color: var(--primary-teal);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      color: var(--primary-blue);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
 
     .scroll-btn:hover {
       background: var(--white);
-      transform: translateY(-50%) scale(1.1);
+      transform: translateY(-50%) scale(1.15);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
     }
 
     .scroll-btn.left {
-      left: 10px;
+      left: 15px;
     }
 
     .scroll-btn.right {
-      right: 10px;
+      right: 15px;
     }
 
-    /* Gallery Section */
+    /* Gallery Section - Premium */
     .gallery {
-      padding: 100px 5%;
+      padding: 120px 5%;
       background: var(--white);
     }
 
     .gallery h2 {
-      font-size: 2.8em;
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.5em;
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 70px;
       color: var(--primary-teal);
-      animation: fadeInDown 1s ease;
+      animation: fadeInDown 1s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 800;
+      letter-spacing: -1px;
+      position: relative;
+    }
+
+    .gallery h2::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary-yellow), transparent);
+      border-radius: 3px;
     }
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1400px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1500px;
       margin: 0 auto;
     }
 
-    .gallery-grid img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 15px;
-      box-shadow: var(--shadow);
-      transition: all 0.4s ease;
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: var(--shadow-md);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
-      animation: fadeInUp 0.8s ease backwards;
+      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+      height: 280px;
     }
 
-    .gallery-grid img:nth-child(odd) {
+    .gallery-item:nth-child(odd) {
       animation-delay: 0.1s;
     }
 
-    .gallery-grid img:nth-child(even) {
+    .gallery-item:nth-child(even) {
       animation-delay: 0.2s;
     }
 
-    .gallery-grid img:hover {
-      transform: scale(1.05) rotate(2deg);
-      box-shadow: var(--shadow-hover);
-      z-index: 10;
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Lightbox */
+    .gallery-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(234, 183, 2, 0.8), rgba(5, 131, 127, 0.8));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 1;
+    }
+
+    .gallery-item::after {
+      content: '\f00e';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      color: var(--white);
+      font-size: 3em;
+      z-index: 2;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .gallery-item:hover::before {
+      opacity: 1;
+    }
+
+    .gallery-item:hover::after {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    /* Lightbox - Enhanced */
     .lightbox {
       display: none;
       position: fixed;
@@ -609,121 +976,184 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.95);
+      background: rgba(0, 0, 0, 0.97);
       justify-content: center;
       align-items: center;
       z-index: 2000;
       animation: fadeIn 0.3s ease;
+      backdrop-filter: blur(10px);
     }
 
     .lightbox img {
       max-width: 90%;
       max-height: 90vh;
-      border-radius: 15px;
-      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
-      animation: zoomIn 0.4s ease;
+      border-radius: 20px;
+      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7);
+      animation: zoomIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 3px solid rgba(255, 255, 255, 0.1);
     }
 
     .lightbox .close {
       position: absolute;
-      top: 30px;
-      right: 40px;
+      top: 40px;
+      right: 50px;
       color: var(--white);
-      font-size: 40px;
+      font-size: 50px;
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 50%;
     }
 
     .lightbox .close:hover {
       transform: rotate(90deg) scale(1.2);
       color: var(--primary-yellow);
+      background: rgba(255, 255, 255, 0.2);
     }
 
-    /* Testimonials Section */
+    /* Testimonials Section - Premium */
     .testimonials {
-      padding: 100px 5%;
-      background: linear-gradient(135deg, var(--primary-blue), #5a6f99);
+      padding: 120px 5%;
+      background: linear-gradient(135deg, var(--primary-teal), #047a76);
       text-align: center;
       position: relative;
       overflow: hidden;
     }
 
+    .testimonials::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width=\"80\" height=\"80\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"40\" cy=\"40\" r=\"2\" fill=\"rgba(255,255,255,0.1)\"/></svg>');
+      opacity: 0.3;
+    }
+
     .testimonials h2 {
-      font-size: 2.8em;
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.5em;
       color: var(--white);
-      margin-bottom: 60px;
-      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-      animation: fadeInDown 1s ease;
+      margin-bottom: 70px;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      animation: fadeInDown 1s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 800;
+      letter-spacing: -1px;
     }
 
     .testimonials-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      max-width: 1300px;
       margin: 0 auto;
     }
 
     .testimonial {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(10px);
-      padding: 35px;
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(15px);
+      padding: 45px 35px;
+      border-radius: 25px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
       border: 2px solid rgba(255, 255, 255, 0.2);
-      transition: all 0.4s ease;
-      animation: fadeInUp 0.8s ease backwards;
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) backwards;
+      position: relative;
+      overflow: hidden;
     }
 
     .testimonial:nth-child(1) { animation-delay: 0.2s; }
     .testimonial:nth-child(2) { animation-delay: 0.4s; }
     .testimonial:nth-child(3) { animation-delay: 0.6s; }
 
+    .testimonial::before {
+      content: '\"';
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-size: 8em;
+      color: rgba(234, 183, 2, 0.2);
+      font-family: Georgia, serif;
+      line-height: 0.8;
+    }
+
     .testimonial:hover {
-      transform: translateY(-10px);
-      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-15px);
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+    }
+
+    .testimonial-stars {
+      margin-bottom: 20px;
+      font-size: 1.3em;
+    }
+
+    .testimonial-stars i {
+      color: var(--primary-yellow);
+      margin: 0 2px;
+      text-shadow: 0 2px 8px rgba(234, 183, 2, 0.5);
     }
 
     .testimonial p {
       font-style: italic;
       color: var(--white);
-      font-size: 1.1em;
-      margin-bottom: 15px;
+      font-size: 1.15em;
+      margin-bottom: 20px;
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
     }
 
     .testimonial .author {
-      font-weight: bold;
+      font-weight: 700;
       color: var(--primary-yellow);
-      font-size: 1em;
+      font-size: 1.1em;
+      font-style: normal;
+      letter-spacing: 0.5px;
     }
 
-    /* Contact Section */
+    /* Contact Section - Premium */
     .contact {
-      padding: 100px 5%;
-      background: var(--white);
+      padding: 120px 5%;
+      background: linear-gradient(180deg, var(--white), rgba(234, 183, 2, 0.05));
       text-align: center;
     }
 
     .contact h2 {
-      font-size: 2.8em;
-      margin-bottom: 20px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.5em;
+      margin-bottom: 25px;
       color: var(--primary-teal);
-      animation: fadeInDown 1s ease;
+      animation: fadeInDown 1s cubic-bezier(0.4, 0, 0.2, 1);
+      font-weight: 800;
+      letter-spacing: -1px;
     }
 
     .contact h3 {
-      color: #666;
-      margin-bottom: 40px;
-      font-size: 1.1em;
+      color: var(--text-medium);
+      margin-bottom: 50px;
+      font-size: 1.2em;
+      font-weight: 400;
     }
 
     .contact form {
-      max-width: 700px;
+      max-width: 750px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 25px;
-      animation: fadeInUp 1s ease;
+      gap: 30px;
+      animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .form-group {
+      position: relative;
     }
 
     .contact label {
@@ -731,45 +1161,50 @@
       text-align: left;
       font-weight: 600;
       color: var(--text-dark);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      font-size: 1.05em;
+      letter-spacing: 0.3px;
     }
 
-    .contact input[type="email"],
+    .contact input[type=\"email\"],
     .contact textarea {
       width: 100%;
-      padding: 15px;
+      padding: 18px 20px;
       border: 2px solid var(--gray);
-      border-radius: 10px;
-      font-size: 1em;
-      transition: all 0.3s ease;
+      border-radius: 15px;
+      font-size: 1.05em;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       font-family: inherit;
+      background: var(--white);
     }
 
-    .contact input[type="email"]:focus,
+    .contact input[type=\"email\"]:focus,
     .contact textarea:focus {
       outline: none;
       border-color: var(--primary-teal);
-      box-shadow: 0 5px 20px rgba(5, 131, 127, 0.2);
+      box-shadow: 0 8px 30px rgba(5, 131, 127, 0.2);
+      transform: translateY(-2px);
     }
 
     .contact textarea {
-      height: 180px;
+      height: 200px;
       resize: vertical;
     }
 
     .contact button {
-      padding: 15px 40px;
+      padding: 18px 50px;
       background: linear-gradient(135deg, var(--primary-teal), #047a76);
       color: var(--white);
       border: none;
       border-radius: 50px;
-      font-size: 1.1em;
-      font-weight: bold;
+      font-size: 1.15em;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 25px rgba(5, 131, 127, 0.3);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 12px 35px rgba(5, 131, 127, 0.4);
       position: relative;
       overflow: hidden;
+      letter-spacing: 0.5px;
     }
 
     .contact button::before {
@@ -786,53 +1221,132 @@
     }
 
     .contact button:hover::before {
-      width: 300px;
-      height: 300px;
+      width: 400px;
+      height: 400px;
     }
 
     .contact button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(5, 131, 127, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 18px 50px rgba(5, 131, 127, 0.5);
     }
 
-    /* Footer */
+    /* Footer - Premium */
     footer {
-      background: var(--black);
+      background: linear-gradient(135deg, #1a1a1a, #000000);
       color: var(--white);
-      padding: 60px 5%;
+      padding: 80px 5% 40px;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--primary-yellow), var(--primary-teal), transparent);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     footer p {
-      margin-bottom: 15px;
-      font-size: 1em;
+      margin-bottom: 20px;
+      font-size: 1.05em;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 400;
     }
 
     footer a {
       color: var(--primary-yellow);
       text-decoration: none;
-      transition: color 0.3s;
+      transition: all 0.3s ease;
+      font-weight: 600;
     }
 
     footer a:hover {
-      color: #ffcc00;
+      color: #ffd700;
+      text-shadow: 0 0 20px rgba(234, 183, 2, 0.5);
     }
 
     footer .socials {
-      margin: 30px 0;
+      margin: 40px 0;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
     }
 
     footer .socials a {
       color: var(--white);
-      font-size: 1.8em;
-      margin: 0 15px;
-      transition: all 0.3s ease;
-      display: inline-block;
+      font-size: 2em;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 2px solid rgba(255, 255, 255, 0.1);
     }
 
     footer .socials a:hover {
       color: var(--primary-yellow);
-      transform: translateY(-5px) scale(1.2);
+      transform: translateY(-8px) scale(1.15);
+      background: rgba(234, 183, 2, 0.2);
+      border-color: var(--primary-yellow);
+      box-shadow: 0 10px 30px rgba(234, 183, 2, 0.4);
+    }
+
+    .footer-divider {
+      width: 80%;
+      max-width: 400px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      margin: 30px auto;
+    }
+
+    .footer-copyright {
+      font-size: 0.95em;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 30px;
+    }
+
+    /* Scroll to top button - Premium */
+    .scroll-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary-yellow), #d4a000);
+      color: var(--text-dark);
+      border: none;
+      border-radius: 50%;
+      font-size: 1.6em;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(234, 183, 2, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 999;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-8px) scale(1.1);
+      box-shadow: 0 15px 50px rgba(234, 183, 2, 0.7);
+      background: linear-gradient(135deg, #ffd700, var(--primary-yellow));
     }
 
     /* Animations */
@@ -844,7 +1358,7 @@
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(50px);
       }
       to {
         opacity: 1;
@@ -855,7 +1369,7 @@
     @keyframes fadeInDown {
       from {
         opacity: 0;
-        transform: translateY(-40px);
+        transform: translateY(-50px);
       }
       to {
         opacity: 1;
@@ -866,7 +1380,7 @@
     @keyframes fadeInLeft {
       from {
         opacity: 0;
-        transform: translateX(-40px);
+        transform: translateX(-50px);
       }
       to {
         opacity: 1;
@@ -877,7 +1391,7 @@
     @keyframes fadeInRight {
       from {
         opacity: 0;
-        transform: translateX(40px);
+        transform: translateX(50px);
       }
       to {
         opacity: 1;
@@ -918,44 +1432,34 @@
       }
     }
 
-    /* Scroll to top button */
-    .scroll-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, var(--primary-yellow), #ffcc00);
-      color: var(--black);
-      border: none;
-      border-radius: 50%;
-      font-size: 1.5em;
-      cursor: pointer;
-      box-shadow: 0 5px 20px rgba(234, 183, 2, 0.4);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 999;
-    }
-
-    .scroll-top.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .scroll-top:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 30px rgba(234, 183, 2, 0.6);
-    }
-
     /* Responsive Design */
-    @media (max-width: 1024px) {
+    @media (max-width: 1200px) {
       .hero-text h1 {
-        font-size: 2.8em;
+        font-size: 3.5em;
       }
 
       .about-content {
-        gap: 40px;
+        gap: 60px;
+      }
+
+      .about-logo {
+        width: 300px;
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-text h1 {
+        font-size: 3em;
+      }
+
+      .about-text h2,
+      .services h2,
+      .videos h2,
+      .gallery h2,
+      .testimonials h2,
+      .contact h2 {
+        font-size: 3em;
       }
 
       .about-logo {
@@ -977,19 +1481,22 @@
         left: 0;
         right: 0;
         background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(10px);
-        padding: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        gap: 15px;
+        backdrop-filter: blur(20px);
+        padding: 30px;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        gap: 20px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
       }
 
       nav ul.show {
         display: flex;
-        animation: fadeInDown 0.4s ease;
+        animation: fadeInDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       nav ul.show a {
         color: var(--text-dark);
+        font-size: 1.1em;
       }
 
       nav ul.show a:hover {
@@ -1003,7 +1510,7 @@
       .header-right {
         flex-direction: column;
         align-items: flex-end;
-        gap: 10px;
+        gap: 12px;
       }
 
       .hero {
@@ -1011,16 +1518,25 @@
       }
 
       .hero-text h1 {
-        font-size: 2.2em;
+        font-size: 2.5em;
       }
 
       .hero-text p {
-        font-size: 1.2em;
+        font-size: 1.3em;
+      }
+
+      .hero-overlay {
+        padding: 40px 30px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .about-content {
         flex-direction: column;
         text-align: center;
+        gap: 40px;
       }
 
       .about-text h2::after {
@@ -1029,37 +1545,62 @@
       }
 
       .about-logo {
-        width: 200px;
-        height: 200px;
+        width: 220px;
+        height: 220px;
+      }
+
+      .about-text h2,
+      .services h2,
+      .videos h2,
+      .gallery h2,
+      .testimonials h2,
+      .contact h2 {
+        font-size: 2.5em;
       }
 
       .services-grid,
       .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       }
 
       .video-scroller-container {
-        max-width: 400px;
+        max-width: 450px;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 480px) {
       .logo img {
-        width: 70px;
-        height: 70px;
+        width: 80px;
+        height: 80px;
       }
 
       .hero-text h1 {
-        font-size: 1.8em;
+        font-size: 2em;
       }
 
       .hero-text p {
-        font-size: 1em;
+        font-size: 1.1em;
       }
 
       .cta-button {
-        padding: 12px 30px;
-        font-size: 0.95em;
+        padding: 15px 35px;
+        font-size: 1em;
+      }
+
+      .hero-overlay {
+        padding: 35px 25px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat-number {
+        font-size: 3em;
       }
 
       .about-text h2,
@@ -1074,40 +1615,46 @@
       .services-grid,
       .gallery-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
+        gap: 20px;
       }
 
       .video-scroller-container {
-        max-width: 300px;
+        max-width: 350px;
+        padding: 20px;
       }
 
       .video-item {
-        max-height: 500px;
+        max-height: 550px;
       }
 
       .scroll-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 1em;
-      }
-
-      .testimonials-grid {
-        grid-template-columns: 1fr;
+        width: 40px;
+        height: 40px;
+        font-size: 1.1em;
       }
 
       .scroll-top {
-        width: 45px;
-        height: 45px;
-        bottom: 20px;
+        width: 50px;
+        height: 50px;
+        bottom: 30px;
+        right: 30px;
+        font-size: 1.4em;
+      }
+
+      .lightbox .close {
+        top: 20px;
         right: 20px;
+        font-size: 40px;
+        width: 50px;
+        height: 50px;
       }
     }
 
     /* Section visibility animation */
     section {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
+      transform: translateY(40px);
+      transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     section.visible {
@@ -1117,251 +1664,402 @@
   </style>
 </head>
 <body>
-  <header id="header">
-    <div class="logo">
-      <img src="HandymanTJ.png" alt="Handyman TJ Logo">
+  <!-- Loading Screen -->
+  <div class=\"loading-screen\" id=\"loadingScreen\">
+    <div class=\"loader\"></div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div class=\"scroll-progress\" id=\"scrollProgress\"></div>
+
+  <header id=\"header\">
+    <div class=\"logo\">
+      <img src=\"HandymanTJ.png\" alt=\"Handyman TJ Logo\">
     </div>
     <nav>
-      <div class="hamburger" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-      <ul id="navMenu">
-        <li><a href="#hero" onclick="closeMenu()">Home</a></li>
-        <li><a href="#about" onclick="closeMenu()">About</a></li>
-        <li><a href="#services" onclick="closeMenu()">Services</a></li>
-        <li><a href="#videos" onclick="closeMenu()">Our Videos</a></li>
-        <li><a href="#gallery" onclick="closeMenu()">Our Work</a></li>
-        <li><a href="#testimonials" onclick="closeMenu()">Testimonials</a></li>
-        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+      <div class=\"hamburger\" onclick=\"toggleMenu()\"><i class=\"fas fa-bars\"></i></div>
+      <ul id=\"navMenu\">
+        <li><a href=\"#hero\" onclick=\"closeMenu()\">Home</a></li>
+        <li><a href=\"#about\" onclick=\"closeMenu()\">About</a></li>
+        <li><a href=\"#services\" onclick=\"closeMenu()\">Services</a></li>
+        <li><a href=\"#videos\" onclick=\"closeMenu()\">Our Videos</a></li>
+        <li><a href=\"#gallery\" onclick=\"closeMenu()\">Our Work</a></li>
+        <li><a href=\"#testimonials\" onclick=\"closeMenu()\">Testimonials</a></li>
+        <li><a href=\"#contact\" onclick=\"closeMenu()\">Contact</a></li>
       </ul>
     </nav>
-    <div class="header-right">
-      <span class="location">NEW YORK CITY</span>
-      <div class="contact-social">
-        <div class="link-group">
-          <a href="https://m.yelp.com/biz/tj-handyman-brooklyn" target="_blank">Yelp</a>
-          <i class="fab fa-yelp icon"></i>
+    <div class=\"header-right\">
+      <span class=\"location\">NEW YORK CITY</span>
+      <div class=\"contact-social\">
+        <div class=\"link-group\">
+          <a href=\"https://m.yelp.com/biz/tj-handyman-brooklyn\" target=\"_blank\">Yelp</a>
+          <i class=\"fab fa-yelp icon\"></i>
         </div>
-        <div class="link-group">
-          <a href="https://www.instagram.com/handymantj.com_nyc/?igsh=OWFia3lrcnBhcWNv&utm_source=qr#" target="_blank">Instagram</a>
-          <img src="Insta.png" alt="Instagram" class="icon">
+        <div class=\"link-group\">
+          <a href=\"https://www.instagram.com/handymantj.com_nyc/?igsh=OWFia3lrcnBhcWNv&utm_source=qr#\" target=\"_blank\">Instagram</a>
+          <img src=\"Insta.png\" alt=\"Instagram\" class=\"icon\">
         </div>
       </div>
     </div>
   </header>
 
-  <section class="hero" id="hero">
+  <section class=\"hero\" id=\"hero\">
     <video autoplay loop muted playsinline>
-      <source src="Main_Video_Handyman.mp4" type="video/mp4">
+      <source src=\"Main_Video_Handyman.mp4\" type=\"video/mp4\">
       Your browser does not support the video tag.
     </video>
-    <div class="hero-overlay">
-      <div class="hero-text">
+    <div class=\"hero-overlay\">
+      <div class=\"hero-text\">
         <h1>Making Your Home Perfect</h1>
         <p>Your Trusted Handyman in NYC</p>
-        <a href="#contact" class="cta-button">Get a Free Quote</a>
+        <a href=\"#contact\" class=\"cta-button\">Get a Free Quote</a>
+      </div>
+    </div>
+    <div class=\"scroll-indicator\">
+      <i class=\"fas fa-chevron-down\"></i>
+    </div>
+  </section>
+
+  <section class=\"stats\" id=\"stats\">
+    <div class=\"stats-grid\">
+      <div class=\"stat-item\">
+        <div class=\"stat-number\" data-target=\"500\">0</div>
+        <div class=\"stat-label\">Projects Completed</div>
+      </div>
+      <div class=\"stat-item\">
+        <div class=\"stat-number\" data-target=\"450\">0</div>
+        <div class=\"stat-label\">Happy Clients</div>
+      </div>
+      <div class=\"stat-item\">
+        <div class=\"stat-number\" data-target=\"10\">0</div>
+        <div class=\"stat-label\">Years Experience</div>
+      </div>
+      <div class=\"stat-item\">
+        <div class=\"stat-number\" data-target=\"100\">0</div>
+        <div class=\"stat-label\">Satisfaction Rate</div>
       </div>
     </div>
   </section>
 
-  <section class="about" id="about">
-    <div class="about-content">
-      <div class="about-text">
+  <section class=\"about\" id=\"about\">
+    <div class=\"about-content\">
+      <div class=\"about-text\">
         <h2>We've Got You Covered</h2>
-        <p>At Handyman TJ, we deliver reliable, high-quality solutions that make your home more functional, comfortable, and visually appealing. Our core services include painting, drywall work, flooring, TV and furniture installation, door repair, and general home improvements — all performed with precision, efficiency, and care.We take pride in our professionalism, attention to detail, and commitment to customer satisfaction. Whether it's a simple repair or a detailed installation, Handyman TJ ensures every job is done right, on time, and to the highest standard.</p>
+        <p>At Handyman TJ, we deliver reliable, high-quality solutions that make your home more functional, comfortable, and visually appealing. Our core services include painting, drywall work, flooring, TV and furniture installation, door repair, and general home improvements — all performed with precision, efficiency, and care.</p>
+        <p>We take pride in our professionalism, attention to detail, and commitment to customer satisfaction. Whether it's a simple repair or a detailed installation, Handyman TJ ensures every job is done right, on time, and to the highest standard.</p>
       </div>
-      <img src="HandymanTJ.png" alt="Handyman TJ Logo" class="about-logo">
+      <div class=\"about-logo-container\">
+        <img src=\"HandymanTJ.png\" alt=\"Handyman TJ Logo\" class=\"about-logo\">
+      </div>
     </div>
   </section>
 
-  <section class="services" id="services">
+  <section class=\"services\" id=\"services\">
     <h2>Our Services</h2>
-    <div class="services-grid">
-      <div class="service">
-        <img src="Furniture.png" alt="Furniture Assembly">
+    <div class=\"services-grid\">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"Furniture.png\" alt=\"Furniture Assembly\">
+        </div>
         <h3>Furniture Assembly</h3>
         <p>Expert assembly of furniture, including desks, beds, and shelving units, ensuring precision and durability.</p>
       </div>
-      <div class="service">
-        <img src="Carpentary.png" alt="Carpentry">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"Carpentary.png\" alt=\"Carpentry\">
+        </div>
         <h3>Carpentry</h3>
         <p>Custom shelves, door fixes, and more.</p>
       </div>
-      <div class="service">
-        <img src="Paint.png" alt="Painting">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"Paint.png\" alt=\"Painting\">
+        </div>
         <h3>Painting</h3>
         <p>Interior and exterior painting services.</p>
       </div>
-      <div class="service">
-        <img src="Assembly.png" alt="Handyman assembly">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"Assembly.png\" alt=\"Handyman assembly\">
+        </div>
         <h3>Handyman Assembly</h3>
         <p>Assembling furniture, shelves, and more.</p>
       </div>
-      <div class="service">
-        <img src="Caulking.png" alt="Handyman caulking">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"Caulking.png\" alt=\"Handyman caulking\">
+        </div>
         <h3>Handyman Caulking</h3>
         <p>Sealing gaps around windows, doors, and fixtures.</p>
       </div>
-      <div class="service">
-        <img src="DoorInstallation.png" alt="Door installation">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"DoorInstallation.png\" alt=\"Door installation\">
+        </div>
         <h3>Door Installation</h3>
         <p>Installing interior and exterior doors.</p>
       </div>
-      <div class="service">
-        <img src="DoorRepair.png" alt="Door repair">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"DoorRepair.png\" alt=\"Door repair\">
+        </div>
         <h3>Door Repair</h3>
         <p>Fixing squeaky hinges, broken knobs, and more.</p>
       </div>
-      <div class="service">
-        <img src="DrywallInstallation.png" alt="Drywall installation or replacement">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"DrywallInstallation.png\" alt=\"Drywall installation or replacement\">
+        </div>
         <h3>Drywall Installation</h3>
         <p>Installing or replacing wallboard.</p>
       </div>
-      <div class="service">
-        <img src="DrywallRepair.png" alt="Drywall repair">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"DrywallRepair.png\" alt=\"Drywall repair\">
+        </div>
         <h3>Drywall Repair</h3>
         <p>Patching holes and fixing cracks in walls.</p>
       </div>
-      <div class="service">
-        <img src="FloorInstallation.png" alt="Floor installation">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"FloorInstallation.png\" alt=\"Floor installation\">
+        </div>
         <h3>Floor Installation</h3>
         <p>Installing various types of flooring.</p>
       </div>
-      <div class="service">
-        <img src="FloorRepair.png" alt="Floor repair">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"FloorRepair.png\" alt=\"Floor repair\">
+        </div>
         <h3>Floor Repair</h3>
         <p>Fixing damaged or loose flooring.</p>
       </div>
-      <div class="service">
-        <img src="GeneralInstallation.png" alt="General installation">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"GeneralInstallation.png\" alt=\"General installation\">
+        </div>
         <h3>General Installation</h3>
         <p>Installing fixtures, shelves, and other items.</p>
       </div>
-      <div class="service">
-        <img src="LightFixture.png" alt="Light fixture installation">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"LightFixture.png\" alt=\"Light fixture installation\">
+        </div>
         <h3>Light Fixture Installation</h3>
         <p>Installing new or replacement light fixtures.</p>
       </div>
-      <div class="service">
-        <img src="OutletInstallation.png" alt="Outlet installation">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"OutletInstallation.png\" alt=\"Outlet installation\">
+        </div>
         <h3>Outlet Installation</h3>
         <p>Installing new electrical outlets.</p>
       </div>
-      <div class="service">
-        <img src="OutletRepair.png" alt="Outlet repair">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"OutletRepair.png\" alt=\"Outlet repair\">
+        </div>
         <h3>Outlet Repair</h3>
         <p>Fixing faulty electrical outlets.</p>
       </div>
-      <div class="service">
-        <img src="GeneralRepair.png" alt="Handyman repair">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"GeneralRepair.png\" alt=\"Handyman repair\">
+        </div>
         <h3>Handyman Repair</h3>
         <p>General home repairs and maintenance.</p>
       </div>
-      <div class="service">
-        <img src="TileInstallation.png" alt="Tile installation or replacement">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"TileInstallation.png\" alt=\"Tile installation or replacement\">
+        </div>
         <h3>Tile Installation</h3>
         <p>Installing or replacing tiles in various areas.</p>
       </div>
-      <div class="service">
-        <img src="WallPatching.png" alt="Wall patching">
+      <div class=\"service\">
+        <div class=\"service-icon-wrapper\">
+          <img src=\"WallPatching.png\" alt=\"Wall patching\">
+        </div>
         <h3>Wall Patching</h3>
         <p>Repairing small holes and imperfections in walls.</p>
       </div>
     </div>
   </section>
 
-  <section class="videos" id="videos">
+  <section class=\"videos\" id=\"videos\">
     <h2>Our Videos</h2>
     <h3>(Click on videos)</h3>
-    <div class="video-scroller-container">
-      <button class="scroll-btn left" onclick="scrollVideos(-1)"><i class="fas fa-chevron-left"></i></button>
-      <div class="video-scroller">
-        <video class="video-item" src="Kama_HEAD_2.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
-        <video class="video-item" src="Kama_HEAD_1.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
-        <video class="video-item" src="Kama_HEAD_3.mp4" loop muted playsinline onclick="playThisVideo(this)"></video>
+    <div class=\"video-scroller-container\">
+      <button class=\"scroll-btn left\" onclick=\"scrollVideos(-1)\"><i class=\"fas fa-chevron-left\"></i></button>
+      <div class=\"video-scroller\">
+        <video class=\"video-item\" src=\"Kama_HEAD_2.mp4\" loop muted playsinline onclick=\"playThisVideo(this)\"></video>
+        <video class=\"video-item\" src=\"Kama_HEAD_1.mp4\" loop muted playsinline onclick=\"playThisVideo(this)\"></video>
+        <video class=\"video-item\" src=\"Kama_HEAD_3.mp4\" loop muted playsinline onclick=\"playThisVideo(this)\"></video>
       </div>
-      <button class="scroll-btn right" onclick="scrollVideos(1)"><i class="fas fa-chevron-right"></i></button>
+      <button class=\"scroll-btn right\" onclick=\"scrollVideos(1)\"><i class=\"fas fa-chevron-right\"></i></button>
     </div>
   </section>
 
-  <section class="gallery" id="gallery">
+  <section class=\"gallery\" id=\"gallery\">
     <h2>Our Work</h2>
-    <div class="gallery-grid">
-      <img src="1.jpg" alt="Project 1" onclick="showImage(this.src)">
-      <img src="2.jpg" alt="Project 2" onclick="showImage(this.src)">
-      <img src="3.jpg" alt="Project 3" onclick="showImage(this.src)">
-      <img src="4.jpg" alt="Project 4" onclick="showImage(this.src)">
-      <img src="5.jpg" alt="Project 5" onclick="showImage(this.src)">
-      <img src="6.jpg" alt="Project 6" onclick="showImage(this.src)">
-      <img src="7.jpg" alt="Project 7" onclick="showImage(this.src)">
-      <img src="8.jpg" alt="Project 8" onclick="showImage(this.src)">
-      <img src="9.jpg" alt="Project 9" onclick="showImage(this.src)">
-      <img src="10.jpg" alt="Project 10" onclick="showImage(this.src)">
-      <img src="11.jpg" alt="Project 11" onclick="showImage(this.src)">
-      <img src="12.jpg" alt="Project 12" onclick="showImage(this.src)">
-      <img src="13.jpg" alt="Project 13" onclick="showImage(this.src)">
-      <img src="14.jpg" alt="Project 14" onclick="showImage(this.src)">
-      <img src="15.jpg" alt="Project 15" onclick="showImage(this.src)">
-      <img src="16.jpg" alt="Project 16" onclick="showImage(this.src)">
-      <img src="17.jpg" alt="Project 17" onclick="showImage(this.src)">
-      <img src="18.jpg" alt="Project 18" onclick="showImage(this.src)">
-      <img src="19.jpg" alt="Project 19" onclick="showImage(this.src)">
-      <img src="20.jpg" alt="Project 20" onclick="showImage(this.src)">
+    <div class=\"gallery-grid\">
+      <div class=\"gallery-item\" onclick=\"showImage('1.jpg')\">
+        <img src=\"1.jpg\" alt=\"Project 1\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('2.jpg')\">
+        <img src=\"2.jpg\" alt=\"Project 2\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('3.jpg')\">
+        <img src=\"3.jpg\" alt=\"Project 3\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('4.jpg')\">
+        <img src=\"4.jpg\" alt=\"Project 4\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('5.jpg')\">
+        <img src=\"5.jpg\" alt=\"Project 5\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('6.jpg')\">
+        <img src=\"6.jpg\" alt=\"Project 6\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('7.jpg')\">
+        <img src=\"7.jpg\" alt=\"Project 7\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('8.jpg')\">
+        <img src=\"8.jpg\" alt=\"Project 8\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('9.jpg')\">
+        <img src=\"9.jpg\" alt=\"Project 9\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('10.jpg')\">
+        <img src=\"10.jpg\" alt=\"Project 10\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('11.jpg')\">
+        <img src=\"11.jpg\" alt=\"Project 11\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('12.jpg')\">
+        <img src=\"12.jpg\" alt=\"Project 12\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('13.jpg')\">
+        <img src=\"13.jpg\" alt=\"Project 13\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('14.jpg')\">
+        <img src=\"14.jpg\" alt=\"Project 14\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('15.jpg')\">
+        <img src=\"15.jpg\" alt=\"Project 15\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('16.jpg')\">
+        <img src=\"16.jpg\" alt=\"Project 16\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('17.jpg')\">
+        <img src=\"17.jpg\" alt=\"Project 17\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('18.jpg')\">
+        <img src=\"18.jpg\" alt=\"Project 18\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('19.jpg')\">
+        <img src=\"19.jpg\" alt=\"Project 19\">
+      </div>
+      <div class=\"gallery-item\" onclick=\"showImage('20.jpg')\">
+        <img src=\"20.jpg\" alt=\"Project 20\">
+      </div>
     </div>
   </section>
 
-  <section class="testimonials" id="testimonials">
+  <section class=\"testimonials\" id=\"testimonials\">
     <h2>What Our Clients Say</h2>
-    <div class="testimonials-grid">
-      <div class="testimonial">
-        <p>"Handyman TJ did an amazing job with my kitchen shelves. Professional and reliable!"</p>
-        <p class="author">- Sarah M., Brooklyn</p>
+    <div class=\"testimonials-grid\">
+      <div class=\"testimonial\">
+        <div class=\"testimonial-stars\">
+          <i class=\"fas fa-star\"></i>
+          <i class=\"fas fa-star\"></i>
+          <i class=\"fas fa-star\"></i>
+          <i class=\"fas fa-star\"></i>
+          <i class=\"fas fa-star\"></i>
+        </div>
+        <p>\"Handyman TJ did an amazing job with my kitchen shelves. Professional and reliable!\"</p>
+        <p class=\"author\">- Sarah M., Brooklyn</p>
       </div>
-      <div class="testimonial">
-        <p>"Their painting service transformed my apartment. Highly recommend!"</p>
-        <p class="author">- John D., Manhattan</p>
+      <div class=\"testimonial\">
+        <div class=\"testimonial-stars\">
+          <i class=\"fas fa-star\"></i>
+          <i class=\"fas fa-star\"></i>
+          <i class=\"fas fa-star\"></i>
+          <i class=\"fas fa-star\"></i>
+          <i class=\"fas fa-star\"></i>
+        </div>
+        <p>\"Their painting service transformed my apartment. Highly recommend!\"</p>
+        <p class=\"author\">- John D., Manhattan</p>
       </div>
-      <div class="testimonial">
-        <p>"Fixed my door in no time. Great service and attention to detail!"</p>
-        <p class="author">- Emily R., Queens</p>
+      <div class=\"testimonial\">
+        <div class=\"testimonial-stars\">
+          <i class=\"fas fa-star\"></i>
+          <i class=\"fas fa-star\"></i>
+          <i class=\"fas fa-star\"></i>
+          <i class=\"fas fa-star\"></i>
+          <i class=\"fas fa-star\"></i>
+        </div>
+        <p>\"Fixed my door in no time. Great service and attention to detail!\"</p>
+        <p class=\"author\">- Emily R., Queens</p>
       </div>
     </div>
   </section>
 
-  <section class="contact" id="contact">
+  <section class=\"contact\" id=\"contact\">
     <h2>Contact Us</h2>
     <h3>(We will definitely receive your email.)</h3>
-    <form action="https://formspree.io/f/xqadobzg" method="POST" id="contactForm">
-      <label>
-        Your email:
-        <input type="email" name="email" required>
-      </label>
-      <label>
-        Your message:
-        <textarea name="message" required></textarea>
-      </label>
-      <button type="submit">Send Message</button>
+    <form action=\"https://formspree.io/f/xqadobzg\" method=\"POST\" id=\"contactForm\">
+      <div class=\"form-group\">
+        <label>Your email:</label>
+        <input type=\"email\" name=\"email\" required placeholder=\"Enter your email\">
+      </div>
+      <div class=\"form-group\">
+        <label>Your message:</label>
+        <textarea name=\"message\" required placeholder=\"Tell us about your project\"></textarea>
+      </div>
+      <button type=\"submit\">Send Message</button>
     </form>
   </section>
 
   <footer>
-    <p>Contact Us: <a href="mailto:handymantj.nyc@gmail.com">handymantj.nyc@gmail.com</a></p>
-    <div class="socials">
-      <a href="https://www.instagram.com/handymantj.com_nyc/?igsh=OWFia3lrcnBhcWNv&utm_source=qr#" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://m.yelp.com/biz/tj-handyman-brooklyn" target="_blank"><i class="fab fa-yelp"></i></a>
+    <div class=\"footer-content\">
+      <p>Contact Us: <a href=\"mailto:handymantj.nyc@gmail.com\">handymantj.nyc@gmail.com</a></p>
+      <div class=\"socials\">
+        <a href=\"https://www.instagram.com/handymantj.com_nyc/?igsh=OWFia3lrcnBhcWNv&utm_source=qr#\" target=\"_blank\" aria-label=\"Instagram\"><i class=\"fab fa-instagram\"></i></a>
+        <a href=\"\" target=\"_blank\" aria-label=\"WhatsApp\"><i class=\"fab fa-whatsapp\"></i></a>
+        <a href=\"https://m.yelp.com/biz/tj-handyman-brooklyn\" target=\"_blank\" aria-label=\"Yelp\"><i class=\"fab fa-yelp\"></i></a>
+      </div>
+      <div class=\"footer-divider\"></div>
+      <p class=\"footer-copyright\">&copy; <span id=\"year\"></span> Handyman TJ. All Rights Reserved.</p>
     </div>
-    <p>&copy; <span id="year"></span> Handyman TJ. All Rights Reserved.</p>
   </footer>
 
-  <button class="scroll-top" id="scrollTop" onclick="scrollToTop()">
-    <i class="fas fa-arrow-up"></i>
+  <button class=\"scroll-top\" id=\"scrollTop\" onclick=\"scrollToTop()\" aria-label=\"Scroll to top\">
+    <i class=\"fas fa-arrow-up\"></i>
   </button>
 
   <script>
+    // Loading Screen
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loadingScreen').classList.add('hidden');
+      }, 1000);
+    });
+
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const scrollProgress = document.getElementById('scrollProgress');
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercent = (scrollTop / scrollHeight) * 100;
+      scrollProgress.style.width = scrollPercent + '%';
+    });
+
     // Dynamic copyright year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    document.querySelectorAll('a[href^=\"#\"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
@@ -1487,14 +2185,48 @@
       };
     }
 
+    // Animated Counter for Stats
+    function animateCounter(element) {
+      const target = parseInt(element.getAttribute('data-target'));
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          element.textContent = target + (element.getAttribute('data-target') === '100' ? '%' : '+');
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.floor(current) + (element.getAttribute('data-target') === '100' ? '%' : '+');
+        }
+      }, 16);
+    }
+
+    // Trigger counter animation when stats section is visible
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counters = entry.target.querySelectorAll('.stat-number');
+          counters.forEach(counter => {
+            if (counter.textContent === '0') {
+              animateCounter(counter);
+            }
+          });
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    const statsSection = document.querySelector('.stats');
+    if (statsSection) {
+      statsObserver.observe(statsSection);
+    }
+
     // Prevent animations on page load
     window.addEventListener('load', () => {
       document.body.style.overflow = 'visible';
     });
   </script>
 </body>
-</html>
-
-
-
-
+</html>"
