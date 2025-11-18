@@ -393,44 +393,140 @@
       }
     }
 
-    .cta-button {
-      display: inline-block;
-      padding: 15px 40px;
-      background: linear-gradient(135deg, #42A5F5 0%, #1E88E5 100%);
-      color: #ffffff;
-      border-radius: 50px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 20px rgba(13, 71, 161, 0.4);
-      animation: fadeInUp 1.2s ease;
-      position: relative;
-      overflow: hidden;
+    .hero-cta-container {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
     }
 
-    .cta-button::before {
-      content: '';
+    .cta-tech-button {
+      position: relative;
+      display: inline-block;
+      padding: 18px 50px;
+      font-size: 1.1em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-decoration: none;
+      color: var(--white);
+      overflow: hidden;
+      border-radius: 50px;
+      border: 2px solid transparent;
+      background: linear-gradient(
+        45deg,
+        rgba(0, 128, 255, 0.8),
+        rgba(0, 255, 255, 0.8),
+        rgba(128, 0, 255, 0.8)
+      );
+      box-shadow:
+        0 10px 40px rgba(0, 128, 255, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      animation: button-entrance 2s ease-out 1.8s backwards;
+    }
+
+    .button-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-button);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .button-text {
+      position: relative;
+      z-index: 2;
+    }
+
+    .button-particles {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.25);
+      width: 100%;
+      height: 100%;
       transform: translate(-50%, -50%);
-      transition: width 0.6s ease, height 0.6s ease;
+      background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.8) 0%,
+        transparent 70%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
     }
 
-    .cta-button:hover::before {
-      width: 300px;
-      height: 300px;
+    .button-glow {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: linear-gradient(45deg, #00ffff, #0080ff, #8000ff, #ff00ff);
+      border-radius: 50px;
+      opacity: 0;
+      z-index: -1;
+      filter: blur(8px);
+      transition: opacity 0.4s ease;
     }
 
-    .cta-button:hover {
-      transform: translateY(-4px);
-      background: linear-gradient(135deg, #64B5F6 0%, #2196F3 100%);
-      box-shadow: 0 12px 28px rgba(230, 74, 25, 0.5);
+    .cta-tech-button:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow:
+        0 20px 60px rgba(0, 128, 255, 0.6),
+        0 0 40px rgba(0, 255, 255, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+
+    .cta-tech-button:hover .button-bg {
+      opacity: 1;
+    }
+
+    .cta-tech-button:hover .button-particles {
+      opacity: 0.6;
+      animation: particle-burst 1s ease-out infinite;
+    }
+
+    .cta-tech-button:hover .button-glow {
+      opacity: 0.8;
+      animation: glow-pulse 2s ease-in-out infinite;
+    }
+
+    .cta-secondary-button {
+      position: relative;
+      padding: 16px 30px;
+      color: var(--tech-cyan);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1em;
+      letter-spacing: 1px;
+      border: 2px solid rgba(0, 255, 255, 0.5);
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      animation: secondary-entrance 2s ease-out 2s backwards;
+      opacity: 0;
+    }
+
+    .secondary-arrow {
+      display: inline-block;
+      margin-left: 8px;
+      transition: transform 0.3s ease;
+    }
+
+    .cta-secondary-button:hover {
+      background: rgba(0, 255, 255, 0.1);
+      border-color: var(--tech-cyan);
+      transform: translateY(-2px);
+    }
+
+    .cta-secondary-button:hover .secondary-arrow {
+      transform: translateX(5px);
     }
 
     /* About Section */
