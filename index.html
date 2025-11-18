@@ -36,24 +36,6 @@
       --text-dark: #333;
       --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
       --shadow-hover: 0 15px 60px rgba(0, 0, 0, 0.2);
-
-      /* New Tech Premium Colors */
-      --tech-cyan: #00ffff;
-      --tech-blue: #0080ff;
-      --tech-purple: #8000ff;
-      --tech-pink: #ff00ff;
-      --tech-dark: #0a0a0a;
-      --tech-grid: rgba(0, 255, 255, 0.1);
-
-      /* Gradients */
-      --gradient-tech: linear-gradient(135deg, #0080ff, #00ffff, #8000ff);
-      --gradient-premium: linear-gradient(135deg, #00aaff, #0066cc, #4eddfc);
-      --gradient-button: linear-gradient(45deg, #00ffff, #0080ff, #8000ff);
-
-      /* Enhanced Shadows & Glows */
-      --shadow-tech-glow: 0 0 30px rgba(0, 255, 255, 0.5);
-      --shadow-electric: 0 0 50px rgba(128, 0, 255, 0.3);
-      --shadow-premium: 0 10px 60px rgba(0, 128, 255, 0.2);
     }
 
     html {
@@ -216,7 +198,7 @@
       filter: brightness(1) invert(0.8) sepia(1) saturate(10) hue-rotate(10deg);
     }
 
-    /* Hero Section - Replace existing .hero styles */
+    /* Hero Section */
     .hero {
       position: relative;
       height: 100vh;
@@ -225,518 +207,85 @@
       justify-content: center;
       overflow: hidden;
       margin-top: 80px;
-      background: var(--tech-dark);
     }
 
-    .particle-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      opacity: 0.8;
-    }
-
-    .hero-video {
+    .hero video {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: brightness(0.3) contrast(1.2) saturate(1.5);
-      z-index: 0;
-      transform: scale(1.1);
+      filter: brightness(0.7);
     }
 
-    .hero-overlay-gradient {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        135deg,
-        rgba(0, 10, 20, 0.9) 0%,
-        rgba(0, 40, 80, 0.7) 25%,
-        rgba(0, 80, 160, 0.5) 50%,
-        rgba(128, 0, 255, 0.3) 75%,
-        rgba(0, 255, 255, 0.4) 100%
-      );
-      z-index: 2;
-    }
-
-    .hero-overlay-tech {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image:
-        linear-gradient(0deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent),
-        linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, 0.05) 25%, rgba(0, 255, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, 0.05) 75%, rgba(0, 255, 255, 0.05) 76%, transparent 77%, transparent);
-      background-size: 50px 50px;
-      z-index: 3;
-      animation: tech-grid-move 10s linear infinite;
-    }
-
-    @keyframes tech-grid-move {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(50px, 50px); }
-    }
-
-    .hero-content-container {
+    .hero-overlay {
       position: relative;
-      z-index: 10;
+      z-index: 2;
       text-align: center;
-      padding: 60px;
-      background: linear-gradient(
-        135deg,
-        rgba(10, 10, 10, 0.85),
-        rgba(0, 40, 80, 0.75),
-        rgba(128, 0, 255, 0.65)
-      );
-      backdrop-filter: blur(20px) saturate(1.8);
-      border-radius: 30px;
-      border: 2px solid rgba(0, 255, 255, 0.3);
-      box-shadow:
-        0 20px 80px rgba(0, 128, 255, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        0 0 100px rgba(0, 255, 255, 0.1);
-      max-width: 900px;
-      animation: hero-content-entrance 2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-      transform: translateY(50px);
-      opacity: 0;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+      border-radius: 20px;
+      max-width: 800px;
+      animation: fadeInUp 1s ease;
+      border: 2px solid rgba(255, 255, 255, 0.2);
     }
 
-    @keyframes hero-content-entrance {
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .hero-title {
-      font-size: 4.5em;
-      font-weight: 300;
+    .hero-text h1 {
+      font-size: 3.5em;
       color: var(--white);
-      margin-bottom: 20px;
-      letter-spacing: -2px;
-      line-height: 1.1;
-      text-shadow:
-        0 0 20px rgba(0, 255, 255, 0.8),
-        0 0 40px rgba(0, 128, 255, 0.6),
-        0 0 60px rgba(128, 0, 255, 0.4);
+      margin-bottom: 15px;
+      font-weight: 800;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+      animation: slideInLeft 1s ease;
     }
 
-    .letter {
-      display: inline-block;
-      opacity: 0;
-      transform: translateY(50px) rotateX(90deg);
-      animation: letter-reveal 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-    }
-
-    .letter.highlight {
-      color: var(--tech-cyan);
-      font-weight: 600;
-    }
-
-    @keyframes letter-reveal {
-      to {
-        opacity: 1;
-        transform: translateY(0) rotateX(0);
-      }
-    }
-
-    .hero-subtitle {
-      font-size: 1.4em;
-      color: rgba(255, 255, 255, 0.8);
-      margin-bottom: 40px;
-      font-weight: 300;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-    }
-
-    .subtitle-word {
-      display: inline-block;
-      opacity: 0;
-      animation: word-float 1s ease-out forwards;
-    }
-
-    .subtitle-word:nth-child(1) { animation-delay: 1.3s; }
-    .subtitle-word:nth-child(2) { animation-delay: 1.4s; }
-    .subtitle-word:nth-child(3) { animation-delay: 1.5s; }
-
-    .subtitle-tech {
-      color: var(--tech-cyan);
-      font-weight: 600;
-      opacity: 0;
-      animation: subtitle-glow 1s ease-out 1.6s forwards;
-    }
-
-    @keyframes word-float {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-    }
-
-    @keyframes subtitle-glow {
-      to {
-        opacity: 1;
-        text-shadow: 0 0 10px currentColor;
-      }
-    }
-
-    .hero-cta-container {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-top: 30px;
-    }
-
-    .cta-tech-button {
-      position: relative;
-      display: inline-block;
-      padding: 18px 50px;
-      font-size: 1.1em;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-decoration: none;
+    .hero-text p {
+      font-size: 1.5em;
       color: var(--white);
-      overflow: hidden;
+      margin-bottom: 30px;
+      animation: slideInRight 1s ease;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 15px 40px;
+      background: linear-gradient(135deg, #42A5F5 0%, #1E88E5 100%);
+      color: #ffffff;
       border-radius: 50px;
-      border: 2px solid transparent;
-      background: linear-gradient(
-        45deg,
-        rgba(0, 128, 255, 0.8),
-        rgba(0, 255, 255, 0.8),
-        rgba(128, 0, 255, 0.8)
-      );
-      box-shadow:
-        0 10px 40px rgba(0, 128, 255, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-      animation: button-entrance 2s ease-out 1.8s backwards;
-    }
-
-    .button-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--gradient-button);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: -1;
-    }
-
-    .button-text {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(13, 71, 161, 0.4);
+      animation: fadeInUp 1.2s ease;
       position: relative;
-      z-index: 2;
+      overflow: hidden;
     }
 
-    .button-particles {
+    .cta-button::before {
+      content: '';
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 100%;
-      height: 100%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
       transform: translate(-50%, -50%);
-      background: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.8) 0%,
-        transparent 70%
-      );
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 1;
+      transition: width 0.6s ease, height 0.6s ease;
     }
 
-    .button-glow {
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: linear-gradient(45deg, #00ffff, #0080ff, #8000ff, #ff00ff);
-      border-radius: 50px;
-      opacity: 0;
-      z-index: -1;
-      filter: blur(8px);
-      transition: opacity 0.4s ease;
+    .cta-button:hover::before {
+      width: 300px;
+      height: 300px;
     }
 
-    .cta-tech-button:hover {
-      transform: translateY(-5px) scale(1.05);
-      box-shadow:
-        0 20px 60px rgba(0, 128, 255, 0.6),
-        0 0 40px rgba(0, 255, 255, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    }
-
-    .cta-tech-button:hover .button-bg {
-      opacity: 1;
-    }
-
-    .cta-tech-button:hover .button-particles {
-      opacity: 0.6;
-      animation: particle-burst 1s ease-out infinite;
-    }
-
-    .cta-tech-button:hover .button-glow {
-      opacity: 0.8;
-      animation: glow-pulse 2s ease-in-out infinite;
-    }
-
-    .cta-secondary-button {
-      position: relative;
-      padding: 16px 30px;
-      color: var(--tech-cyan);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 1em;
-      letter-spacing: 1px;
-      border: 2px solid rgba(0, 255, 255, 0.5);
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      animation: secondary-entrance 2s ease-out 2s backwards;
-      opacity: 0;
-    }
-
-    .secondary-arrow {
-      display: inline-block;
-      margin-left: 8px;
-      transition: transform 0.3s ease;
-    }
-
-    .cta-secondary-button:hover {
-      background: rgba(0, 255, 255, 0.1);
-      border-color: var(--tech-cyan);
-      transform: translateY(-2px);
-    }
-
-    .cta-secondary-button:hover .secondary-arrow {
-      transform: translateX(5px);
-    }
-
-    /* Animated Hero Tech Icon */
-    .hero-tech-icon {
-      position: relative;
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .icon-pulse-ring {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border: 3px solid var(--tech-cyan);
-      border-radius: 50%;
-      animation: pulse-ring 2s ease-in-out infinite;
-      box-shadow: 0 0 20px var(--tech-cyan);
-    }
-
-    .icon-core {
-      width: 20px;
-      height: 20px;
-      background: var(--gradient-tech);
-      border-radius: 50%;
-      animation: core-pulse 1.5s ease-in-out infinite;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
-    }
-
-    @keyframes pulse-ring {
-      0%, 100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.2);
-        opacity: 0.7;
-      }
-    }
-
-    @keyframes core-pulse {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
-      }
-      50% {
-        transform: scale(1.1);
-        box-shadow: 0 0 25px rgba(0, 255, 255, 0.9);
-      }
-    }
-
-    /* Floating Tech Elements */
-    .floating-tech-elements {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 5;
-    }
-
-    .tech-element {
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle,
-        rgba(0, 255, 255, 0.8),
-        rgba(0, 128, 255, 0.4),
-        transparent
-      );
-      animation: float-tech-element 15s ease-in-out infinite;
-    }
-
-    .tech-element-1 {
-      width: 4px;
-      height: 4px;
-      top: 20%;
-      left: 10%;
-      animation-delay: 0s;
-    }
-
-    .tech-element-2 {
-      width: 6px;
-      height: 6px;
-      top: 60%;
-      right: 15%;
-      animation-delay: 3s;
-    }
-
-    .tech-element-3 {
-      width: 3px;
-      height: 3px;
-      top: 80%;
-      left: 25%;
-      animation-delay: 6s;
-    }
-
-    .tech-element-4 {
-      width: 5px;
-      height: 5px;
-      top: 30%;
-      right: 30%;
-      animation-delay: 9s;
-    }
-
-    @keyframes float-tech-element {
-      0%, 100% {
-        transform: translateY(0) translateX(0) scale(1);
-        opacity: 0.3;
-      }
-      25% {
-        transform: translateY(-30px) translateX(20px) scale(1.5);
-        opacity: 0.8;
-      }
-      50% {
-        transform: translateY(20px) translateX(-30px) scale(1.2);
-        opacity: 0.5;
-      }
-      75% {
-        transform: translateY(-20px) translateX(30px) scale(0.8);
-        opacity: 0.6;
-      }
-    }
-
-    /* Scroll Indicator */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 15;
-      text-align: center;
-      animation: scroll-indicator-pulse 2s ease-in-out infinite;
-    }
-
-    .scroll-line {
-      width: 2px;
-      height: 40px;
-      background: linear-gradient(to bottom, var(--tech-cyan), transparent);
-      margin: 0 auto 10px;
-      border-radius: 1px;
-    }
-
-    .scroll-text {
-      color: var(--tech-cyan);
-      font-size: 0.8em;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 0 0 10px currentColor;
-    }
-
-    @keyframes scroll-indicator-pulse {
-      0%, 100% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
-      50% {
-        opacity: 0.7;
-        transform: translateX(-50%) translateY(-5px);
-      }
-    }
-
-    /* Additional Animation Keyframes */
-    @keyframes button-entrance {
-      0% {
-        transform: translateY(50px) scale(0.8);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-      }
-    }
-
-    @keyframes secondary-entrance {
-      0% {
-        transform: translateY(30px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    @keyframes particle-burst {
-      0% {
-        transform: translate(-50%, -50%) scale(0);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(-50%, -50%) scale(2);
-        opacity: 0;
-      }
-    }
-
-    @keyframes glow-pulse {
-      0%, 100% {
-        opacity: 0.8;
-        filter: blur(8px);
-      }
-      50% {
-        opacity: 1;
-        filter: blur(12px);
-      }
+    .cta-button:hover {
+      transform: translateY(-4px);
+      background: linear-gradient(135deg, #64B5F6 0%, #2196F3 100%);
+      box-shadow: 0 12px 28px rgba(230, 74, 25, 0.5);
     }
 
     /* About Section */
@@ -1399,142 +948,7 @@
       box-shadow: 0 8px 30px rgba(234, 183, 2, 0.6);
     }
 
-    /* Enhanced Hero Section Responsive Design */
-    @media (min-width: 1920px) {
-      .hero-title {
-        font-size: 5.5em;
-      }
-
-      .hero-content-container {
-        max-width: 1100px;
-        padding: 80px;
-      }
-
-      .cta-tech-button {
-        padding: 22px 60px;
-        font-size: 1.2em;
-      }
-
-      .hero-tech-icon {
-        width: 100px;
-        height: 100px;
-      }
-    }
-
-    @media (max-width: 1024px) and (min-width: 769px) {
-      .hero-title {
-        font-size: 3.5em;
-      }
-
-      .hero-content-container {
-        padding: 50px 40px;
-        max-width: 700px;
-      }
-
-      .hero-cta-container {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .cta-tech-button,
-      .cta-secondary-button {
-        width: 100%;
-        text-align: center;
-      }
-
-      .hero-subtitle {
-        font-size: 1.2em;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        margin-top: 70px;
-      }
-
-      .hero-title {
-        font-size: 2.2em;
-        letter-spacing: -1px;
-        margin-bottom: 15px;
-      }
-
-      .letter {
-        font-size: 0.9em;
-      }
-
-      .hero-subtitle {
-        font-size: 1.1em;
-        margin-bottom: 30px;
-      }
-
-      .hero-content-container {
-        padding: 30px 20px;
-        margin: 0 15px;
-        border-radius: 20px;
-      }
-
-      .hero-cta-container {
-        flex-direction: column;
-        gap: 12px;
-      }
-
-      .cta-tech-button {
-        padding: 15px 35px;
-        font-size: 1em;
-      }
-
-      .cta-secondary-button {
-        padding: 13px 25px;
-        font-size: 0.9em;
-      }
-
-      .hero-tech-icon {
-        width: 60px;
-        height: 60px;
-        margin-bottom: 20px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 1.8em;
-      }
-
-      .hero-content-container {
-        padding: 25px 15px;
-        margin: 0 10px;
-      }
-
-      .hero-subtitle {
-        font-size: 1em;
-        letter-spacing: 2px;
-      }
-
-      .tech-element {
-        display: none; /* Remove floating elements on small screens for performance */
-      }
-
-      .particle-background {
-        opacity: 0.6; /* Reduce particle effect on mobile */
-      }
-
-      .hero-tech-icon {
-        width: 50px;
-        height: 50px;
-      }
-
-      .cta-tech-button {
-        padding: 12px 25px;
-        font-size: 0.9em;
-      }
-
-      .cta-secondary-button {
-        padding: 10px 20px;
-        font-size: 0.8em;
-      }
-    }
-
-    /* Original Responsive Design */
+    /* Responsive Design */
     @media (max-width: 1024px) {
       .hero-text h1 {
         font-size: 2.8em;
@@ -1594,6 +1008,14 @@
 
       .hero {
         margin-top: 100px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.2em;
+      }
+
+      .hero-text p {
+        font-size: 1.2em;
       }
 
       .about-content {
@@ -1727,93 +1149,16 @@
   </header>
 
   <section class="hero" id="hero">
-    <!-- Advanced Particle Canvas Background -->
-    <canvas id="particleCanvas" class="particle-background"></canvas>
-
-    <!-- Enhanced Video Background -->
-    <video autoplay loop muted playsinline class="hero-video">
+    <video autoplay loop muted playsinline>
       <source src="Main_Video_Handyman.mp4" type="video/mp4">
+      Your browser does not support the video tag.
     </video>
-
-    <!-- Multiple Gradient Overlay Layers -->
-    <div class="hero-overlay-gradient"></div>
-    <div class="hero-overlay-tech"></div>
-    <div class="hero-overlay-particles"></div>
-
-    <!-- Main Content Container with Advanced Glass Morphism -->
-    <div class="hero-content-container">
-      <!-- Animated Logo/Icon -->
-      <div class="hero-tech-icon">
-        <div class="icon-pulse-ring"></div>
-        <div class="icon-core"></div>
-      </div>
-
-      <!-- Enhanced Typography with Letter Animations -->
+    <div class="hero-overlay">
       <div class="hero-text">
-        <h1 class="hero-title">
-          <span class="letter" data-delay="0.1">M</span>
-          <span class="letter" data-delay="0.15">a</span>
-          <span class="letter" data-delay="0.2">k</span>
-          <span class="letter" data-delay="0.25">i</span>
-          <span class="letter" data-delay="0.3">n</span>
-          <span class="letter" data-delay="0.35">g</span>
-          <span class="letter space" data-delay="0.4">&nbsp;</span>
-          <span class="letter" data-delay="0.45">Y</span>
-          <span class="letter" data-delay="0.5">o</span>
-          <span class="letter" data-delay="0.55">u</span>
-          <span class="letter" data-delay="0.6">r</span>
-          <span class="letter space" data-delay="0.65">&nbsp;</span>
-          <span class="letter" data-delay="0.7">H</span>
-          <span class="letter" data-delay="0.75">o</span>
-          <span class="letter" data-delay="0.8">m</span>
-          <span class="letter" data-delay="0.85">e</span>
-          <span class="letter" data-delay="0.9">&nbsp;</span>
-          <span class="letter highlight" data-delay="0.95">P</span>
-          <span class="letter highlight" data-delay="1.0">e</span>
-          <span class="letter highlight" data-delay="1.05">r</span>
-          <span class="letter highlight" data-delay="1.1">f</span>
-          <span class="letter highlight" data-delay="1.15">e</span>
-          <span class="letter highlight" data-delay="1.2">c</span>
-          <span class="letter highlight" data-delay="1.25">t</span>
-        </h1>
-
-        <p class="hero-subtitle">
-          <span class="subtitle-word">Next-Gen</span>
-          <span class="subtitle-word">Handyman</span>
-          <span class="subtitle-word">Solutions</span>
-          <span class="subtitle-tech">in NYC</span>
-        </p>
-
-        <!-- Enhanced CTA with Premium Interactions -->
-        <div class="hero-cta-container">
-          <a href="#contact" class="cta-tech-button">
-            <span class="button-bg"></span>
-            <span class="button-text">Get Free Quote</span>
-            <span class="button-particles"></span>
-            <span class="button-glow"></span>
-          </a>
-
-          <!-- Secondary CTA -->
-          <a href="#services" class="cta-secondary-button">
-            <span class="secondary-text">View Services</span>
-            <span class="secondary-arrow"></span>
-          </a>
-        </div>
+        <h1>Making Your Home Perfect</h1>
+        <p>Your Trusted Handyman in NYC</p>
+        <a href="#contact" class="cta-button">Get a Free Quote</a>
       </div>
-
-      <!-- Floating Tech Elements -->
-      <div class="floating-tech-elements">
-        <div class="tech-element tech-element-1" data-speed="0.5"></div>
-        <div class="tech-element tech-element-2" data-speed="0.8"></div>
-        <div class="tech-element tech-element-3" data-speed="0.3"></div>
-        <div class="tech-element tech-element-4" data-speed="0.6"></div>
-      </div>
-    </div>
-
-    <!-- Scroll Indicator -->
-    <div class="scroll-indicator">
-      <div class="scroll-line"></div>
-      <div class="scroll-text">Scroll</div>
     </div>
   </section>
 
@@ -2142,191 +1487,6 @@
       };
     }
 
-    // Advanced Particle System for Hero Section
-    class TechParticleSystem {
-      constructor(canvasId) {
-        this.canvas = document.getElementById(canvasId);
-        this.ctx = this.canvas.getContext('2d');
-        this.particles = [];
-        this.connectionDistance = 150;
-        this.mouseX = 0;
-        this.mouseY = 0;
-        this.init();
-      }
-
-      init() {
-        this.resize();
-        this.createParticles();
-        this.bindEvents();
-        this.animate();
-      }
-
-      resize() {
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
-      }
-
-      createParticles() {
-        const particleCount = Math.floor((this.canvas.width * this.canvas.height) / 15000);
-
-        for (let i = 0; i < particleCount; i++) {
-          this.particles.push({
-            x: Math.random() * this.canvas.width,
-            y: Math.random() * this.canvas.height,
-            size: Math.random() * 2 + 1,
-            speedX: (Math.random() - 0.5) * 0.5,
-            speedY: (Math.random() - 0.5) * 0.5,
-            opacity: Math.random() * 0.5 + 0.3,
-            color: Math.random() > 0.7 ? '#00ffff' : Math.random() > 0.5 ? '#0080ff' : '#8000ff',
-            pulsePhase: Math.random() * Math.PI * 2
-          });
-        }
-      }
-
-      bindEvents() {
-        window.addEventListener('resize', () => this.resize());
-
-        document.addEventListener('mousemove', (e) => {
-          this.mouseX = e.clientX;
-          this.mouseY = e.clientY;
-        });
-      }
-
-      updateParticles() {
-        this.particles.forEach(particle => {
-          particle.x += particle.speedX;
-          particle.y += particle.speedY;
-          particle.pulsePhase += 0.05;
-
-          // Mouse interaction
-          const dx = this.mouseX - particle.x;
-          const dy = this.mouseY - particle.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 100) {
-            const force = (100 - distance) / 100;
-            particle.x -= (dx / distance) * force * 2;
-            particle.y -= (dy / distance) * force * 2;
-          }
-
-          // Boundary check with wrap around
-          if (particle.x < 0) particle.x = this.canvas.width;
-          if (particle.x > this.canvas.width) particle.x = 0;
-          if (particle.y < 0) particle.y = this.canvas.height;
-          if (particle.y > this.canvas.height) particle.y = 0;
-        });
-      }
-
-      drawParticles() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        // Draw connection lines
-        this.particles.forEach((particle1, i) => {
-          this.particles.slice(i + 1).forEach(particle2 => {
-            const dx = particle1.x - particle2.x;
-            const dy = particle1.y - particle2.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance < this.connectionDistance) {
-              const opacity = (1 - distance / this.connectionDistance) * 0.3;
-              this.ctx.strokeStyle = `rgba(0, 255, 255, ${opacity})`;
-              this.ctx.lineWidth = 1;
-              this.ctx.beginPath();
-              this.ctx.moveTo(particle1.x, particle1.y);
-              this.ctx.lineTo(particle2.x, particle2.y);
-              this.ctx.stroke();
-            }
-          });
-        });
-
-        // Draw particles
-        this.particles.forEach(particle => {
-          const pulseSize = particle.size * (1 + Math.sin(particle.pulsePhase) * 0.3);
-
-          this.ctx.fillStyle = particle.color;
-          this.ctx.globalAlpha = particle.opacity;
-          this.ctx.beginPath();
-          this.ctx.arc(particle.x, particle.y, pulseSize, 0, Math.PI * 2);
-          this.ctx.fill();
-
-          // Add glow effect
-          this.ctx.shadowBlur = 10;
-          this.ctx.shadowColor = particle.color;
-          this.ctx.fill();
-          this.ctx.shadowBlur = 0;
-        });
-
-        this.ctx.globalAlpha = 1;
-      }
-
-      animate() {
-        this.updateParticles();
-        this.drawParticles();
-        requestAnimationFrame(() => this.animate());
-      }
-    }
-
-    // Enhanced Intersection Observer with performance optimization
-    const createOptimizedObserver = () => {
-      const observerOptions = {
-        threshold: [0.1, 0.3, 0.6],
-        rootMargin: '0px 0px -100px 0px'
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            if (entry.intersectionRatio > 0.5) {
-              entry.target.classList.add('visible');
-            }
-
-            // Parallax effect for hero content
-            if (entry.target.classList.contains('hero-content-container')) {
-              const scrollY = window.scrollY;
-              const speed = 0.5;
-              entry.target.style.transform = `translateY(${scrollY * speed}px)`;
-            }
-          }
-        });
-      }, observerOptions);
-
-      // Observe all sections
-      document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
-      });
-    };
-
-    // Parallax scroll handler
-    const handleParallax = () => {
-      const scrolled = window.pageYOffset;
-      const parallaxElements = document.querySelectorAll('.tech-element');
-
-      parallaxElements.forEach(element => {
-        const speed = element.dataset.speed || 0.5;
-        const yPos = -(scrolled * speed);
-        element.style.transform = `translateY(${yPos}px)`;
-      });
-    };
-
-    // Throttled scroll handler for performance
-    let scrollTimeout;
-    const handleScroll = () => {
-      if (scrollTimeout) {
-        window.cancelAnimationFrame(scrollTimeout);
-      }
-
-      scrollTimeout = window.requestAnimationFrame(() => {
-        handleParallax();
-      });
-    };
-
-    // Initialize enhanced scroll effects
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    createOptimizedObserver();
-
-    // Initialize particle system
-    const particleSystem = new TechParticleSystem('particleCanvas');
-
     // Prevent animations on page load
     window.addEventListener('load', () => {
       document.body.style.overflow = 'visible';
@@ -2334,3 +1494,6 @@
   </script>
 </body>
 </html>
+
+
+
