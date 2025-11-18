@@ -12,19 +12,20 @@
     .container { max-width: 1000px; margin: 0 auto; background: white; border-radius: 25px; padding: 40px 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
     h1 { text-align: center; color: #05837F; font-size: 2.8em; margin-bottom: 10px; }
     p.subtitle { text-align: center; font-size: 1.3em; color: #333; margin-bottom: 40px; }
+    .loader { text-align: center; padding: 60px; font-size: 1.5em; color: #05837F; }
     .calendar { margin: 0 auto; max-width: 600px; }
     .month-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    .month-nav button { background: #05837F; color: white; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 1.5em; cursor: pointer; }
-    .month-nav button:hover { background: #EAB702; }
+    .month-nav button { background: #05837F; color: white; border: none; width: 50px; height: 50px; border-radius: 50%; font-size: 1.5em; cursor: pointer; transition: all 0.3s; }
+    .month-nav button:hover { background: #EAB702; transform: scale(1.1); }
     .month-nav h2 { color: #05837F; font-size: 2em; }
     .days, .dates { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; text-align: center; }
-    .days div { font-weight: bold; padding: 12px 0; background: #f0f0f0; border-radius: 12px; }
+    .days div { font-weight: bold; padding: 12px 0; background: #f0f0f0; border-radius: 12px; font-size: 0.9em; }
     .date { padding: 18px 8px; border-radius: 15px; cursor: pointer; transition: all 0.3s; font-weight: bold; font-size: 1.1em; }
     .date.past { background: #eee; color: #aaa; cursor: not-allowed; }
     .date.free { background: #d4edda; color: #155724; }
-    .date.free:hover { background: #28a745; color: white; }
+    .date.free:hover { background: #28a745; color: white; transform: scale(1.05); }
     .date.busy { background: #f8d7da; color: #721c24; cursor: not-allowed; }
-    .date.selected { background: #EAB702 !important; color: black !important; }
+    .date.selected { background: #EAB702 !important; color: black !important; transform: scale(1.1); }
     .time-slots { margin: 40px auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 15px; max-width: 700px; }
     .time { padding: 15px; text-align: center; border-radius: 15px; cursor: pointer; font-weight: bold; transition: all 0.3s; }
     .time.free { background: #d4edda; color: #155724; }
@@ -33,8 +34,8 @@
     .time.selected { background: #EAB702; color: black; }
     #form { margin-top: 50px; padding: 30px; background: #f8f9fa; border-radius: 20px; display: none; max-width: 600px; margin-left: auto; margin-right: auto; }
     input, textarea, button.submit { width: 100%; padding: 18px; margin: 12px 0; border-radius: 15px; border: 2px solid #ddd; font-size: 1.1em; }
-    button.submit { background: #05837F; color: white; border: none; font-size: 1.5em; font-weight: bold; cursor: pointer; }
-    button.submit:hover { background: #EAB702; color: black; }
+    button.submit { background: #05837F; color: white; border: none; font-size: 1.5em; font-weight: bold; cursor: pointer; transition: all 0.3s; }
+    button.submit:hover { background: #EAB702; color: black; transform: translateY(-3px); }
     @media (max-width: 600px) {
       h1 { font-size: 2.2em; }
       .month-nav h2 { font-size: 1.5em; }
@@ -47,8 +48,9 @@
   <div class="container">
     <h1>Book Handyman TJ</h1>
     <p class="subtitle">Choose your date and time – I come to you in NYC!</p>
+    <div id="loader" class="loader">Loading calendar...</div>
 
-    <div class="calendar">
+    <div class="calendar" id="calendar" style="display:none">
       <div class="month-nav">
         <button onclick="prev()">‹</button>
         <h2 id="month"></h2>
@@ -79,18 +81,26 @@
     let selectedDate = null;
     let selectedTime = null;
 
-    async function loadBookings() {
-      const { data } = await supabase.from('bookings').select('date,time');
+    async function loadAndRender() {
+      const { data, error } = await supabase.from('bookings').select('date,time');
+      if (error) {
+        document.getElementById('loader').innerHTML = 'Error: Check Supabase policies';
+        console.error(error);
+        return;
+      }
+
       const bookings = {};
       data.forEach(b => {
         if (!bookings[b.date]) bookings[b.date] = [];
         bookings[b.date].push(b.time);
       });
-      return bookings;
+
+      renderCalendar(bookings);
+      document.getElementById('loader').style.display = 'none';
+      document.getElementById('calendar').style.display = 'block';
     }
 
-    async function render() {
-      const bookings = await loadBookings();
+    function renderCalendar(bookings) {
       const firstDay = new Date(year, month, 1).getDay();
       const daysInMonth = new Date(year, month + 1, 0).getDate();
       document.getElementById('month').textContent = new Date(year, month).toLocaleString('default', { month: 'long', year: 'numeric' });
@@ -98,7 +108,9 @@
       const datesDiv = document.getElementById('dates');
       datesDiv.innerHTML = '';
 
-      for (let i = 0; i < firstDay; i++) datesDiv.innerHTML += '<div></div>';
+      for (let i = 0; i < firstDay; i++) {
+        datesDiv.innerHTML += '<div></div>';
+      }
 
       for (let d = 1; d <= daysInMonth; d++) {
         const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
@@ -131,10 +143,11 @@
       selectedDate = date;
 
       const { data } = await supabase.from('bookings').select('time').eq('date', date);
-      const booked = data.map(b => b.time);
+      const booked = data ? data.map(b => b.time) : [];
 
       const timesDiv = document.getElementById('times');
       timesDiv.innerHTML = '';
+
       times.forEach(t => {
         const btn = document.createElement('div');
         btn.className = 'time';
@@ -158,30 +171,27 @@
     async function book() {
       const name = document.getElementById('name').value.trim();
       const phone = document.getElementById('phone').value.trim();
-      if (!name || !phone) return alert("Name and phone required");
+      if (!name || !phone) return alert("Please enter your name and phone");
 
       const { error } = await supabase
         .from('bookings')
         .insert({ date: selectedDate, time: selectedTime, name, phone, service: document.getElementById('service').value || null });
 
       if (error) {
-        alert("Error saving booking. Try again.");
-        console.error(error);
+        alert("Error saving booking: " + error.message);
       } else {
-        alert("BOOKED! Opening email – send it to confirm");
+        alert("BOOKED SUCCESSFULLY! Opening email – send it to confirm");
         const subject = `NEW BOOKING: ${selectedDate} ${selectedTime}`;
         const body = `Name: ${name}\nPhone: ${phone}\nService: ${document.getElementById('service').value || 'Not specified'}\nDate: ${selectedDate}\nTime: ${selectedTime}`;
         window.location.href = `mailto:handymantj.nyc@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        setTimeout(() => location.reload(), 2000); // refresh to show new booking
+        setTimeout(() => location.reload(), 3000);
       }
     }
 
-    }
+    function prev() { month--; if (month < 0) { month = 11; year--; } loadAndRender(); }
+    function next() { month++; if (month > 11) { month = 0; year++; } loadAndRender(); }
 
-    function prev() { month--; if (month < 0) { month = 11; year--; } render(); }
-    function next() { month++; if (month > 11) { month = 0; year++; } render(); }
-
-    render();
+    loadAndRender();
   </script>
 </body>
 </html>
