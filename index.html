@@ -2015,6 +2015,191 @@
       };
     }
 
+    // Advanced Particle System for Hero Section
+    class TechParticleSystem {
+      constructor(canvasId) {
+        this.canvas = document.getElementById(canvasId);
+        this.ctx = this.canvas.getContext('2d');
+        this.particles = [];
+        this.connectionDistance = 150;
+        this.mouseX = 0;
+        this.mouseY = 0;
+        this.init();
+      }
+
+      init() {
+        this.resize();
+        this.createParticles();
+        this.bindEvents();
+        this.animate();
+      }
+
+      resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+      }
+
+      createParticles() {
+        const particleCount = Math.floor((this.canvas.width * this.canvas.height) / 15000);
+
+        for (let i = 0; i < particleCount; i++) {
+          this.particles.push({
+            x: Math.random() * this.canvas.width,
+            y: Math.random() * this.canvas.height,
+            size: Math.random() * 2 + 1,
+            speedX: (Math.random() - 0.5) * 0.5,
+            speedY: (Math.random() - 0.5) * 0.5,
+            opacity: Math.random() * 0.5 + 0.3,
+            color: Math.random() > 0.7 ? '#00ffff' : Math.random() > 0.5 ? '#0080ff' : '#8000ff',
+            pulsePhase: Math.random() * Math.PI * 2
+          });
+        }
+      }
+
+      bindEvents() {
+        window.addEventListener('resize', () => this.resize());
+
+        document.addEventListener('mousemove', (e) => {
+          this.mouseX = e.clientX;
+          this.mouseY = e.clientY;
+        });
+      }
+
+      updateParticles() {
+        this.particles.forEach(particle => {
+          particle.x += particle.speedX;
+          particle.y += particle.speedY;
+          particle.pulsePhase += 0.05;
+
+          // Mouse interaction
+          const dx = this.mouseX - particle.x;
+          const dy = this.mouseY - particle.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < 100) {
+            const force = (100 - distance) / 100;
+            particle.x -= (dx / distance) * force * 2;
+            particle.y -= (dy / distance) * force * 2;
+          }
+
+          // Boundary check with wrap around
+          if (particle.x < 0) particle.x = this.canvas.width;
+          if (particle.x > this.canvas.width) particle.x = 0;
+          if (particle.y < 0) particle.y = this.canvas.height;
+          if (particle.y > this.canvas.height) particle.y = 0;
+        });
+      }
+
+      drawParticles() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+        // Draw connection lines
+        this.particles.forEach((particle1, i) => {
+          this.particles.slice(i + 1).forEach(particle2 => {
+            const dx = particle1.x - particle2.x;
+            const dy = particle1.y - particle2.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < this.connectionDistance) {
+              const opacity = (1 - distance / this.connectionDistance) * 0.3;
+              this.ctx.strokeStyle = `rgba(0, 255, 255, ${opacity})`;
+              this.ctx.lineWidth = 1;
+              this.ctx.beginPath();
+              this.ctx.moveTo(particle1.x, particle1.y);
+              this.ctx.lineTo(particle2.x, particle2.y);
+              this.ctx.stroke();
+            }
+          });
+        });
+
+        // Draw particles
+        this.particles.forEach(particle => {
+          const pulseSize = particle.size * (1 + Math.sin(particle.pulsePhase) * 0.3);
+
+          this.ctx.fillStyle = particle.color;
+          this.ctx.globalAlpha = particle.opacity;
+          this.ctx.beginPath();
+          this.ctx.arc(particle.x, particle.y, pulseSize, 0, Math.PI * 2);
+          this.ctx.fill();
+
+          // Add glow effect
+          this.ctx.shadowBlur = 10;
+          this.ctx.shadowColor = particle.color;
+          this.ctx.fill();
+          this.ctx.shadowBlur = 0;
+        });
+
+        this.ctx.globalAlpha = 1;
+      }
+
+      animate() {
+        this.updateParticles();
+        this.drawParticles();
+        requestAnimationFrame(() => this.animate());
+      }
+    }
+
+    // Enhanced Intersection Observer with performance optimization
+    const createOptimizedObserver = () => {
+      const observerOptions = {
+        threshold: [0.1, 0.3, 0.6],
+        rootMargin: '0px 0px -100px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (entry.intersectionRatio > 0.5) {
+              entry.target.classList.add('visible');
+            }
+
+            // Parallax effect for hero content
+            if (entry.target.classList.contains('hero-content-container')) {
+              const scrollY = window.scrollY;
+              const speed = 0.5;
+              entry.target.style.transform = `translateY(${scrollY * speed}px)`;
+            }
+          }
+        });
+      }, observerOptions);
+
+      // Observe all sections
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+    };
+
+    // Parallax scroll handler
+    const handleParallax = () => {
+      const scrolled = window.pageYOffset;
+      const parallaxElements = document.querySelectorAll('.tech-element');
+
+      parallaxElements.forEach(element => {
+        const speed = element.dataset.speed || 0.5;
+        const yPos = -(scrolled * speed);
+        element.style.transform = `translateY(${yPos}px)`;
+      });
+    };
+
+    // Throttled scroll handler for performance
+    let scrollTimeout;
+    const handleScroll = () => {
+      if (scrollTimeout) {
+        window.cancelAnimationFrame(scrollTimeout);
+      }
+
+      scrollTimeout = window.requestAnimationFrame(() => {
+        handleParallax();
+      });
+    };
+
+    // Initialize enhanced scroll effects
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    createOptimizedObserver();
+
+    // Initialize particle system
+    const particleSystem = new TechParticleSystem('particleCanvas');
+
     // Prevent animations on page load
     window.addEventListener('load', () => {
       document.body.style.overflow = 'visible';
