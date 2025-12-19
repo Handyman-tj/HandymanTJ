@@ -28,62 +28,7 @@
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-smooth: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-
-  /* Christmas Theme */
-  --xmas-red: #D42426;
-  --xmas-green: #165B33;
-  --xmas-gold: #FFD700;
-  --xmas-white: #FFFFFF;
 }
-
-/* Snowfall Container */
-#snow-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  overflow: hidden;
-}
-
-.snowflake {
-  position: absolute;
-  background-color: white;
-  border-radius: 50%;
-  opacity: 0.8;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-/* Christmas Decorations */
-.festive-ribbon {
-  position: absolute;
-  top: 15px;
-  left: -35px;
-  /* Moved to left side */
-  background: var(--xmas-red);
-  color: white;
-  padding: 5px 45px;
-  transform: rotate(-45deg);
-  /* Flipped rotation */
-  font-size: 0.8rem;
-  font-weight: 800;
-  z-index: 100;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  pointer-events: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.logo-container {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
-
-/* Removed .santa-hat styles as they are no longer used */
 
 /* Reset & Base */
 * {
@@ -474,8 +419,7 @@ nav a:hover::after {
   box-shadow: var(--shadow-sm);
   transition: var(--transition-smooth);
   position: relative;
-  overflow: visible;
-  /* Fixed: Allow ribbons to peek out */
+  overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.03);
   display: flex;
   flex-direction: column;
@@ -493,8 +437,6 @@ nav a:hover::after {
   /* Fixed height for consistency */
   overflow: hidden;
   position: relative;
-  border-radius: 20px 20px 0 0;
-  /* Match card radius for clean look */
 }
 
 .service-image-container img {
@@ -871,47 +813,6 @@ nav a:hover::after {
   font-weight: 600;
 }
 
-/* Location Coverage Section */
-.location-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
-  margin-top: 50px;
-}
-
-.location-card {
-  text-align: center;
-  padding: 30px 20px;
-  background: var(--off-white);
-  border-radius: 15px;
-  transition: var(--transition-smooth);
-  border: 2px solid transparent;
-}
-
-.location-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--primary-gold);
-  box-shadow: var(--shadow-md);
-  background: var(--white);
-}
-
-.location-card i {
-  font-size: 2.5rem;
-  color: var(--primary-teal);
-  margin-bottom: 15px;
-}
-
-.location-card h3 {
-  font-size: 1.3rem;
-  color: var(--dark-blue);
-  margin-bottom: 10px;
-}
-
-.location-card p {
-  font-size: 0.9rem;
-  color: var(--text-light);
-}
-
 /* Footer */
 footer {
   background: var(--dark-blue);
@@ -1068,10 +969,5 @@ footer {
 
   .trust-item {
     flex-direction: column;
-  }
-
-  .location-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
   }
 }
