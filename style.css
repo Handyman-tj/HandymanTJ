@@ -29,52 +29,9 @@
   --transition-fast: 0.2s ease;
   --transition-smooth: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 
-  /* Christmas Theme */
-  --xmas-red: #D42426;
-  --xmas-green: #165B33;
-  --xmas-gold: #FFD700;
-  --xmas-white: #FFFFFF;
-}
-
-/* Snowfall Container */
-#snow-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 9999;
-  overflow: hidden;
-}
-
-.snowflake {
-  position: absolute;
-  background-color: white;
-  border-radius: 50%;
-  opacity: 0.8;
-  pointer-events: none;
-  z-index: 9999;
-}
-
-/* Christmas Decorations */
-.festive-ribbon {
-  position: absolute;
-  top: 15px;
-  left: -35px;
-  /* Moved to left side */
-  background: var(--xmas-red);
-  color: white;
-  padding: 5px 45px;
-  transform: rotate(-45deg);
-  /* Flipped rotation */
-  font-size: 0.8rem;
-  font-weight: 800;
-  z-index: 100;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  pointer-events: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .logo-container {
@@ -1074,4 +1031,41 @@ footer {
     grid-template-columns: 1fr;
     gap: 20px;
   }
+}
+
+/* Utility Classes Added for Cleanup */
+.bg-teal {
+  background-color: var(--primary-teal);
+}
+
+.text-white {
+  color: var(--white);
+}
+
+.bg-white {
+  background-color: var(--white);
+}
+
+.bg-dark-blue {
+  background-color: var(--dark-blue);
+}
+
+.border-top-offwhite {
+  border-top: 1px solid var(--off-white);
+}
+
+.section-padding-small {
+  padding: 60px 0;
+}
+
+.cta-btns-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-white-bg {
+  background: var(--white);
+  color: var(--primary-teal);
 }
