@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Handyman TJ | Easy Website Editor</title>
+  <link rel="icon" type="image/png" href="../assets/brand/favicon-192.png">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="studio-header">
+    <div class="studio-wrap header-row">
+      <div class="studio-brand">
+        <img src="../assets/brand/logo.webp" alt="Handyman TJ" width="44" height="44">
+        <div>
+          <h1>Handyman TJ — Easy Website Editor</h1>
+          <p>Add photos, delete items, upload videos &amp; change prices in seconds</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="status-pill" id="connBadge">Setup Needed</span>
+        <button type="button" class="btn btn-ghost btn-sm" id="toggleSetupBtn">Connection Settings</button>
+        <a href="../" class="btn btn-ghost btn-sm">View Website</a>
+        <button type="button" class="btn btn-gold" id="publishBtn">Save &amp; Publish Live</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="studio-wrap studio-main">
+    <!-- Collapsible One-Time Connection Setup (Hidden automatically once connected!) -->
+    <section class="card connect-card" id="connectCard">
+      <div class="connect-top">
+        <div>
+          <h2>One-Time Setup (Done Once on Your Phone or PC)</h2>
+          <p>Paste your access key once to enable one-click publishing. After this, you never need to touch settings again.</p>
+        </div>
+        <button type="button" class="btn btn-outline btn-sm" id="toggleGuideBtn">Show Instructions</button>
+      </div>
+
+      <div class="token-guide" id="tokenGuide" hidden>
+        <ol>
+          <li>Sign into GitHub (<strong>Handyman-tj</strong>) and open <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener noreferrer">New Fine-Grained Token</a>.</li>
+          <li>Select repository <code>Handyman-tj/HandymanTJ</code>, set <strong>Contents</strong> to <strong>Read and write</strong>, and generate the token.</li>
+          <li><strong>Tip for the owner:</strong> After connecting here once, you can click <strong>Copy Magic Phone Link</strong> below and open that private link on TJ's phone—his phone will connect automatically!</li>
+        </ol>
+      </div>
+
+      <div class="connect-inputs">
+        <input type="text" id="repoOwner" value="Handyman-tj" aria-label="GitHub Owner">
+        <input type="text" id="repoName" value="HandymanTJ" aria-label="Repository">
+        <input type="text" id="repoBranch" value="main" aria-label="Branch">
+        <input type="password" id="ghToken" placeholder="Paste access key (github_pat_...)" aria-label="Access Key">
+        <button type="button" class="btn btn-teal" id="connectBtn">Connect</button>
+        <button type="button" class="btn btn-outline" id="copyMagicLinkBtn">Copy Magic Phone Link</button>
+        <button type="button" class="btn btn-ghost" id="forgetTokenBtn">Disconnect</button>
+      </div>
+    </section>
+
+    <div class="publish-log" id="publishLog" hidden></div>
+
+    <!-- Big Friendly Tabs -->
+    <nav class="studio-tabs" role="tablist">
+      <button type="button" class="tab-btn active" data-tab="photos">Work Photos (<span id="countPhotos">0</span>)</button>
+      <button type="button" class="tab-btn" data-tab="beforeAfter">Before &amp; After (<span id="countBA">0</span>)</button>
+      <button type="button" class="tab-btn" data-tab="videos">Videos (<span id="countVideos">0</span>)</button>
+      <button type="button" class="tab-btn" data-tab="services">Services &amp; Prices (<span id="countServices">0</span>)</button>
+      <button type="button" class="tab-btn" data-tab="content">Phone, Hours &amp; Reviews</button>
+    </nav>
+
+    <!-- TAB: PHOTOS -->
+    <section class="tab-panel active" data-panel="photos">
+      <div class="card">
+        <h2>Add New Job Photos from Phone or Computer</h2>
+        <p class="muted">Every uploaded photo is automatically shrunk and optimized so your website stays lightning-fast.</p>
+        <div class="upload-controls">
+          <label>Service Category
+            <select id="uploadCat">
+              <option value="TV Mounting">TV Mounting</option>
+              <option value="Closets &amp; Storage">Closets &amp; Storage</option>
+              <option value="Furniture Assembly">Furniture Assembly</option>
+              <option value="Drywall &amp; Painting">Drywall &amp; Painting</option>
+              <option value="Mounting &amp; Smart Home">Mounting &amp; Smart Home</option>
+              <option value="Carpentry &amp; Doors">Carpentry &amp; Doors</option>
+              <option value="Caulking &amp; Sealing">Caulking &amp; Sealing</option>
+            </select>
+          </label>
+          <label>Borough / Neighborhood
+            <input type="text" id="uploadLoc" value="Brooklyn, NY" placeholder="e.g. Manhattan, NY">
+          </label>
+        </div>
+
+        <label class="dropzone" id="photoDropzone">
+          <input type="file" id="photoFileInput" accept="image/*" multiple hidden>
+          <strong>+ Tap or Drag Photos Here to Upload</strong>
+          <span>Choose 1 or multiple job photos from your camera roll</span>
+        </label>
+      </div>
+
+      <div class="card">
+        <div class="row-between">
+          <h2>All Website Photos (Edit, Reorder or Delete)</h2>
+          <span class="badge-note" id="stagedNote">0 unsaved photo uploads</span>
+        </div>
+        <div class="photo-admin-grid" id="photoAdminGrid"></div>
+      </div>
+    </section>
+
+    <!-- TAB: BEFORE & AFTER -->
+    <section class="tab-panel" data-panel="beforeAfter" hidden>
+      <div class="card">
+        <h2>Add New Before &amp; After Slider</h2>
+        <div class="grid-2">
+          <label>Before Photo <input type="file" id="baBeforeFile" accept="image/*"></label>
+          <label>After Photo <input type="file" id="baAfterFile" accept="image/*"></label>
+          <label>Project Title <input type="text" id="baNewTitle" placeholder="e.g. Drywall Skim Coat &amp; Paint"></label>
+          <label>Category
+            <select id="baNewCat">
+              <option value="Drywall &amp; Painting">Drywall &amp; Painting</option>
+              <option value="Closets &amp; Storage">Closets &amp; Storage</option>
+              <option value="Carpentry &amp; Doors">Carpentry &amp; Doors</option>
+              <option value="TV Mounting">TV Mounting</option>
+              <option value="Mounting &amp; Smart Home">Mounting &amp; Smart Home</option>
+            </select>
+          </label>
+          <label>Location <input type="text" id="baNewLoc" value="Brooklyn, NY"></label>
+          <label>Short Description <input type="text" id="baNewCaption" placeholder="What work was completed?"></label>
+        </div>
+        <button type="button" class="btn btn-teal mt-12" id="addBaBtn">+ Add Before &amp; After</button>
+      </div>
+      <div class="card">
+        <h2>Current Before &amp; After Comparisons</h2>
+        <div id="baAdminList" class="stack-list"></div>
+      </div>
+    </section>
+
+    <!-- TAB: VIDEOS -->
+    <section class="tab-panel" data-panel="videos" hidden>
+      <div class="card">
+        <h2>Upload New Action Video</h2>
+        <p class="muted">Upload a short MP4/WebM clip (under 20 MB recommended). A preview thumbnail is generated automatically.</p>
+        <div class="grid-2">
+          <label>Video Title <input type="text" id="vidNewTitle" placeholder="e.g. Frame TV Install in Park Slope"></label>
+          <label>Choose Video (MP4 / WebM) <input type="file" id="vidNewFile" accept="video/mp4,video/webm"></label>
+        </div>
+        <button type="button" class="btn btn-teal mt-12" id="addVidBtn">+ Add Video to Site</button>
+      </div>
+      <div class="card">
+        <h2>Current Videos</h2>
+        <div id="vidAdminList" class="stack-list"></div>
+      </div>
+    </section>
+
+    <!-- TAB: SERVICES -->
+    <section class="tab-panel" data-panel="services" hidden>
+      <div class="card">
+        <div class="row-between">
+          <h2>Services &amp; Pricing Labels</h2>
+          <button type="button" class="btn btn-teal btn-sm" id="addServiceBtn">+ Add New Service</button>
+        </div>
+        <div id="servicesAdminList" class="stack-list"></div>
+      </div>
+    </section>
+
+    <!-- TAB: BUSINESS CONTENT -->
+    <section class="tab-panel" data-panel="content" hidden>
+      <div class="card">
+        <h2>Phone Number, Hours, Promo &amp; Headline</h2>
+        <div class="grid-2">
+          <label>Phone Shown on Site <input type="text" id="bPhoneDisplay"></label>
+          <label>Phone Dial Number (+1...) <input type="text" id="bPhoneE164"></label>
+          <label>Email <input type="email" id="bEmail"></label>
+          <label>Address <input type="text" id="bAddress"></label>
+          <label>Business Hours <input type="text" id="bHours"></label>
+          <label>Booking Calendar Link <input type="url" id="bKoalendar"></label>
+          <label>Years Experience <input type="text" id="bYears"></label>
+          <label>Projects Completed <input type="text" id="bProjectsDone"></label>
+          <label>Top Headline <input type="text" id="hTitle"></label>
+          <label>Top Badge Text <input type="text" id="hEyebrow"></label>
+        </div>
+        <label class="mt-12">Hero Sub-Headline <textarea id="hSubtitle" rows="2"></textarea></label>
+        <div class="grid-2 mt-12">
+          <label>$20 Off / Promo Text <input type="text" id="pBanner"></label>
+          <label>Show Promo Banner
+            <select id="pEnabled">
+              <option value="true">Shown</option>
+              <option value="false">Hidden</option>
+            </select>
+          </label>
+        </div>
+        <label class="mt-12">About Story (one paragraph per line) <textarea id="aParagraphs" rows="4"></textarea></label>
+      </div>
+
+      <div class="card">
+        <div class="row-between">
+          <h2>Customer Reviews</h2>
+          <button type="button" class="btn btn-teal btn-sm" id="addReviewBtn">+ Add Review</button>
+        </div>
+        <div id="reviewsAdminList" class="stack-list"></div>
+      </div>
+
+      <div class="card">
+        <div class="row-between">
+          <h2>Frequently Asked Questions</h2>
+          <button type="button" class="btn btn-teal btn-sm" id="addFaqBtn">+ Add FAQ</button>
+        </div>
+        <div id="faqAdminList" class="stack-list"></div>
+      </div>
+
+      <div class="card">
+        <h2>Download Backup</h2>
+        <button type="button" class="btn btn-outline" id="downloadJsonBtn">Download site.json Backup</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

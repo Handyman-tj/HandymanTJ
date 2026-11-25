@@ -1,0 +1,351 @@
+{
+  "brand": {
+    "name": "Handyman TJ",
+    "legalName": "Handyman TJ Corp.",
+    "tagline": "Assembly • Mounting • Repairs",
+    "phoneDisplay": "(718) 600-6278",
+    "phoneE164": "+17186006278",
+    "email": "handymantj.nyc@gmail.com",
+    "address": "1780 West 3rd Street, Brooklyn, NY 11223",
+    "instagramUrl": "https://www.instagram.com/handymantj.com_nyc/",
+    "yelpUrl": "https://m.yelp.com/biz/tj-handyman-brooklyn",
+    "koalendarUrl": "https://koalendar.com/e/meet-with-handyman-tj",
+    "formspreeEndpoint": "https://formspree.io/f/xknlqjqz",
+    "yearsExp": "5",
+    "projectsDone": "245+",
+    "clientsCount": "230+",
+    "satisfactionRate": "100%",
+    "hoursSummary": "Mon–Thu & Sat–Sun: 8 AM – 8 PM · Fri: 9 AM – 5 PM"
+  },
+  "promo": {
+    "enabled": true,
+    "badge": "NYC Same-Day & Next-Day Slots",
+    "bannerText": "New NYC Clients: Mention this site for $20 off your first handyman project",
+    "ctaTitle": "Ready to Upgrade Your Space?",
+    "ctaSubtitle": "Book online in 60 seconds or call (718) 600-6278 — get $20 off your first service."
+  },
+  "hero": {
+    "eyebrow": "Brooklyn-Based · Serving All 5 NYC Boroughs & Nassau County",
+    "title": "Precision Craftsmanship for New York Homes.",
+    "subtitle": "TV mounting, IKEA PAX closets, furniture assembly, drywall, painting, and smart-home installs—done level, clean, and on schedule.",
+    "poster": "assets/videos/hero-poster.webp",
+    "video": "assets/videos/Main_Video_Handyman.mp4"
+  },
+  "about": {
+    "heading": "Meet Handyman TJ",
+    "lead": "Built in Brooklyn on clean work, level lines, and zero shortcuts.",
+    "paragraphs": [
+      "With 5 years of hands-on experience across New York City apartments, brownstones, and commercial spaces, I founded Handyman TJ to deliver dependable craftsmanship you can invite into your home with confidence.",
+      "Every appointment includes proper wall anchors for NYC plaster, brick, or metal studs, floor and furniture protection, and full cleanup before we leave. We are fully insured and background-checked."
+    ]
+  },
+  "services": [
+    {
+      "id": "tv-mounting",
+      "title": "TV & Frame Mounting",
+      "category": "TV Mounting",
+      "popular": true,
+      "badge": "Most Requested",
+      "image": "assets/projects/thumb/proj-50.webp",
+      "description": "Samsung Frame TVs, fireplace mounts, full-motion swivel arms, and ceiling drop-down mounts anchored safely into drywall, brick, or metal studs.",
+      "priceNote": "Free Quote"
+    },
+    {
+      "id": "closet-systems",
+      "title": "Custom Closets & PAX Systems",
+      "category": "Closets & Storage",
+      "popular": true,
+      "badge": "Popular",
+      "image": "assets/projects/thumb/proj-33.webp",
+      "description": "Full walk-in and L-shaped wardrobe systems, IKEA PAX units, mirrored doors, mesh baskets, drawer banks, and wall-secured bookcases.",
+      "priceNote": "Free Quote"
+    },
+    {
+      "id": "furniture-assembly",
+      "title": "Furniture & Office Assembly",
+      "category": "Furniture Assembly",
+      "popular": true,
+      "badge": "Popular",
+      "image": "assets/projects/thumb/proj-09.webp",
+      "description": "Upholstered beds, executive marble and modern desks, dressers, entertainment centers, outdoor patio lounges, and storage sheds.",
+      "priceNote": "Free Quote"
+    },
+    {
+      "id": "carpentry-accent",
+      "title": "Carpentry & Acoustic Walls",
+      "category": "Carpentry & Doors",
+      "popular": false,
+      "badge": "",
+      "image": "assets/projects/thumb/proj-04.webp",
+      "description": "Acoustic wood slat accent walls, custom shelving, kitchen pass-through framing, base trim, and woodworking built square and tight.",
+      "priceNote": "Free Quote"
+    },
+    {
+      "id": "painting-skim",
+      "title": "Painting & Skim Coating",
+      "category": "Drywall & Painting",
+      "popular": false,
+      "badge": "",
+      "image": "assets/projects/thumb/proj-46.webp",
+      "description": "Wallpaper glue stripping, plaster skim coating, priming, and crisp interior paint lines with full drop-cloth and tape protection.",
+      "priceNote": "Free Quote"
+    },
+    {
+      "id": "drywall-repair",
+      "title": "Drywall & Greenboard Repair",
+      "category": "Drywall & Painting",
+      "popular": false,
+      "badge": "",
+      "image": "assets/projects/thumb/proj-26.webp",
+      "description": "Moisture-resistant greenboard patches, hole repairs, crack restoration, taping, mudding, and seamless paint-ready wall finishing.",
+      "priceNote": "Free Quote"
+    },
+    {
+      "id": "gallery-mirrors",
+      "title": "Art, Mirrors & Smart Home",
+      "category": "Mounting & Smart Home",
+      "popular": false,
+      "badge": "",
+      "image": "assets/projects/thumb/proj-41.webp",
+      "description": "Laser-leveled gallery walls, heavy mirrors, gym mirror walls, bike racks, Ring floodlight cameras, and Midea U-shaped smart ACs.",
+      "priceNote": "Free Quote"
+    },
+    {
+      "id": "caulking-sealing",
+      "title": "Precision Tub & Tile Caulking",
+      "category": "Caulking & Sealing",
+      "popular": false,
+      "badge": "",
+      "image": "assets/projects/thumb/proj-22.webp",
+      "description": "Old silicone removal, taped razor-clean seams, and waterproof mold-resistant caulking for tubs, showers, sinks, and window frames.",
+      "priceNote": "Free Quote"
+    },
+    {
+      "id": "doors-hardware",
+      "title": "Door Installation & Repair",
+      "category": "Carpentry & Doors",
+      "popular": false,
+      "badge": "",
+      "image": "assets/services/door-repair.webp",
+      "description": "Interior door hanging, alignment fixes, squeaky hinges, locksets, smart deadbolts, handles, and weatherstripping.",
+      "priceNote": "Free Quote"
+    },
+    {
+      "id": "flooring-tile",
+      "title": "Flooring & Tile Work",
+      "category": "Flooring & Tile",
+      "popular": false,
+      "badge": "",
+      "image": "assets/services/floor-install.webp",
+      "description": "Hardwood, laminate, vinyl plank, and ceramic tile installation or targeted board and grout repairs.",
+      "priceNote": "Free Quote"
+    },
+    {
+      "id": "lighting-outlets",
+      "title": "Lighting & Outlet Upgrades",
+      "category": "Electrical & Fixtures",
+      "popular": false,
+      "badge": "",
+      "image": "assets/services/light-fixture.webp",
+      "description": "Chandeliers, pendant lights, wall sconces, ceiling fans, smart dimmers, USB outlets, and GFCI replacements.",
+      "priceNote": "Free Quote"
+    },
+    {
+      "id": "general-repairs",
+      "title": "General Home Repairs",
+      "category": "General Repairs",
+      "popular": false,
+      "badge": "",
+      "image": "assets/services/wall-patching.webp",
+      "description": "Punch-list apartment turnarounds, plumbing fixture swaps, curtain rods, blinds, and everyday household maintenance.",
+      "priceNote": "Free Quote"
+    }
+  ],
+  "beforeAfter": [
+    {
+      "id": "ba-room-paint",
+      "title": "Wallpaper Removal, Skim Coat & Fresh Interior Paint",
+      "location": "Brooklyn, NY",
+      "category": "Drywall & Painting",
+      "beforeImage": "assets/projects/full/proj-44.webp",
+      "afterImage": "assets/projects/full/proj-46.webp",
+      "caption": "Stripped failing wallcovering adhesive, patched switch boxes, skim-coated uneven drywall, and delivered a crisp matte finish."
+    },
+    {
+      "id": "ba-pax-mirrors",
+      "title": "Custom Built-In Wardrobe to Full Mirrored Wall",
+      "location": "Queens, NY",
+      "category": "Closets & Storage",
+      "beforeImage": "assets/projects/full/proj-32.webp",
+      "afterImage": "assets/projects/full/proj-33.webp",
+      "caption": "Anchored tiered modular cabinet carcasses plumb to the wall and fitted aligned floor-to-ceiling mirrored doors."
+    },
+    {
+      "id": "ba-kitchen-framing",
+      "title": "Kitchen Pass-Through Framing & Drywall Finish",
+      "location": "NYC Apartment",
+      "category": "Carpentry & Doors",
+      "beforeImage": "assets/projects/full/proj-11.webp",
+      "afterImage": "assets/projects/full/proj-02.webp",
+      "caption": "Rebuilt structural columns around plumbing/electrical runs and finished with crisp corner bead and smooth drywall."
+    },
+    {
+      "id": "ba-gallery-wall",
+      "title": "13-Piece Custom Gallery Wall Layout & Precision Hanging",
+      "location": "Commercial Studio, NYC",
+      "category": "Mounting & Smart Home",
+      "beforeImage": "assets/projects/full/proj-42.webp",
+      "afterImage": "assets/projects/full/proj-41.webp",
+      "caption": "Mapped full spacing templates on the floor first, then laser-leveled mixed frames and heavy antique borders cleanly onto the wall."
+    }
+  ],
+  "projects": [
+    { "id": "proj-50", "title": "Large Frame TV Mounted Over Fireplace", "category": "TV Mounting", "location": "NYC", "thumb": "assets/projects/thumb/proj-50.webp", "full": "assets/projects/full/proj-50.webp" },
+    { "id": "proj-33", "title": "Full-Wall Mirrored Wardrobe System", "category": "Closets & Storage", "location": "Brooklyn / Queens", "thumb": "assets/projects/thumb/proj-33.webp", "full": "assets/projects/full/proj-33.webp" },
+    { "id": "proj-04", "title": "Acoustic Wood Slat Accent Wall", "category": "Carpentry & Doors", "location": "NYC", "thumb": "assets/projects/thumb/proj-04.webp", "full": "assets/projects/full/proj-04.webp" },
+    { "id": "proj-09", "title": "Manhattan High-Rise Upholstered Bed Assembly", "category": "Furniture Assembly", "location": "Manhattan, NY", "thumb": "assets/projects/thumb/proj-09.webp", "full": "assets/projects/full/proj-09.webp" },
+    { "id": "proj-36", "title": "Marble-Top Executive Office Desk & Chair", "category": "Furniture Assembly", "location": "NYC", "thumb": "assets/projects/thumb/proj-36.webp", "full": "assets/projects/full/proj-36.webp" },
+    { "id": "proj-41", "title": "Laser-Leveled 13-Frame Gallery Wall", "category": "Mounting & Smart Home", "location": "NYC", "thumb": "assets/projects/thumb/proj-41.webp", "full": "assets/projects/full/proj-41.webp" },
+    { "id": "proj-29", "title": "Walk-In Closet with Mesh Drawers & Organizers", "category": "Closets & Storage", "location": "NYC", "thumb": "assets/projects/thumb/proj-29.webp", "full": "assets/projects/full/proj-29.webp" },
+    { "id": "proj-51", "title": "Exterior Ring Floodlight Camera on Siding", "category": "Mounting & Smart Home", "location": "Brooklyn / Long Island", "thumb": "assets/projects/thumb/proj-51.webp", "full": "assets/projects/full/proj-51.webp" },
+    { "id": "proj-22", "title": "Taped Precision Bathtub Caulking Prep", "category": "Caulking & Sealing", "location": "NYC", "thumb": "assets/projects/thumb/proj-22.webp", "full": "assets/projects/full/proj-22.webp" },
+    { "id": "proj-43", "title": "Drop-Down Ceiling TV Mount Installation", "category": "TV Mounting", "location": "NYC", "thumb": "assets/projects/thumb/proj-43.webp", "full": "assets/projects/full/proj-43.webp" },
+    { "id": "proj-48", "title": "Midea U-Shaped Smart Window AC Install", "category": "Mounting & Smart Home", "location": "Brooklyn, NY", "thumb": "assets/projects/thumb/proj-48.webp", "full": "assets/projects/full/proj-48.webp" },
+    { "id": "proj-23", "title": "Home Gym Mirror Wall & Upper Cabinets", "category": "Mounting & Smart Home", "location": "Long Island / NYC", "thumb": "assets/projects/thumb/proj-23.webp", "full": "assets/projects/full/proj-23.webp" },
+    { "id": "proj-39", "title": "Commercial Dining Room Wall Art & Sconces", "category": "Mounting & Smart Home", "location": "NYC", "thumb": "assets/projects/thumb/proj-39.webp", "full": "assets/projects/full/proj-39.webp" },
+    { "id": "proj-40", "title": "Boutique Hospitality Wall Framing Install", "category": "Mounting & Smart Home", "location": "NYC", "thumb": "assets/projects/thumb/proj-40.webp", "full": "assets/projects/full/proj-40.webp" },
+    { "id": "proj-35", "title": "Modern Executive Desk & Ergonomic Chair", "category": "Furniture Assembly", "location": "NYC", "thumb": "assets/projects/thumb/proj-35.webp", "full": "assets/projects/full/proj-35.webp" },
+    { "id": "proj-28", "title": "Bedroom Custom Wardrobe & Drawer Bank", "category": "Closets & Storage", "location": "NYC", "thumb": "assets/projects/thumb/proj-28.webp", "full": "assets/projects/full/proj-28.webp" },
+    { "id": "proj-30", "title": "Full-Corridor Walk-In Closet Installation", "category": "Closets & Storage", "location": "NYC", "thumb": "assets/projects/thumb/proj-30.webp", "full": "assets/projects/full/proj-30.webp" },
+    { "id": "proj-31", "title": "L-Shaped Corner Closet Organizer Build", "category": "Closets & Storage", "location": "NYC", "thumb": "assets/projects/thumb/proj-31.webp", "full": "assets/projects/full/proj-31.webp" },
+    { "id": "proj-49", "title": "Walk-In Closet & Pantry Shelving System", "category": "Closets & Storage", "location": "NYC", "thumb": "assets/projects/thumb/proj-49.webp", "full": "assets/projects/full/proj-49.webp" },
+    { "id": "proj-34", "title": "Reach-In Closet Shelving & Drawers", "category": "Closets & Storage", "location": "NYC", "thumb": "assets/projects/thumb/proj-34.webp", "full": "assets/projects/full/proj-34.webp" },
+    { "id": "proj-38", "title": "Heavy-Duty Articulating Full-Motion TV Arm", "category": "TV Mounting", "location": "NYC", "thumb": "assets/projects/thumb/proj-38.webp", "full": "assets/projects/full/proj-38.webp" },
+    { "id": "proj-52", "title": "Swivel Living Room TV Mount Installation", "category": "TV Mounting", "location": "NYC", "thumb": "assets/projects/thumb/proj-52.webp", "full": "assets/projects/full/proj-52.webp" },
+    { "id": "proj-37", "title": "Flush Flat-Screen Bedroom TV Mount", "category": "TV Mounting", "location": "NYC", "thumb": "assets/projects/thumb/proj-37.webp", "full": "assets/projects/full/proj-37.webp" },
+    { "id": "proj-19", "title": "Fireplace Mantle TV & Soundbar Mounting", "category": "TV Mounting", "location": "NYC", "thumb": "assets/projects/thumb/proj-19.webp", "full": "assets/projects/full/proj-19.webp" },
+    { "id": "proj-10", "title": "Mantle TV Bracket & Cable Routing", "category": "TV Mounting", "location": "NYC", "thumb": "assets/projects/thumb/proj-10.webp", "full": "assets/projects/full/proj-10.webp" },
+    { "id": "proj-24", "title": "Wall-Mounted Road Bike Rack", "category": "Mounting & Smart Home", "location": "NYC", "thumb": "assets/projects/thumb/proj-24.webp", "full": "assets/projects/full/proj-24.webp" },
+    { "id": "proj-25", "title": "Moisture-Resistant Greenboard Baseboard Patch", "category": "Drywall & Painting", "location": "NYC", "thumb": "assets/projects/thumb/proj-25.webp", "full": "assets/projects/full/proj-25.webp" },
+    { "id": "proj-26", "title": "Corner Greenboard Drywall Replacement", "category": "Drywall & Painting", "location": "NYC", "thumb": "assets/projects/thumb/proj-26.webp", "full": "assets/projects/full/proj-26.webp" },
+    { "id": "proj-27", "title": "Clean Greenboard Trim Line Fitting", "category": "Drywall & Painting", "location": "NYC", "thumb": "assets/projects/thumb/proj-27.webp", "full": "assets/projects/full/proj-27.webp" },
+    { "id": "proj-46", "title": "Skim-Coated & Freshly Painted Interior Room", "category": "Drywall & Painting", "location": "NYC", "thumb": "assets/projects/thumb/proj-46.webp", "full": "assets/projects/full/proj-46.webp" },
+    { "id": "proj-47", "title": "Plaster Repair & Smooth Wall Finish", "category": "Drywall & Painting", "location": "NYC", "thumb": "assets/projects/thumb/proj-47.webp", "full": "assets/projects/full/proj-47.webp" },
+    { "id": "proj-44", "title": "Wallpaper Glue Stripping & Wall Prep", "category": "Drywall & Painting", "location": "NYC", "thumb": "assets/projects/thumb/proj-44.webp", "full": "assets/projects/full/proj-44.webp" },
+    { "id": "proj-45", "title": "Plaster Wall Patching & Prep", "category": "Drywall & Painting", "location": "NYC", "thumb": "assets/projects/thumb/proj-45.webp", "full": "assets/projects/full/proj-45.webp" },
+    { "id": "proj-21", "title": "Waterproof Silicone Shower Seam Prep", "category": "Caulking & Sealing", "location": "NYC", "thumb": "assets/projects/thumb/proj-21.webp", "full": "assets/projects/full/proj-21.webp" },
+    { "id": "proj-32", "title": "Tiered Closet Carcass Framing", "category": "Closets & Storage", "location": "NYC", "thumb": "assets/projects/thumb/proj-32.webp", "full": "assets/projects/full/proj-32.webp" },
+    { "id": "proj-42", "title": "Gallery Wall Floor Spacing Template", "category": "Mounting & Smart Home", "location": "NYC", "thumb": "assets/projects/thumb/proj-42.webp", "full": "assets/projects/full/proj-42.webp" },
+    { "id": "proj-01", "title": "Outdoor Backyard Storage Shed Assembly", "category": "Furniture Assembly", "location": "Brooklyn, NY", "thumb": "assets/projects/thumb/proj-01.webp", "full": "assets/projects/full/proj-01.webp" },
+    { "id": "proj-02", "title": "Kitchen Pass-Through Drywall Renovation", "category": "Carpentry & Doors", "location": "NYC", "thumb": "assets/projects/thumb/proj-02.webp", "full": "assets/projects/full/proj-02.webp" },
+    { "id": "proj-03", "title": "Bedroom Suite, Nightstand & Desk Assembly", "category": "Furniture Assembly", "location": "Brooklyn, NY", "thumb": "assets/projects/thumb/proj-03.webp", "full": "assets/projects/full/proj-03.webp" },
+    { "id": "proj-05", "title": "Slatted Walnut Entryway Shoe Cabinet", "category": "Furniture Assembly", "location": "NYC", "thumb": "assets/projects/thumb/proj-05.webp", "full": "assets/projects/full/proj-05.webp" },
+    { "id": "proj-06", "title": "Outdoor Patio Lounge & Fire Pit Table", "category": "Furniture Assembly", "location": "Long Island, NY", "thumb": "assets/projects/thumb/proj-06.webp", "full": "assets/projects/full/proj-06.webp" },
+    { "id": "proj-07", "title": "Teak Outdoor Daybed & Dining Chairs", "category": "Furniture Assembly", "location": "Long Island, NY", "thumb": "assets/projects/thumb/proj-07.webp", "full": "assets/projects/full/proj-07.webp" },
+    { "id": "proj-08", "title": "Curved Oak 4-Drawer Dresser Assembly", "category": "Furniture Assembly", "location": "Brooklyn, NY", "thumb": "assets/projects/thumb/proj-08.webp", "full": "assets/projects/full/proj-08.webp" },
+    { "id": "proj-11", "title": "Structural Pass-Through Framing Prep", "category": "Carpentry & Doors", "location": "NYC", "thumb": "assets/projects/thumb/proj-11.webp", "full": "assets/projects/full/proj-11.webp" },
+    { "id": "proj-12", "title": "Heavy-Duty Steel Garage Shelving Rack", "category": "Closets & Storage", "location": "Brooklyn, NY", "thumb": "assets/projects/thumb/proj-12.webp", "full": "assets/projects/full/proj-12.webp" },
+    { "id": "proj-13", "title": "Floor-to-Ceiling Built-In Bookcase Wall", "category": "Closets & Storage", "location": "NYC", "thumb": "assets/projects/thumb/proj-13.webp", "full": "assets/projects/full/proj-13.webp" },
+    { "id": "proj-14", "title": "Completed 3-Bay Library Bookcase Setup", "category": "Closets & Storage", "location": "NYC", "thumb": "assets/projects/thumb/proj-14.webp", "full": "assets/projects/full/proj-14.webp" },
+    { "id": "proj-15", "title": "Glass-Door Media Entertainment Wall Unit", "category": "Furniture Assembly", "location": "Queens, NY", "thumb": "assets/projects/thumb/proj-15.webp", "full": "assets/projects/full/proj-15.webp" },
+    { "id": "proj-16", "title": "Commercial Game Room Foosball Table", "category": "Furniture Assembly", "location": "NYC", "thumb": "assets/projects/thumb/proj-16.webp", "full": "assets/projects/full/proj-16.webp" },
+    { "id": "proj-17", "title": "Commercial Chrome Rolling Shelving Units", "category": "Closets & Storage", "location": "NYC", "thumb": "assets/projects/thumb/proj-17.webp", "full": "assets/projects/full/proj-17.webp" },
+    { "id": "proj-18", "title": "Solid Oak Wardrobe Armoire Assembly", "category": "Furniture Assembly", "location": "Brooklyn, NY", "thumb": "assets/projects/thumb/proj-18.webp", "full": "assets/projects/full/proj-18.webp" },
+    { "id": "proj-20", "title": "White 4-Drawer Bedroom Chest Assembly", "category": "Furniture Assembly", "location": "NYC", "thumb": "assets/projects/thumb/proj-20.webp", "full": "assets/projects/full/proj-20.webp" }
+  ],
+  "videos": [
+    {
+      "id": "vid-1",
+      "title": "Precision Mounting & Install Reel",
+      "src": "assets/videos/Kama_HEAD_2.mp4",
+      "poster": "assets/projects/thumb/proj-50.webp"
+    },
+    {
+      "id": "vid-2",
+      "title": "NYC Workshop & Assembly Highlights",
+      "src": "assets/videos/Kama_HEAD_1.mp4",
+      "poster": "assets/projects/thumb/proj-33.webp"
+    },
+    {
+      "id": "vid-3",
+      "title": "Clean Craftsmanship in Action",
+      "src": "assets/videos/Kama_HEAD_3.mp4",
+      "poster": "assets/projects/thumb/proj-04.webp"
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Sarah M.",
+      "location": "Brooklyn, NY",
+      "rating": 5,
+      "text": "TJ was amazing! He assembled my entire bedroom set in under 2 hours. Super clean, professional, and friendly. Highly recommend!"
+    },
+    {
+      "name": "James R.",
+      "location": "Manhattan, NY",
+      "rating": 5,
+      "text": "I had a hole in my drywall that was driving me crazy. TJ fixed it perfectly — I can't even tell where it was. Great price too."
+    },
+    {
+      "name": "Michelle K.",
+      "location": "Queens, NY",
+      "rating": 5,
+      "text": "Mounted 3 TVs and installed shelves. Everything is perfectly level and secure. Will definitely hire again for my next project."
+    },
+    {
+      "name": "David L.",
+      "location": "Jersey City, NJ",
+      "rating": 5,
+      "text": "Very professional and punctual. The work quality is top-notch. It's hard to find reliable handymen in the city, but TJ is the real deal."
+    }
+  ],
+  "areas": [
+    {
+      "name": "Brooklyn",
+      "neighborhoods": "Gravesend, Park Slope, Williamsburg, DUMBO, Brooklyn Heights, Bay Ridge, Carroll Gardens",
+      "note": "Home base at 1780 W 3rd St — fast dispatch across every Brooklyn neighborhood."
+    },
+    {
+      "name": "Manhattan",
+      "neighborhoods": "Upper East Side, Upper West Side, Chelsea, SoHo, Tribeca, Midtown, Financial District",
+      "note": "High-rise apartment, co-op, and office installations with clean floor protection."
+    },
+    {
+      "name": "Queens",
+      "neighborhoods": "Astoria, Long Island City, Forest Hills, Bayside, Sunnyside, Rego Park",
+      "note": "Reliable residential and commercial mounting, assembly, and repairs across Queens."
+    },
+    {
+      "name": "Staten Island & Bronx",
+      "neighborhoods": "St. George, Todt Hill, New Dorp, Riverdale, Pelham Bay",
+      "note": "Full-service handyman craftsmanship including exterior cameras, sheds, and interior renovations."
+    },
+    {
+      "name": "Long Island (Nassau)",
+      "neighborhoods": "Great Neck, Garden City, Manhasset, Roslyn, Valley Stream, Long Beach",
+      "note": "Custom closets, patio setups, gym mirror walls, and whole-home punch lists."
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What areas in New York do you serve?",
+      "a": "Handyman TJ is based in Brooklyn (1780 West 3rd Street, NY 11223) and serves all five NYC boroughs—Brooklyn, Manhattan, Queens, Staten Island, and the Bronx—as well as Nassau County on Long Island."
+    },
+    {
+      "q": "Can you mount TVs, heavy mirrors, and IKEA PAX closets on NYC plaster, brick, or metal studs?",
+      "a": "Yes. NYC pre-war plaster, masonry/brick, and modern high-rise metal studs each require specialized anchors and toggle bolts. We arrive stocked with heavy-duty hardware, laser levels, and stud finders for safe, rock-solid mounting."
+    },
+    {
+      "q": "Do you offer same-day or weekend appointments?",
+      "a": "Yes. We operate Monday–Thursday and Saturday–Sunday from 8:00 AM to 8:00 PM, plus Fridays from 9:00 AM to 5:00 PM. You can book a slot directly online or call (718) 600-6278 for same-day availability."
+    },
+    {
+      "q": "How do I get an exact price quote before booking?",
+      "a": "Call or text (718) 600-6278, email handymantj.nyc@gmail.com, or use our instant quote form with your project details. We provide clear, upfront estimates with $20 off for first-time clients."
+    },
+    {
+      "q": "Are you insured and do you clean up after the job?",
+      "a": "Yes—Handyman TJ is fully insured and background-checked. We use drop cloths and floor protection on painting, drywall, and assembly jobs and remove packaging mess from the work area."
+    }
+  ]
+}
