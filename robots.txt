@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
+Disallow: /*.json$
+Disallow: /functions/
 
 User-agent: GPTBot
 Allow: /
@@ -18,6 +19,12 @@ User-agent: ClaudeBot
 Allow: /
 
 User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
 Allow: /
 
 Sitemap: https://www.handymantj.com/sitemap.xml

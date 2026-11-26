@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leave a Review — Handyman TJ NYC</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#05837F">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/brand/favicon-192.png">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(145deg, #111924 0%, #1A2533 52%, #05837F 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #1A2533;
+    }
+    .card {
+      background: #FFFFFF;
+      border-radius: 24px;
+      padding: 34px 26px;
+      max-width: 460px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+    .logo {
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #05837F;
+      margin: 0 auto 14px;
+      display: block;
+    }
+    h1 { font-size: 1.5rem; font-weight: 800; color: #1A2533; margin-bottom: 6px; }
+    .sub { color: #5C6770; font-size: 0.94rem; line-height: 1.5; margin-bottom: 20px; }
+    .stars-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .star-btn {
+      background: none;
+      border: none;
+      font-size: 2.3rem;
+      line-height: 1;
+      cursor: pointer;
+      color: #D5DCE2;
+      transition: transform 0.15s ease, color 0.15s ease;
+    }
+    .star-btn.lit, .star-btn:hover { color: #EAB702; transform: scale(1.12); }
+    .chips-wrap {
+      background: #F4F8F8;
+      border: 1px solid rgba(5, 131, 127, 0.2);
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 18px;
+      text-align: left;
+    }
+    .chips-title { font-size: 0.78rem; font-weight: 700; color: #05837F; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 8px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+    .chip {
+      border: 1px solid rgba(5, 131, 127, 0.28);
+      background: #fff;
+      color: #1A2533;
+      border-radius: 50px;
+      padding: 5px 11px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .chip.on { background: #05837F; color: #fff; border-color: #05837F; }
+    .draft-box {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #D5DCE2;
+      font-size: 0.85rem;
+      color: #1A2533;
+      background: #fff;
+      resize: none;
+      margin-bottom: 8px;
+    }
+    .copy-btn {
+      width: 100%;
+      padding: 9px 14px;
+      border: none;
+      border-radius: 10px;
+      background: #1A2533;
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .review-btns { display: flex; flex-direction: column; gap: 11px; margin-top: 8px; }
+    .rev-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 18px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.96rem;
+      transition: transform 0.15s ease;
+    }
+    .rev-btn:hover { transform: translateY(-2px); }
+    .btn-google { background: #EAB702; color: #1A2533; box-shadow: 0 8px 20px rgba(234, 183, 2, 0.35); }
+    .btn-yelp { background: #c41200; color: #fff; }
+    .private-box { text-align: left; background: #FFF8E7; border: 1px solid #F0D27A; border-radius: 14px; padding: 16px; margin-top: 8px; }
+    .private-box h2 { font-size: 1rem; margin-bottom: 6px; color: #1A2533; }
+    .private-box p { font-size: 0.85rem; color: #5C6770; margin-bottom: 12px; }
+    .private-box input, .private-box textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid #D5DCE2;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+    .private-box button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: #05837F;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .status-note { font-size: 0.85rem; font-weight: 700; color: #05837F; margin-top: 10px; }
+    .subtle-links { margin-top: 14px; font-size: 0.78rem; color: #7C8791; }
+    .subtle-links a { color: #05837F; font-weight: 600; }
+    .foot { margin-top: 20px; font-size: 0.78rem; color: #8A959E; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <img class="logo" src="assets/brand/logo.webp" alt="Handyman TJ" width="76" height="76">
+    <h1>How did Handyman TJ do?</h1>
+    <p class="sub">Tap your rating below — it takes 20 seconds and helps Brooklyn &amp; NYC neighbors find us.</p>
+
+    <div class="stars-row" id="starsRow" role="group" aria-label="Rate your experience">
+      <button type="button" class="star-btn lit" data-val="1" aria-label="1 star">★</button>
+      <button type="button" class="star-btn lit" data-val="2" aria-label="2 stars">★</button>
+      <button type="button" class="star-btn lit" data-val="3" aria-label="3 stars">★</button>
+      <button type="button" class="star-btn lit" data-val="4" aria-label="4 stars">★</button>
+      <button type="button" class="star-btn lit" data-val="5" aria-label="5 stars">★</button>
+    </div>
+
+    <!-- High Rating View (4-5 stars) -->
+    <div id="publicReviewPanel">
+      <div class="chips-wrap">
+        <div class="chips-title">Need quick wording? Tap tags to build &amp; copy:</div>
+        <div class="chips" id="tagChips">
+          <button type="button" class="chip on" data-phrase="Arrived right on time">On Time</button>
+          <button type="button" class="chip on" data-phrase="super clean work and protected the floors">Clean Work</button>
+          <button type="button" class="chip" data-phrase="mounted my TV perfectly level">TV Mounting</button>
+          <button type="button" class="chip" data-phrase="assembled my IKEA furniture sturdy and fast">Furniture / PAX</button>
+          <button type="button" class="chip" data-phrase="repaired drywall and painted seamlessly">Drywall &amp; Paint</button>
+          <button type="button" class="chip on" data-phrase="fair upfront pricing">Fair Price</button>
+        </div>
+        <textarea id="draftText" class="draft-box" rows="3" readonly></textarea>
+        <button type="button" class="copy-btn" id="copyDraftBtn">Copy Starter Text (Optional)</button>
+      </div>
+
+      <div class="review-btns">
+        <a class="rev-btn btn-google" href="https://search.google.com/local/writereview?placeid=ChIJZ5UD-t3hXEsRtLLulBRtvGI" target="_blank" rel="noopener noreferrer" onclick="trackRev('google')">
+          ★ Leave a 5-Star Google Review
+        </a>
+        <a class="rev-btn btn-yelp" href="https://www.yelp.com/writeareview/biz/tj-handyman-brooklyn" target="_blank" rel="noopener noreferrer" onclick="trackRev('yelp')">
+          Review Us on Yelp
+        </a>
+      </div>
+    </div>
+
+    <!-- Private Resolution View (1-3 stars) -->
+    <div id="privateFeedbackPanel" hidden>
+      <div class="private-box">
+        <h2>Tell TJ directly so we can make it right</h2>
+        <p>Your satisfaction is 100% guaranteed. Message or call (718) 600-6278 directly and we'll fix any issue promptly.</p>
+        <form id="privateForm" action="https://formspree.io/f/xknlqjqz" method="POST">
+          <input type="hidden" name="subject" value="Private Service Feedback (1-3 Stars)">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="tel" name="phone" placeholder="Phone Number" required>
+          <textarea name="message" rows="3" placeholder="What went wrong or what can we fix right away?" required></textarea>
+          <button type="submit">Send Directly to TJ</button>
+          <div id="privStatus" class="status-note" hidden></div>
+        </form>
+      </div>
+      <div class="subtle-links">
+        Or post publicly on <a href="https://search.google.com/local/writereview?placeid=ChIJZ5UD-t3hXEsRtLLulBRtvGI" target="_blank" rel="noopener noreferrer">Google</a> · <a href="https://www.yelp.com/writeareview/biz/tj-handyman-brooklyn" target="_blank" rel="noopener noreferrer">Yelp</a>
+      </div>
+    </div>
+
+    <div id="revThanks" class="status-note" hidden>Thank you! Your support keeps Handyman TJ growing across NYC.</div>
+
+    <footer class="foot">
+      Handyman TJ Corp. · Brooklyn, NY · <a href="tel:+17186006278" style="color:#05837F;font-weight:700;">(718) 600-6278</a>
+    </footer>
+  </main>
+
+  <script>
+    const stars = Array.from(document.querySelectorAll('.star-btn'));
+    const pubPanel = document.getElementById('publicReviewPanel');
+    const privPanel = document.getElementById('privateFeedbackPanel');
+    const draft = document.getElementById('draftText');
+    const chips = Array.from(document.querySelectorAll('#tagChips .chip'));
+
+    function refreshDraft() {
+      const picked = chips.filter(c => c.classList.contains('on')).map(c => c.dataset.phrase);
+      draft.value = picked.length
+        ? `Great experience with Handyman TJ in NYC! ${picked.join(', ')}. Highly recommend!`
+        : 'Great experience with Handyman TJ in NYC! Clean, punctual, and professional workmanship.';
+    }
+    refreshDraft();
+
+    chips.forEach(c => c.addEventListener('click', () => {
+      c.classList.toggle('on');
+      refreshDraft();
+    }));
+
+    document.getElementById('copyDraftBtn').addEventListener('click', () => {
+      navigator.clipboard.writeText(draft.value).then(() => {
+        document.getElementById('copyDraftBtn').textContent = 'Copied! Paste inside Google / Yelp ✓';
+        setTimeout(() => { document.getElementById('copyDraftBtn').textContent = 'Copy Starter Text (Optional)'; }, 2500);
+      });
+    });
+
+    stars.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const val = Number(btn.dataset.val);
+        stars.forEach(s => s.classList.toggle('lit', Number(s.dataset.val) <= val));
+        const isHigh = val >= 4;
+        pubPanel.hidden = !isHigh;
+        privPanel.hidden = isHigh;
+      });
+    });
+
+    document.getElementById('privateForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const status = document.getElementById('privStatus');
+      try {
+        const r = await fetch(e.target.action, { method: 'POST', body: new FormData(e.target), headers: { Accept: 'application/json' } });
+        if (!r.ok) throw new Error();
+        e.target.reset();
+        status.hidden = false;
+        status.textContent = 'Sent! TJ will reach out shortly.';
+      } catch {
+        status.hidden = false;
+        status.textContent = 'Please call/text (718) 600-6278 directly.';
+      }
+    });
+
+    function trackRev(platform) {
+      setTimeout(() => { document.getElementById('revThanks').hidden = false; }, 1200);
+      if (typeof gtag === 'function') gtag('event', 'review_funnel_click', { platform });
+    }
+  </script>
+</body>
+</html>

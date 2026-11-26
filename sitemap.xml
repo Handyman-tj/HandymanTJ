@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.handymantj.com/</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image><image:loc>https://www.handymantj.com/assets/brand/logo-512.png</image:loc><image:title>Handyman TJ Logo - NYC Handyman Services</image:title></image:image>
+    <image:image><image:loc>https://www.handymantj.com/assets/projects/full/proj-50.webp</image:loc><image:title>Handyman TJ - Frame TV Mounting Over Fireplace NYC</image:title></image:image>
+    <image:image><image:loc>https://www.handymantj.com/assets/projects/full/proj-33.webp</image:loc><image:title>Handyman TJ - Mirrored IKEA PAX Wardrobe Brooklyn &amp; Queens</image:title></image:image>
+    <image:image><image:loc>https://www.handymantj.com/assets/projects/full/proj-04.webp</image:loc><image:title>Handyman TJ - Acoustic Wood Slat Accent Wall NYC</image:title></image:image>
+    <image:image><image:loc>https://www.handymantj.com/assets/projects/full/proj-41.webp</image:loc><image:title>Handyman TJ - Laser-Leveled Gallery Wall Hanging NYC</image:title></image:image>
+    <image:image><image:loc>https://www.handymantj.com/assets/projects/full/proj-46.webp</image:loc><image:title>Handyman TJ - Interior Painting and Skim Coating Brooklyn NY</image:title></image:image>
+    <image:image><image:loc>https://www.handymantj.com/assets/projects/full/proj-09.webp</image:loc><image:title>Handyman TJ - Manhattan Furniture &amp; Bed Assembly</image:title></image:image>
   </url>
 </urlset>

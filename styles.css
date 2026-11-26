@@ -910,9 +910,30 @@ header.site-header.scrolled {
 .location-card p { font-size: 0.85rem; color: var(--text-light); }
 
 /* Reviews */
+.review-summary-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+.rating-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--off-white);
+  border: 1.5px solid rgba(5, 131, 127, 0.22);
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  color: var(--dark-blue);
+  font-size: 0.94rem;
+}
+.rating-pill .stars-inline { color: var(--primary-gold); letter-spacing: 1px; font-size: 1rem; }
 .reviews-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 .testimonial-card {
@@ -920,14 +941,24 @@ header.site-header.scrolled {
   border-radius: 20px;
   padding: 26px;
   box-shadow: var(--shadow-md);
-  border: 1px solid rgba(26, 37, 51, 0.05);
+  border: 1px solid rgba(26, 37, 51, 0.06);
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s var(--ease-out);
+  transition: transform 0.25s var(--ease-out), border-color 0.25s var(--ease-out);
 }
-.testimonial-card:hover { transform: translateY(-5px); }
-.stars { color: var(--primary-gold); font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 12px; }
-.testimonial-text { font-style: italic; color: var(--text-dark); font-size: 0.95rem; margin-bottom: 20px; flex: 1; }
+.testimonial-card:hover { transform: translateY(-5px); border-color: rgba(5, 131, 127, 0.3); }
+.review-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; gap: 8px; }
+.stars { color: var(--primary-gold); font-size: 1.05rem; letter-spacing: 2px; margin-bottom: 0; }
+.review-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--primary-teal-dark);
+  background: var(--teal-soft);
+  padding: 4px 10px;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+.testimonial-text { font-style: italic; color: var(--text-dark); font-size: 0.94rem; margin-bottom: 20px; flex: 1; }
 .user-info { display: flex; align-items: center; gap: 12px; }
 .user-avatar {
   width: 44px;
@@ -941,6 +972,37 @@ header.site-header.scrolled {
 }
 .user-details h5 { font-size: 1rem; margin-bottom: 2px; }
 .user-details span { font-size: 0.8rem; color: var(--text-light); }
+.reviews-cta-box {
+  margin-top: 34px;
+  padding: 24px 28px;
+  background: var(--off-white);
+  border: 1.5px solid rgba(26, 37, 51, 0.08);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.reviews-cta-copy h3 { font-size: 1.25rem; margin-bottom: 4px; }
+.reviews-cta-copy p { font-size: 0.92rem; color: var(--text-light); }
+.reviews-cta-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-yelp {
+  background: #c41200;
+  color: var(--white);
+  box-shadow: 0 8px 20px rgba(196, 18, 0, 0.25);
+}
+.btn-yelp:hover { background: #a30f00; color: var(--white); }
+.form-status {
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+}
+.form-status.ok { background: rgba(5, 131, 127, 0.12); color: var(--primary-teal-dark); }
+.form-status.err { background: rgba(255, 77, 77, 0.12); color: #b91c1c; }
 
 /* Bold Gold CTA Band (Original Brand Signature!) */
 .cta-section {

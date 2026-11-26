@@ -33,6 +33,7 @@
       hydrateSite(siteData);
     }
     setupKoalendarLazy();
+    setupQuoteForm();
     setupCounters();
     setupRevealObserver();
   }
@@ -79,6 +80,15 @@
     if (data.brand?.formspreeEndpoint) {
       const form = document.getElementById('quoteForm');
       if (form) form.action = data.brand.formspreeEndpoint;
+    }
+    if (data.brand?.googleReviewUrl) {
+      document.querySelectorAll('[data-google-review-link]').forEach(a => { a.href = data.brand.googleReviewUrl; });
+    }
+    if (data.brand?.yelpReviewUrl) {
+      document.querySelectorAll('[data-yelp-review-link]').forEach(a => { a.href = data.brand.yelpReviewUrl; });
+    }
+    if (data.brand?.googleMapsUrl) {
+      document.querySelectorAll('[data-google-maps-link]').forEach(a => { a.href = data.brand.googleMapsUrl; });
     }
 
     const aboutWrap = document.getElementById('aboutParagraphs');
@@ -282,8 +292,11 @@
     const grid = document.getElementById('reviewsGrid');
     if (!grid) return;
     grid.innerHTML = reviews.map(r => `
-      <article class="testimonial-card reveal">
-        <div class="stars" aria-label="${r.rating || 5} stars">${'★'.repeat(r.rating || 5)}</div>
+      <article class="testimonial-card reveal in-view">
+        <div class="review-top">
+          <div class="stars" aria-label="${r.rating || 5} stars">${'★'.repeat(r.rating || 5)}</div>
+          <span class="review-badge">✓ ${esc(r.source || 'Verified Review')}${r.date ? ` · ${esc(r.date)}` : ''}</span>
+        </div>
         <p class="testimonial-text">"${esc(r.text)}"</p>
         <div class="user-info">
           <div class="user-avatar">${esc((r.name || 'C').charAt(0).toUpperCase())}</div>
@@ -294,6 +307,41 @@
         </div>
       </article>
     `).join('');
+  }
+
+  function setupQuoteForm() {
+    const form = document.getElementById('quoteForm');
+    const status = document.getElementById('quoteFormStatus');
+    if (!form) return;
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      const orig = btn ? btn.textContent : '';
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending Request...'; }
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' }
+        });
+        if (!res.ok) throw new Error('Submission failed');
+        form.reset();
+        if (status) {
+          status.hidden = false;
+          status.className = 'form-status ok';
+          status.textContent = 'Request received! TJ will call or text you shortly from (718) 600-6278.';
+        }
+        if (typeof gtag === 'function') gtag('event', 'generate_lead', { method: 'quote_form' });
+      } catch {
+        if (status) {
+          status.hidden = false;
+          status.className = 'form-status err';
+          status.textContent = 'Could not send right now — please call or text (718) 600-6278 directly.';
+        }
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = orig; }
+      }
+    });
   }
 
   function renderFaqs(faqs) {
